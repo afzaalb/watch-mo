@@ -1,0 +1,29 @@
+.searched-results {
+    font-size: 12px;
+    color: rgba(255, 255, 255, 0.6);
+}
+
+.searched-results a:hover {
+    opacity: 0.75;
+}
+
+.searched-results .name {
+    font-size: 14px;
+    color: #fff;
+}
+
+.searched-results .description {
+    max-height: 36px;
+    overflow: hidden;
+}
+
+.non-collapsed li > a,
+.non-collapsed li > div {
+    display: inline-block;
+    max-width: 50%;
+    font-size: 14px;
+}
+
+.non-collapsed li > div {
+    padding-left: 15px;
+}

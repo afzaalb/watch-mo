@@ -3,6 +3,8 @@ import { Link } from "react-router-dom";
 import { ImageURL } from "../../../constants";
 import slug from "slug";
 
+slug.defaults.mode ='rfc3986';
+
 const ListItem = (props) => (
 	<li className="col-sm-4 mb-3">
         <Link to={props.id+`/${slug(props.name)}`} className="d-block">

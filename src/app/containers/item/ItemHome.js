@@ -39,7 +39,7 @@ class ItemInfo extends Component {
 
     componentDidMount() {
         theMovieDb.movies.getById(
-            { id: 157336, append_to_response: "videos,casts" },
+            { id: this.props.match.params.id, append_to_response: "videos,casts" },
             this.successCB,
             this.errorCB
         );
@@ -144,13 +144,13 @@ class ItemInfo extends Component {
         if (response.title && response.overview) {
             dataLoaded = (
                 <Fragment>
-                    <ItemPoster poster={response.backdrop_path} />
+                    <ItemPoster poster={response.backdrop_path != null ? response.backdrop_path : response.poster_path } />
                     <div className="card-video-splitter mt-4 mb-5">
                         <Player
                             scale={playing}
                             running={this.handlePlayerState}
                             options={options}
-                            source={response.videos.results[0].key}
+                            source={response.videos.results.length > 0 ? response.videos.results[0].key : null}
                         />
                         <ItemMeta
                             show={playing}
@@ -166,7 +166,11 @@ class ItemInfo extends Component {
                             description={response.overview}
                         />
                     </div>
-                    <FullCast casts={allCastList} />
+					{
+						allCastList.length > 0 && (
+							<FullCast casts={allCastList} />
+						)
+					}
 					<ExtraDetails />
                 </Fragment>
             );

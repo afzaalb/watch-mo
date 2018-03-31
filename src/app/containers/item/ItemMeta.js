@@ -22,16 +22,24 @@ const ItemMeta = props => (
             {Calendar}
             <span>{props.release}</span>
         </p>
-        <p>
-            {Tag}
-            <span className="genre-list">{props.genres}</span>
-        </p>
+		{
+		    props.genres.length > 0 && (
+		        <p>
+		            {Tag}
+		            <span className="genre-list">{props.genres}</span>
+		        </p>
+		    )
+		}
+
         <p title={`Total Playing Time ${handleRunTime(props.runtime)}.`}>
             {Clock}
             <span>Runtime {handleRunTime(props.runtime)}</span>
         </p>
-
-        <TopCast top={props.topCast} />
+		{
+			props.topCast.length > 0 && (
+		        <TopCast top={props.topCast} />
+			)
+		}
 
         <a
             target="_blank"

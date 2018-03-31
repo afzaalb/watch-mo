@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
+import Tmg from '../../assets/images/poster.jpg'
 
 const Slot = ({ id, name, tagline }) => (
     <li className="col-sm-4 col-md-3 movies-item h-100">
@@ -9,7 +10,7 @@ const Slot = ({ id, name, tagline }) => (
         >
             <div className="cover">
                 <img
-                    src="../../app/assets/images/poster.jpg"
+                    src={Tmg}
                     className="h-100 w-100 cover-fit mx-auto"
                     alt={name}
                 />

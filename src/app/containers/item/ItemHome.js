@@ -14,6 +14,7 @@ import Player from "./Player";
 import Synopsis from "./Synopsis";
 import FullCast from "./details/FullCast";
 import ExtraDetails from "./details/ExtraDetails";
+import Avatar from '../../assets/images/avatar.png';
 
 class ItemInfo extends Component {
     constructor(props) {
@@ -31,44 +32,14 @@ class ItemInfo extends Component {
             playing: false,
             response: {},
             trailerKey: "",
-            apiResponse: true
+			loader: true
         };
         TMDB();
     }
 
     componentDidMount() {
-        // The Shape of Water
-        // theMovieDb.movies.getById(
-        //     { id: 399055, append_to_response: "videos,casts" },
-        //     this.successCB,
-        //     this.errorCB
-        // );
-
-        // Lord of the Rings
-        // theMovieDb.movies.getById(
-        //     { id: 122, append_to_response: "videos,casts" },
-        //     this.successCB,
-        //     this.errorCB
-        // );
-
-		// The Avatar
-        // theMovieDb.movies.getById(
-        //     { id: 19995, append_to_response: "videos,casts" },
-        //     this.successCB,
-        //     this.errorCB
-        // );
-
-		// Mad Max
-        // theMovieDb.movies.getById(
-        //     { id: 76341, append_to_response: "videos,casts" },
-        //     this.successCB,
-        //     this.errorCB
-        // );
-
-
-        // Titanic
         theMovieDb.movies.getById(
-            { id: 597, append_to_response: "videos,casts" },
+            { id: 157336, append_to_response: "videos,casts" },
             this.successCB,
             this.errorCB
         );
@@ -77,16 +48,23 @@ class ItemInfo extends Component {
     successCB = data => {
         const fetchedData = JSON.parse(data);
         this.setState({
-            apiResponse: true,
+			loader: false,
             response: fetchedData,
             completeCast: fetchedData.casts.cast
         });
     };
 
     errorCB = data => {
-        this.setState({
-            apiResponse: false
-        });
+		if (data){
+	        this.setState({
+				loader: false,
+				tmdbResponse: JSON.parse(data).status_message
+	        });
+		} else {
+			this.setState({
+				response: ''
+	        });
+		}
     };
 
     handlePlayerState = event => {
@@ -104,12 +82,6 @@ class ItemInfo extends Component {
         }
     };
 
-    handleRunTime(time) {
-        const hours = parseInt(time / 60);
-        const minutes = time % 60;
-        return `${hours}h ${minutes}m`;
-    }
-
     render() {
         const {
             options,
@@ -117,7 +89,8 @@ class ItemInfo extends Component {
             response,
             trailerKey,
             completeCast,
-            apiResponse
+			tmdbResponse,
+			loader
         } = this.state;
 
         let genreList = "";
@@ -133,14 +106,12 @@ class ItemInfo extends Component {
             const shallowCastCopy = [...completeCast];
             allCastList = shallowCastCopy.map((k, index) => {
                 return (
-                    <li className="col-sm-4 media mb-4" key={k.id}>
+                    <li className="col-sm-4 media mb-4" key={k.cast_id}>
                         <img
                             width="66"
                             height="66"
-                            className="cast mini-cast rounded-circle mb-3 mr-2"
-                            src={
-                                ImageURL + `/w66_and_h66_face` + k.profile_path
-                            }
+                            className={classNames('cast mini-cast rounded-circle mb-3 mr-2',{ 'border-0': !k.profile_path })}
+                            src={k.profile_path ? ImageURL + `/w66_and_h66_face` + k.profile_path : Avatar }
                             alt={k.name}
                             title={k.name + ` as ` + k.character}
                         />
@@ -159,10 +130,8 @@ class ItemInfo extends Component {
                         <img
                             width="66"
                             height="66"
-                            className="cast mini-cast rounded-circle"
-                            src={
-                                ImageURL + `/w66_and_h66_face` + k.profile_path
-                            }
+                            className={classNames('cast mini-cast rounded-circle',{ 'border-0': !k.profile_path })}
+                            src={k.profile_path ? ImageURL + `/w66_and_h66_face` + k.profile_path : Avatar }
                             alt={k.name}
                             title={k.name + ` as ` + k.character}
                         />
@@ -189,7 +158,7 @@ class ItemInfo extends Component {
                             release={response.release_date}
                             genres={genreList}
                             topCast={topCastList}
-                            runtime={this.handleRunTime(response.runtime)}
+                            runtime={response.runtime}
                             imdb={response.imdb_id}
                         />
                         <Synopsis
@@ -201,20 +170,20 @@ class ItemInfo extends Component {
 					<ExtraDetails />
                 </Fragment>
             );
-        } else if (!apiResponse) {
+        }  else if (tmdbResponse) {
             dataLoaded = (
                 <NoDataFound
                     alignCenter
                     spaceTop
-                    message="Network connectivity issue."
+                    message={tmdbResponse}
                 />
             );
-        } else if (apiResponse && response == null) {
-            dataLoaded = (
+        } else if (response == '') {
+			dataLoaded = (
                 <NoDataFound
                     alignCenter
                     spaceTop
-                    message="No data found."
+                    message="Perhaps a communications breakdown!"
                 />
             );
         }

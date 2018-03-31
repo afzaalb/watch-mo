@@ -207,6 +207,6 @@ export const InfoIcon = (
 	</svg>
 );
 
-export const IMDB = "http://www.imdb.com/title/";
-export const ImageURL = "http://image.tmdb.org/t/p";
-export const PosterURL = "http://image.tmdb.org/t/p/original";
+export const IMDB = "https://www.imdb.com/title/";
+export const ImageURL = "https://image.tmdb.org/t/p";
+export const CoverURL = `${ImageURL}/original`;

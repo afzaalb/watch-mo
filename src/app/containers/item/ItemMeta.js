@@ -1,8 +1,14 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import TopCast from "./TopCast";
 import { Calendar, Tag, Clock, ILink, IMDB } from "../../../constants";
+import TopCast from "./TopCast";
 import classNames from "classnames";
+
+const handleRunTime = time => {
+	const hours = parseInt(time / 60);
+	const minutes = time % 60;
+	return `${hours}h ${minutes}m`;
+};
 
 const ItemMeta = props => (
     <div
@@ -20,22 +26,21 @@ const ItemMeta = props => (
             {Tag}
             <span className="genre-list">{props.genres}</span>
         </p>
-        <p title={`Total Playing Time ${props.runtime}.`}>
+        <p title={`Total Playing Time ${handleRunTime(props.runtime)}.`}>
             {Clock}
-            <span>Runtime {props.runtime}</span>
+            <span>Runtime {handleRunTime(props.runtime)}</span>
         </p>
 
         <TopCast top={props.topCast} />
 
-        <Link
+        <a
             target="_blank"
-            to={IMDB + `${props.imdb}`}
-            className=""
+            href={IMDB + `${props.imdb}`}
             title={`View ${props.title} on IMDB.`}
         >
             {ILink}
             <span>View on IMDB</span>
-        </Link>
+        </a>
     </div>
 );
 

@@ -31,13 +31,13 @@ class ItemInfo extends Component {
             },
             playing: false,
             response: {},
-            trailerKey: "",
+            trailerKey: '',
 			loader: true
         };
         TMDB();
     }
 
-    componentDidMount() {
+    componentDidMount = () => {
         theMovieDb.movies.getById(
             { id: this.props.match.params.id, append_to_response: "videos,casts" },
             this.successCB,
@@ -93,15 +93,15 @@ class ItemInfo extends Component {
 			loader
         } = this.state;
 
-        let genreList = "";
+        let genreList = '';
         if (response.genres) {
             genreList = response.genres.map((g, index) => {
                 return <span key={g.id}>{g.name}</span>;
             });
         }
 
-        let topCastList = "";
-        let allCastList = "";
+        let topCastList = '';
+        let allCastList = '';
         if (response.casts) {
             const shallowCastCopy = [...completeCast];
             allCastList = shallowCastCopy.map((k, index) => {
@@ -140,7 +140,7 @@ class ItemInfo extends Component {
             });
         }
 
-        let dataLoaded = <Loader spaceTop />;
+        let dataLoaded = '';
         if (response.title && response.overview) {
             dataLoaded = (
                 <Fragment>
@@ -194,7 +194,9 @@ class ItemInfo extends Component {
 
         return (
             <Content isFlexed>
-                <div className="container w-100">{dataLoaded}</div>
+                <div className="container w-100">
+					{loader ? <Loader spaceTop /> : dataLoaded}
+				</div>
             </Content>
         );
     }

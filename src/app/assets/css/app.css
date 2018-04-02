@@ -135,6 +135,13 @@ input.form-control:focus {
     border-color: #6ac045;
 }
 
+.form-control:disabled{
+	background-color: #dddddd;
+    opacity: 0.8;
+	color: #adadad;
+	pointer-events: none;
+}
+
 .btn-special {
     border: 1px solid #6ac045;
     color: #6ac045;

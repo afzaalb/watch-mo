@@ -14,14 +14,14 @@ class SearchHome extends Component {
 		super(props);
 		this.state = {
 			searchResults: '',
-			loader: false
+			loader: false,
+			disabled: false
 		}
 		TMDB();
 	}
 
     successCB = data => {
 		const fetchedData = JSON.parse(data);
-		console.log(fetchedData.results);
         this.setState({
 			loader: false,
             searchResults: fetchedData
@@ -36,7 +36,9 @@ class SearchHome extends Component {
 	        });
 		} else {
 			this.setState({
-				searchResults: ''
+				searchResults: '',
+				disabled: true,
+				loader: false
 	        });
 		}
     };
@@ -50,7 +52,7 @@ class SearchHome extends Component {
 	//     this.props.history.push({pathname: '/'+itemID+'/'+itemName});
 	// }
 
-	componentWillMount = () => {
+	componentDidMount = () => {
 		this.delayedCallback = _.debounce((queryString) => {
 			this.setState({
 				loader: true
@@ -66,7 +68,8 @@ class SearchHome extends Component {
 		const {
             searchResults,
 			tmdbResponse,
-			loader
+			loader,
+			disabled
         } = this.state;
 
 		let allResults = '';
@@ -77,7 +80,6 @@ class SearchHome extends Component {
 					<ListItem sendIdNameToURL={this.handleItemClick} key={k.id} id={k.id} name={k.title} image={k.poster_path} />
 				);
 			});
-			console.log(searchResults.results);
             dataLoaded = (
 				<SearchResults list={allResults} />
             );
@@ -89,13 +91,21 @@ class SearchHome extends Component {
                     message={tmdbResponse}
                 />
             );
+        } else if (searchResults == '' && disabled) {
+			dataLoaded = (
+                <NoDataFound
+                    alignCenter
+                    spaceTop
+                    message="Perhaps a communications breakdown!"
+                />
+            );
         } else {
 			dataLoaded = (
-				<NoDataFound
-					spaceTop
-					message="No results found! Something different maybe."
-				/>
-			)
+                <NoDataFound
+                    spaceTop
+                    message="No results found! Something different may be!"
+                />
+            );
 		}
 
         return (
@@ -105,6 +115,7 @@ class SearchHome extends Component {
                         <div className="row">
                             <div className="col-sm-8 offset-sm-2">
                                 <input
+									disabled={disabled}
                                     autoFocus="true"
                                     className="form-control mb-4"
                                     placeholder="Search for Movies"

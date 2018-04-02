@@ -1,4 +1,6 @@
 import React, { Component, Fragment } from "react";
+import { TMDB } from "../../../utils.js";
+import theMovieDb from "themoviedb-javascript-library";
 import Slot from "./Slot";
 import NoDataFound from "../../components/NoDataFound";
 
@@ -13,15 +15,20 @@ class ItemsGrid extends Component {
                 { id: "4", name: "Inception", tagline: "Tag line here" }
             ]
         };
+		TMDB();
     }
 
-    // removeHandler(itemIndex) {
-    //     const updatedMovies = [...this.state.movies];
-    //     updatedMovies.splice(itemIndex, 1);
-    //     this.setState({
-    //         movies: updatedMovies
-    //     });
-    // }
+	successCB = data => {
+		console.log(data)
+	}
+
+	errorCB = data => {
+		console.log(data);
+	}
+
+    componentDidMount = () => {
+		theMovieDb.movies.getNowPlaying({region:'US'},this.successCB,this.errorCB);
+    }
 
     render() {
         const { movies } = this.state;

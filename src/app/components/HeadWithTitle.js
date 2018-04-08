@@ -10,10 +10,10 @@ const HeadWithTitle = () => (
             </Link>
             <span
                 className="bold d-inline-block text-truncate align-middle with-movie-title"
-                title="Movie Title Comes Here"
+                title="Title Comes Here"
             >
                 {VideoIcon}
-                <span className="pl-2">Movie Title Comes Here</span>
+                <span className="pl-2">Title Comes Here</span>
             </span>
         </li>
     </ul>

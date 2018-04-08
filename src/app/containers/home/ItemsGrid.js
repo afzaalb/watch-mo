@@ -1,5 +1,4 @@
 import React, { Component, Fragment } from "react";
-import { TMDB } from "../../../utils.js";
 import theMovieDb from "themoviedb-javascript-library";
 import Slot from "./Slot";
 import NoDataFound from "../../components/NoDataFound";
@@ -15,15 +14,14 @@ class ItemsGrid extends Component {
                 { id: "4", name: "Inception", tagline: "Tag line here" }
             ]
         };
-		TMDB();
     }
 
 	successCB = data => {
-		console.log(data)
+		console.log()
 	}
 
 	errorCB = data => {
-		console.log(data);
+		console.log();
 	}
 
     componentDidMount = () => {

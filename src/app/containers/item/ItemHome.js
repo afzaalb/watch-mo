@@ -1,5 +1,4 @@
 import React, { Component, Fragment } from "react";
-import { TMDB } from "../../../utils.js";
 import theMovieDb from "themoviedb-javascript-library";
 import { Link } from "react-router-dom";
 import { ImageURL } from "../../../constants";
@@ -13,8 +12,12 @@ import ItemMeta from "./ItemMeta";
 import Player from "./Player";
 import Synopsis from "./Synopsis";
 import FullCast from "./details/FullCast";
+import Recommendations from "./details/Recommendations";
 import ExtraDetails from "./details/ExtraDetails";
 import Avatar from '../../assets/images/avatar.png';
+import slug from "slug";
+
+slug.defaults.mode ='rfc3986';
 
 class ItemInfo extends Component {
     constructor(props) {
@@ -34,12 +37,11 @@ class ItemInfo extends Component {
             trailerKey: '',
 			loader: true
         };
-        TMDB();
     }
 
     componentDidMount = () => {
         theMovieDb.movies.getById(
-            { id: this.props.match.params.id, append_to_response: "videos,casts" },
+            { id: this.props.match.params.id, append_to_response: "videos,casts,recommendations" },
             this.successCB,
             this.errorCB
         );
@@ -107,6 +109,7 @@ class ItemInfo extends Component {
             allCastList = shallowCastCopy.map((k, index) => {
                 return (
                     <li className="col-sm-4 media mb-4" key={k.cast_id}>
+						<Link to={`/people/`+k.id+`/${slug(k.name)}`}>
                         <img
                             width="66"
                             height="66"
@@ -114,9 +117,9 @@ class ItemInfo extends Component {
                             src={k.profile_path ? ImageURL + `/w66_and_h66_face` + k.profile_path : Avatar }
                             alt={k.name}
                             title={k.name + ` as ` + k.character}
-                        />
+                        /></Link>
                         <div className="media-body">
-                            <p className="mt-0 mb-1 bold">{k.name}</p>
+                            <p className="mt-0 mb-1 bold"><Link to={`/people/`+k.id+`/${slug(k.name)}`}>{k.name}</Link></p>
                             <p className="my-0">{k.character}</p>
                         </div>
                     </li>
@@ -127,14 +130,16 @@ class ItemInfo extends Component {
             topCastList = slicedCastCopy.map((k, index) => {
                 return (
                     <li className="mb-3 mr-2" key={k.id}>
-                        <img
-                            width="66"
-                            height="66"
-                            className={classNames('cast mini-cast rounded-circle',{ 'border-0': !k.profile_path })}
-                            src={k.profile_path ? ImageURL + `/w66_and_h66_face` + k.profile_path : Avatar }
-                            alt={k.name}
-                            title={k.name + ` as ` + k.character}
-                        />
+						<Link to={`/people/`+k.id+`/${slug(k.name)}`}>
+	                        <img
+	                            width="66"
+	                            height="66"
+	                            className={classNames('cast mini-cast rounded-circle',{ 'border-0': !k.profile_path })}
+	                            src={k.profile_path ? ImageURL + `/w66_and_h66_face` + k.profile_path : Avatar }
+	                            alt={k.name}
+	                            title={k.name + ` as ` + k.character}
+	                        />
+						</Link>
                     </li>
                 );
             });
@@ -166,11 +171,22 @@ class ItemInfo extends Component {
                             description={response.overview}
                         />
                     </div>
+					<div className="row">
 					{
 						allCastList.length > 0 && (
-							<FullCast casts={allCastList} />
+							<div className="col-sm-9">
+								<FullCast casts={allCastList} />
+							</div>
 						)
 					}
+					{
+						response.recommendations.total_results > 0 && (
+							<div className="col-sm-3">
+								<Recommendations />
+							</div>
+						)
+					}
+					</div>
 					<ExtraDetails />
                 </Fragment>
             );

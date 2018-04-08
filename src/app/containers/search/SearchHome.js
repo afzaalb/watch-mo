@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import { TMDB } from "../../../utils.js";
 import theMovieDb from "themoviedb-javascript-library";
 import Content from "../../hoc/ContentWrapper";
 import Loader from "../../components/Loader";
@@ -17,7 +16,6 @@ class SearchHome extends Component {
 			loader: false,
 			disabled: false
 		}
-		TMDB();
 	}
 
     successCB = data => {
@@ -77,7 +75,7 @@ class SearchHome extends Component {
         if (searchResults.total_results > 0) {
 			allResults = searchResults.results.map((k, index) => {
 				return (
-					<ListItem sendIdNameToURL={this.handleItemClick} key={k.id} id={k.id} name={k.title} image={k.poster_path} />
+					<ListItem key={k.id} id={k.id} name={k.title} image={k.poster_path} />
 				);
 			});
             dataLoaded = (

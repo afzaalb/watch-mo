@@ -13,7 +13,7 @@ import Content from "../hoc/ContentWrapper";
 const MyRouter = ({ location }) => (
     <Switch>
         <Route exact path="/" component={Home} />
-        <Route exact path="/people/:id" component={People} />
+        <Route exact path="/people/:id/:name" component={People} />
         <Route exact path="/:id/:name" component={Item} />
         <Route exact path="/search" component={Search} />
         <Route exact path="/collection" component={Collection} />

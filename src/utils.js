@@ -1,4 +1,9 @@
 import theMovieDb from "themoviedb-javascript-library";
+import slug from "slug";
+
+export const HandleSlug = () => {
+	slug.defaults.mode ='rfc3986';
+};
 
 export const TMDB = () => {
     theMovieDb.common.api_key = "9aae8884ab2c82ebf94b47f136cc8c52";

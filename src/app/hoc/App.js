@@ -5,7 +5,7 @@ import Router from "../routes";
 import CommonStyles from "../assets/css/app.css";
 import { TMDB } from "../../utils.js";
 
-const App = location => {
+const App = ({ location })=> {
 	TMDB();
 	return(
 	    <Layout>

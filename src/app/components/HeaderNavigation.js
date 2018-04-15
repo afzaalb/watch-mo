@@ -3,11 +3,11 @@ import { Link } from "react-router-dom";
 import LogDataChoice from "./LogDataChoice";
 import HeadWithTitle from "./HeadWithTitle";
 
-const HeaderNavigation = (props) => (
-    <nav className="navigation d-flex align-items-center">
-        <HeadWithTitle />
-        <LogDataChoice />
-    </nav>
+const HeaderNavigation = () => (
+  <nav className="navigation d-flex align-items-center">
+    <HeadWithTitle />
+    <LogDataChoice />
+  </nav>
 );
 
 export default HeaderNavigation;

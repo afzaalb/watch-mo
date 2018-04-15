@@ -25,7 +25,7 @@ const Login = () => (
                                 />
                                 <button
                                     type="submit"
-                                    className="btn btn-success btn-block mb-2"
+                                    className="btn btn-block mb-2"
                                 >
                                     Login
                                 </button>

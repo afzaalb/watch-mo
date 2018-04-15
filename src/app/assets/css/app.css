@@ -99,6 +99,9 @@ strong,
     text-transform: uppercase;
     letter-spacing: 0.1em;
     cursor: pointer;
+    background-image: -moz-linear-gradient( 180deg, rgb(254,0,64) 0%, rgb(255,26,84) 100%);
+    background-image: -webkit-linear-gradient( 180deg, rgb(254,0,64) 0%, rgb(255,26,84) 100%);
+    background-image: -ms-linear-gradient( 180deg, rgb(254,0,64) 0%, rgb(255,26,84) 100%);
 }
 
 .btn,
@@ -143,8 +146,7 @@ input.form-control:focus {
 }
 
 .btn-special {
-    border: 1px solid #6ac045;
-    color: #6ac045;
+    border: 1px solid transparent;
     padding: 6px 10px;
     font-weight: 400;
 }
@@ -152,8 +154,13 @@ input.form-control:focus {
 .btn-special:hover,
 .btn-special:focus,
 .btn-special:active {
-    background: #6ac045;
-    border-color: #6ac045;
+    color: #fff;
+}
+
+.gradient{
+    background-image: -moz-linear-gradient( 180deg, rgb(254,0,64) 0%, rgb(255,26,84) 100%);
+    background-image: -webkit-linear-gradient( 180deg, rgb(254,0,64) 0%, rgb(255,26,84) 100%);
+    background-image: -ms-linear-gradient( 180deg, rgb(254,0,64) 0%, rgb(255,26,84) 100%);
     color: #fff;
 }
 

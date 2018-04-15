@@ -154,3 +154,30 @@ div.white-card {
 .genre-list span:not(:last-child):after {
     content: ", ";
 }
+
+.full-cast h4{
+    cursor: pointer;
+}
+
+.full-cast h4 svg{
+    transition: transform 0.3s ease-in-out;
+}
+
+.full-cast ul{
+    height: 0;
+    overflow:hidden;
+    transition: all 0.3s ease-in-out;
+}
+
+.full-cast.showing h4 svg{
+    transform: rotate(90deg);
+}
+
+.full-cast.showing ul{
+    height: auto;
+}
+
+.item-detail-meta p span:not(:only-child){
+    margin-right: 6px;
+    margin-bottom: 6px;
+}

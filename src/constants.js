@@ -86,6 +86,25 @@ export const ArrowLeft = (
     </svg>
 );
 
+export const ChevronRight = (
+	<svg
+		className="align-middle"
+		id="i-chevron-right"
+		viewBox="0 0 32 32"
+		width="16"
+		height="16"
+		fill="none"
+		stroke="currentcolor"
+		strokeLinecap="round"
+		strokeLinejoin="round"
+		strokeWidth="2">
+		<path d="M12 30 L24 16 12 2" />
+	</svg>
+);
+
+
+
+
 export const VideoIcon = (
     <svg
         className="align-middle"

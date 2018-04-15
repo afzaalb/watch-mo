@@ -30,7 +30,7 @@ const ExtraDetails = props => (
 						<h6>Budget</h6>
 						<p>
 							<span className="gradient d-inline-block px-2 py-1 align-middle rounded">
-								$ {props.budget}
+								$ {props.budget.toLocaleString()}
 							</span>
 						</p>
 					</div>
@@ -40,7 +40,7 @@ const ExtraDetails = props => (
 						<h6>Revenue</h6>
 						<p>
 							<span className="gradient d-inline-block px-2 py-1 align-middle rounded">
-								$ {props.revenue}
+								$ {props.revenue.toLocaleString()}
 							</span>
 						</p>
 					</div>

@@ -16,6 +16,7 @@ import FullCast from "./details/FullCast";
 import FullCastMember from "./details/FullCastMember";
 import Recommendations from "./details/Recommendations";
 import ExtraDetails from "./details/ExtraDetails";
+import EachRecommendation from "./details/EachRecommendation";
 import Avatar from "../../assets/images/avatar.png";
 import slug from "slug";
 
@@ -60,7 +61,7 @@ class ItemInfo extends Component {
 			response: fetchedData,
 			completeCast: fetchedData.casts.cast,
 			completeCrew: fetchedData.casts.crew,
-			recommendations: fetchedData.recommendations.results
+			recommendations: fetchedData.recommendations
 		});
 	};
 
@@ -108,7 +109,8 @@ class ItemInfo extends Component {
 			tmdbResponse,
 			loader,
 			showing,
-			completeCrew
+			completeCrew,
+			recommendations
 		} = this.state;
 
 		let genreList = "",
@@ -116,7 +118,8 @@ class ItemInfo extends Component {
 			allCastList = "",
 			allWriters = "",
 			allDirectors = "",
-			allProducers= "";
+			allProducers = "",
+			allRecommendations = "";
 
 		if (response.genres) {
 			genreList = response.genres.map((g, index) => {
@@ -126,9 +129,6 @@ class ItemInfo extends Component {
 
 		if (response.casts) {
 			const writerList	= _.filter(completeCrew, function (obj) { return obj.job === 'Writer' || obj.job === 'Screenplay'; });
-			const directorList 	= _.filter(completeCrew, function (obj) { return obj.job === 'Director'; });
-			const producerList 	= _.filter(completeCrew, function (obj) { return obj.job === 'Producer'; });
-
 			allWriters = writerList.map((crew, index) => {
 				return (
 					<span key={crew.credit_id} className="gradient d-inline-block px-2 py-1 align-middle rounded">
@@ -137,6 +137,7 @@ class ItemInfo extends Component {
 				);
 			});
 
+			const directorList 	= _.filter(completeCrew, function (obj) { return obj.job === 'Director'; });
 			allDirectors = directorList.map((crew, index) => {
 				return (
 					<span key={crew.credit_id} className="gradient d-inline-block px-2 py-1 align-middle rounded">
@@ -145,6 +146,7 @@ class ItemInfo extends Component {
 				);
 			});
 
+			const producerList 	= _.filter(completeCrew, function (obj) { return obj.job === 'Producer'; });
 			allProducers = producerList.map((crew, index) => {
 				return (
 					<span key={crew.credit_id} className="gradient d-inline-block px-2 py-1 align-middle rounded">
@@ -179,6 +181,24 @@ class ItemInfo extends Component {
 				);
 			});
 		}
+
+		if (recommendations) {
+			const slicedRec = recommendations.results.splice(0, 5);
+			allRecommendations = slicedRec.map((r, index) => {
+				return (
+					<EachRecommendation
+						key={r.id}
+						id={r.id}
+						name={r.title}
+						poster={
+							r.poster_path != null ? r.poster_path : r.backdrop_path
+						}
+						rating={r.vote_average}
+					/>
+				);
+			});
+		}
+
 
 		let dataLoaded = "";
 		if (response.title && response.overview) {
@@ -227,6 +247,7 @@ class ItemInfo extends Component {
 							budget={response.budget}
 							revenue={response.revenue}
 						/>
+					{recommendations.total_results > 0 && <Recommendations list={allRecommendations} />}
 						{allCastList.length > 0 && (
 							<FullCast
 								count={allCastList.length}

@@ -46,10 +46,6 @@ class SearchHome extends Component {
 		this.delayedCallback(queryString);
 	}
 
-	// handleItemClick = (itemID,itemName) => {
-	//     this.props.history.push({pathname: '/'+itemID+'/'+itemName});
-	// }
-
 	componentDidMount = () => {
 		this.delayedCallback = _.debounce((queryString) => {
 			this.setState({
@@ -75,9 +71,15 @@ class SearchHome extends Component {
         if (searchResults.total_results > 0) {
 			allResults = searchResults.results.map((k, index) => {
 				return (
-					<ListItem key={k.id} id={k.id} name={k.title} image={k.poster_path} />
+					<ListItem
+						key={k.id}
+						id={k.id}
+						name={k.title}
+						image={k.poster_path != null ? k.poster_path : k.backdrop_path}
+					/>
 				);
 			});
+
             dataLoaded = (
 				<SearchResults list={allResults} />
             );

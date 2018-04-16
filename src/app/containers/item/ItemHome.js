@@ -1,9 +1,6 @@
 import React, { Component, Fragment } from "react";
 import theMovieDb from "themoviedb-javascript-library";
-import { Link } from "react-router-dom";
-import { ImageURL } from "../../../constants";
 import ItemDetailStyles from "../../assets/css/movie-detail.css";
-import classNames from "classnames";
 import Content from "../../hoc/ContentWrapper";
 import NoDataFound from "../../components/NoDataFound";
 import Loader from "../../components/Loader";
@@ -17,10 +14,6 @@ import FullCastMember from "./details/FullCastMember";
 import Recommendations from "./details/Recommendations";
 import ExtraDetails from "./details/ExtraDetails";
 import EachRecommendation from "./details/EachRecommendation";
-import Avatar from "../../assets/images/avatar.png";
-import slug from "slug";
-
-slug.defaults.mode = "rfc3986";
 
 class ItemInfo extends Component {
 	constructor(props) {
@@ -37,7 +30,6 @@ class ItemInfo extends Component {
 			},
 			playing: false,
 			response: {},
-			trailerKey: "",
 			loader: true,
 			showing: false
 		};
@@ -52,6 +44,10 @@ class ItemInfo extends Component {
 			this.successCB,
 			this.errorCB
 		);
+	};
+
+	componentWillReceiveProps = nextProps => {
+		console.log(nextProps);
 	};
 
 	successCB = data => {
@@ -104,7 +100,6 @@ class ItemInfo extends Component {
 			options,
 			playing,
 			response,
-			trailerKey,
 			completeCast,
 			tmdbResponse,
 			loader,
@@ -183,15 +178,17 @@ class ItemInfo extends Component {
 		}
 
 		if (recommendations) {
-			const slicedRec = recommendations.results.splice(0, 5);
+			const shallowRec = [...recommendations.results];
+			const slicedRec = shallowRec.splice(0, 4);
 			allRecommendations = slicedRec.map((r, index) => {
 				return (
 					<EachRecommendation
+						force={this.forceUpdate}
 						key={r.id}
 						id={r.id}
 						name={r.title}
 						poster={
-							r.poster_path != null ? r.poster_path : r.backdrop_path
+							r.backdrop_path != null ? r.backdrop_path : r.poster_path
 						}
 						rating={r.vote_average}
 					/>

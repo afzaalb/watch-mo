@@ -89,9 +89,9 @@ class ItemInfo extends Component {
 	};
 
 	toggleFullCast = () => {
-		this.setState({
-			showing: !this.state.showing
-		});
+	  this.setState({
+	    showing: !this.state.showing
+	  });
 	};
 
 	render() {
@@ -243,7 +243,7 @@ class ItemInfo extends Component {
 							budget={response.budget}
 							revenue={response.revenue}
 						/>
-					{recommendations.total_results > 0 && <Recommendations list={allRecommendations} />}
+						{recommendations.total_results > 0 && <Recommendations list={allRecommendations} />}
 						{allCastList.length > 0 && (
 							<FullCast
 								count={allCastList.length}

@@ -1,3 +1,4 @@
+/* Generic Styles */
 h1,
 h3,
 h3,
@@ -164,6 +165,21 @@ input.form-control:focus {
     color: #fff;
 }
 
+.transparent {
+    background: transparent;
+}
+
+.content {
+    padding-top: 68px;
+    min-height: 100%;
+    color: #fff;
+    position: relative;
+    z-index: 4;
+}
+/* Generic Styles */
+
+
+/* Loader */
 @keyframes exordo-loader {
   0%  {
     transform: translateX(0);
@@ -190,8 +206,10 @@ input.form-control:focus {
     background: #6ac045;
 	animation: exordo-loader 2s ease infinite;
 }
+/* Loader */
 
 
+/* Header */
 header {
     background: #212121;
     position: fixed;
@@ -206,10 +224,6 @@ header {
     -moz-transition: all 0.2s ease;
     -o-transition: all 0.2s ease;
     transition: all 0.2s ease;
-}
-
-.transparent {
-    background: transparent;
 }
 
 .hide-header {
@@ -379,16 +393,8 @@ header .inline-fix {
         background: gray;
     }
 }
+/* Header */
 
-
-
-.content {
-    padding-top: 68px;
-    min-height: 100%;
-    color: #fff;
-    position: relative;
-    z-index: 4;
-}
 
 .movies-section {
     padding-top: 40px;
@@ -451,6 +457,8 @@ header .inline-fix {
     margin: 0 0 8px;
 }
 
+
+/* Login */
 .login-form {
     background: #212121;
     border-radius: 3px;
@@ -464,6 +472,7 @@ header .inline-fix {
 .forgot a {
     text-decoration: underline;
 }
+/* Login */
 
 
 /* Search */
@@ -576,7 +585,7 @@ header .inline-fix {
 /* Poster */
 
 
-
+/* Item Detail View */
 @keyframes fadeIn {
     from {
         opacity: 0;
@@ -760,3 +769,4 @@ div.white-card {
     margin-right: 6px;
     margin-bottom: 6px;
 }
+/* Item Detail View */

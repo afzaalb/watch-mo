@@ -8,90 +8,84 @@ import ListItem from "./ListItem";
 import _ from "lodash";
 
 class SearchHome extends Component {
-	constructor(props){
-		super(props);
-		this.state = {
-			searchResults: '',
-			loader: false,
-			disabled: false
-		}
-	}
+    constructor(props) {
+        super(props);
+        this.state = {
+            searchResults: "",
+            loader: false,
+            disabled: false
+        };
+    }
 
     successCB = data => {
-		const fetchedData = JSON.parse(data);
+        const fetchedData = JSON.parse(data);
         this.setState({
-			loader: false,
+            loader: false,
             searchResults: fetchedData
         });
     };
 
-	errorCB = data => {
-		if (data){
-	        this.setState({
-				loader: false,
-				tmdbResponse: JSON.parse(data).status_message
-	        });
-		} else {
-			this.setState({
-				searchResults: '',
-				disabled: true,
-				loader: false
-	        });
-		}
+    errorCB = data => {
+        if (data) {
+            this.setState({
+                loader: false,
+                tmdbResponse: JSON.parse(data).status_message
+            });
+        } else {
+            this.setState({
+                searchResults: "",
+                disabled: true,
+                loader: false
+            });
+        }
     };
 
-	handleSearch = (queryString) => {
-		queryString.persist();
-		this.delayedCallback(queryString);
-	}
+    handleSearch = queryString => {
+        queryString.persist();
+        this.delayedCallback(queryString);
+    };
 
-	componentDidMount = () => {
-		this.delayedCallback = _.debounce((queryString) => {
-			this.setState({
-				loader: true
-			});
-			theMovieDb.search.getMovie({ query: queryString.target.value },
-				this.successCB,
-				this.errorCB
-			);
-     	}, 1000);
-	}
+    componentDidMount = () => {
+        this.delayedCallback = _.debounce(queryString => {
+            this.setState({
+                loader: true
+            });
+            theMovieDb.search.getMovie(
+                { query: queryString.target.value },
+                this.successCB,
+                this.errorCB
+            );
+        }, 1000);
+    };
 
     render() {
-		const {
-            searchResults,
-			tmdbResponse,
-			loader,
-			disabled
-        } = this.state;
+        const { searchResults, tmdbResponse, loader, disabled } = this.state;
 
-		let allResults = '';
-		let dataLoaded = '';
+        let allResults = "";
+        let dataLoaded = "";
         if (searchResults.total_results > 0) {
-			allResults = searchResults.results.map((k, index) => {
-				return (
-					<ListItem
-						key={k.id}
-						id={k.id}
-						name={k.title}
-						image={k.poster_path != null ? k.poster_path : k.backdrop_path}
-					/>
-				);
-			});
+            allResults = searchResults.results.map((k, index) => {
+                return (
+                    <ListItem
+                        key={k.id}
+                        id={k.id}
+                        name={k.title}
+                        image={
+                            k.poster_path != null
+                                ? k.poster_path
+                                : k.backdrop_path
+                        }
+                    />
+                );
+            });
 
+            dataLoaded = <SearchResults list={allResults} />;
+        } else if (tmdbResponse) {
             dataLoaded = (
-				<SearchResults list={allResults} />
+                <NoDataFound alignCenter spaceTop message={tmdbResponse} />
             );
-        }  else if (tmdbResponse) {
+        } else if (searchResults == "" && disabled) {
             dataLoaded = (
-                <NoDataFound
-                    alignCenter
-                    spaceTop
-                    message={tmdbResponse}
-                />
-            );
-        } else if (searchResults == '' && disabled) {
-			dataLoaded = (
                 <NoDataFound
                     alignCenter
                     spaceTop
@@ -99,13 +93,13 @@ class SearchHome extends Component {
                 />
             );
         } else {
-			dataLoaded = (
+            dataLoaded = (
                 <NoDataFound
                     spaceTop
                     message="No results found! Something different may be!"
                 />
             );
-		}
+        }
 
         return (
             <div className="content all-smooth">
@@ -114,13 +108,15 @@ class SearchHome extends Component {
                         <div className="row">
                             <div className="col-sm-8 offset-sm-2">
                                 <input
-									disabled={disabled}
+                                    disabled={disabled}
                                     autoFocus="true"
                                     className="form-control mb-4"
                                     placeholder="Search for Movies"
-									onChange={queryString => this.handleSearch(queryString)}
+                                    onChange={queryString =>
+                                        this.handleSearch(queryString)
+                                    }
                                 />
-								{loader ? <Loader spaceTop /> : dataLoaded}
+                                {loader ? <Loader spaceTop /> : dataLoaded}
                             </div>
                         </div>
                     </div>

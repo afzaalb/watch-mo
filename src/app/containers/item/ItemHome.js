@@ -1,6 +1,5 @@
 import React, { Component, Fragment } from "react";
 import theMovieDb from "themoviedb-javascript-library";
-import ItemDetailStyles from "../../assets/css/movie-detail.css";
 import Content from "../../hoc/ContentWrapper";
 import NoDataFound from "../../components/NoDataFound";
 import Loader from "../../components/Loader";

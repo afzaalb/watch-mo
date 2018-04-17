@@ -21,7 +21,7 @@ const ListItem = props => (
 		</Link>
 		<div className="search-meta p-2 w-100">
 			<div className="genre d-none">Genre</div>
-			<p className="name mb-1 text-truncate">{props.name}</p>
+			<p className="name mb-1 text-truncate">{_.deburr(props.name)}</p>
 			<p className="description d-none">
 				Lorem Ipsum dolor sit amet comes here
 			</p>

@@ -5,7 +5,6 @@ import Loader from "../../components/Loader";
 import NoDataFound from "../../components/NoDataFound";
 import SearchResults from "./SearchResults";
 import ListItem from "./ListItem";
-import SearchStyles from "../../assets/css/search.css";
 import _ from "lodash";
 
 class SearchHome extends Component {

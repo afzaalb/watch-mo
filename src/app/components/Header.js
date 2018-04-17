@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import HeaderNavigation from "./HeaderNavigation";
-import HeaderStyles from "../assets/css/header.css";
 import classNames from "classnames";
 
 class Header extends Component {

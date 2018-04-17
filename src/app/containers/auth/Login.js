@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import Content from "../../hoc/ContentWrapper";
-import LoginStyles from "../../assets/css/login.css";
 
 const Login = () => (
     <Content isFlexed>

@@ -481,14 +481,8 @@ header .inline-fix {
     color: rgba(255, 255, 255, 0.6);
 }
 
-@media (min-width: 992px){
-	.searched-results li > a{
-		height: 280px;
-		background-color: #e4e4e4;
-		background-position: center center;
-		background-repeat: no-repeat;
-		background-size: 80px;
-	}
+.searched-results li > a{
+  width: 80px;
 }
 
 .searched-results a.no-bg{

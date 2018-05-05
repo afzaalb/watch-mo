@@ -14,25 +14,7 @@ const LogDataChoice = () => (
                 {SearchIcon}
             </NavLink>
         </li>
-        <li>
-            <NavLink to="/collection" title="See Collection" className="px-2">
-                {FolderIcon}
-            </NavLink>
-        </li>
-        <li>
-            <NavLink to="/profile" title="View Profile" className="px-2">
-                {UserIcon}
-            </NavLink>
-        </li>
-        <li>
-            <NavLink
-                to="/login"
-                title="Access your account by logging in."
-                className="px-2"
-            >
-                Login
-            </NavLink>
-        </li>
+        
     </ul>
 );
 

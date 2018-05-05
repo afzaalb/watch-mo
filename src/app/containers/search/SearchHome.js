@@ -17,6 +17,19 @@ class SearchHome extends Component {
         };
     }
 
+    componentDidMount = () => {
+        this.delayedCallback = _.debounce(queryString => {
+            this.setState({
+                loader: true
+            });
+            theMovieDb.search.getMovie(
+                { query: queryString.target.value },
+                this.successCB,
+                this.errorCB
+            );
+        }, 1000);
+    };
+
     successCB = data => {
         const fetchedData = JSON.parse(data);
         this.setState({
@@ -45,19 +58,6 @@ class SearchHome extends Component {
         this.delayedCallback(queryString);
     };
 
-    componentDidMount = () => {
-        this.delayedCallback = _.debounce(queryString => {
-            this.setState({
-                loader: true
-            });
-            theMovieDb.search.getMovie(
-                { query: queryString.target.value },
-                this.successCB,
-                this.errorCB
-            );
-        }, 1000);
-    };
-
     render() {
         const { searchResults, tmdbResponse, loader, disabled } = this.state;
 
@@ -70,6 +70,7 @@ class SearchHome extends Component {
                         key={k.id}
                         id={k.id}
                         name={k.title}
+                        release={k.release_date}
                         image={
                             k.poster_path != null
                                 ? k.poster_path

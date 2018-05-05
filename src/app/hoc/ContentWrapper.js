@@ -1,13 +1,13 @@
 import React from "react";
 import classNames from "classnames";
 
-const ContentWrapper = props => (
+const ContentWrapper = ({ children,isFlexed }) => (
     <div
         className={classNames("content all-smooth", {
-            "d-flex flex-1-1-a h-100": props.isFlexed
+            "d-flex flex-1-1-a h-100": isFlexed
         })}
     >
-        {props.children}
+        {children}
     </div>
 );
 

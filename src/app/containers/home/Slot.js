@@ -1,18 +1,21 @@
-import React, { Component } from "react";
+import React from "react";
 import { Link } from "react-router-dom";
-import Tmg from "../../assets/images/poster.jpg";
+import { CoverURL } from "../../../constants";
+import classNames from "classnames";
 
-const Slot = ({ id, name, tagline }) => (
-	<li className="col-sm-4 col-md-3 movies-item h-100">
+const Slot = ({ id, name, tagline, cover }) => (
+	<li className="col-sm-4 col-md-4 movies-item h-100">
 		<Link
 			to={`/${id}/${name.replace(/\s+/g, "-").toLowerCase()}`}
 			className="all-smooth">
-			<div className="cover">
-				<img
-					src={Tmg}
-					className="h-100 w-100 cover-fit mx-auto"
-					alt={name}
-				/>
+			<div className={classNames("cover",({'no-bg' : !cover}))}>
+				{cover &&
+					(<img
+						src={`${CoverURL}` + cover}
+						className="h-100 w-100 cover-fit mx-auto"
+						alt={name}
+					/>)
+				}
 			</div>
 			<div className="meta-movie w-100">
 				<div className="genre">{tagline}</div>

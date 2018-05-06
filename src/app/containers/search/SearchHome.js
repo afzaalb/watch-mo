@@ -103,7 +103,7 @@ class SearchHome extends Component {
         }
 
         return (
-            <div className="content all-smooth">
+            <Content>
                 <section className="movies-section">
                     <div className="container">
                         <div className="row">
@@ -122,7 +122,7 @@ class SearchHome extends Component {
                         </div>
                     </div>
                 </section>
-            </div>
+            </Content>
         );
     }
 }

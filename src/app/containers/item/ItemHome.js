@@ -173,7 +173,7 @@ class ItemInfo extends Component {
         );
       });
 
-      const slicedCastCopy = shallowCastCopy.splice(0, 3);
+      const slicedCastCopy = shallowCastCopy.slice(0, 3);
       topCastList = slicedCastCopy.map((k, index) => {
         return (
           <TopCastMember
@@ -189,7 +189,7 @@ class ItemInfo extends Component {
 
     if (recommendations) {
       const shallowRec = [...recommendations.results];
-      const slicedRec = shallowRec.splice(0, 4);
+      const slicedRec = shallowRec.slice(0, 4);
       allRecommendations = slicedRec.map((r, index) => {
         return (
           <EachRecommendation

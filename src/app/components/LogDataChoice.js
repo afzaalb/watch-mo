@@ -14,7 +14,6 @@ const LogDataChoice = () => (
                 {SearchIcon}
             </NavLink>
         </li>
-        
     </ul>
 );
 

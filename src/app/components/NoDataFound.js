@@ -7,12 +7,16 @@ const NoDataFound = ({
     alignCenter,
     block,
     spaceBottom,
-    spaceTop
+    spaceTop,
+    noHorzMargin
 }) => (
     <div
         className={classNames(
-            "no-data bold w-100 py-3 px-4 border-4 mx-auto d-flex",
+            "no-data bold w-100 py-3 px-4 border-4 d-flex",
             {
+              "mx-0" : noHorzMargin,
+              "mx-auto" : !noHorzMargin
+            },{
                 "align-items-center": alignCenter,
                 block: block,
                 "mb-4": spaceBottom,

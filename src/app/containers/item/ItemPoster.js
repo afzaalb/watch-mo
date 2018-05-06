@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import PosterStyles from "../../assets/css/movie-poster.css";
 import { CoverURL } from "../../../constants";
 
 const ItemPoster = props => (

@@ -11,7 +11,7 @@ const Synopsis = props => (
         <h2 className="bold">Synopsis</h2>
         <p className="summary">{props.description}</p>
         <a
-            href="#"
+            href="/"
             className="btn btn-special"
             title="Add to your own collection."
         >

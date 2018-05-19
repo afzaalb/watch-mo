@@ -3,13 +3,12 @@ import { Link } from "react-router-dom";
 import classNames from "classnames";
 import Avatar from "../../assets/images/avatar.png";
 import { ImageURL } from "../../../constants";
-import slug from "slug";
-
-slug.defaults.mode = "rfc3986";
 
 const TopCastMember = props => (
     <li className="mb-3 mr-2">
-        <Link to={`/people/` + props.id + `/${slug(props.name)}`}>
+        <Link
+          to={`/people/` + props.id + `/${_.kebabCase(props.name)}`}
+          title={props.name + ` as ` + props.character}>
             <img
                 width="66"
                 height="66"
@@ -27,7 +26,6 @@ const TopCastMember = props => (
                         : Avatar
                 }
                 alt={props.name}
-                title={props.name + ` as ` + props.character}
             />
         </Link>
     </li>

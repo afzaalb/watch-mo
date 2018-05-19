@@ -51,21 +51,21 @@ const ExtraDetails = props => (
 					</div>
 				)}
 
-				{props.writer && (
+				{props.writer.length > 0 && (
 				<div className="col-sm-6">
 					<h6>{pluralize("Writer", props.writer.length)}</h6>
 					<p>{props.writer}</p>
 				</div>
 				)}
 
-				{props.director && (
+				{props.director.length > 0 && (
 				<div className="col-sm-6">
 					<h6>{pluralize("Director", props.director.length)}</h6>
 					<p>{props.director}</p>
 				</div>
 				)}
 
-				{props.producer && (
+				{props.producer.length > 0 && (
 				<div className="col-sm-6">
 					<h6>{pluralize("Producer", props.producer.length)}</h6>
 					<p>{props.producer}</p>

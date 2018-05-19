@@ -6,7 +6,7 @@ import classNames from "classnames";
 const Slot = ({ id, name, tagline, cover }) => (
 	<li className="col-sm-4 col-md-4 movies-item h-100">
 		<Link
-			to={`/${id}/${name.replace(/\s+/g, "-").toLowerCase()}`}
+			to={`/${id}/${_.kebabCase(name)}`}
 			className="all-smooth">
 			<div className={classNames("cover",({'no-bg' : !cover}))}>
 				{cover &&

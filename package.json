@@ -21,7 +21,6 @@
     "react-router-dom": "^4.2.2",
     "react-sound": "^1.2.0",
     "react-youtube": "^7.6.0",
-    "slug": "^0.9.1",
     "themoviedb-javascript-library": "^1.0.0"
   },
   "devDependencies": {

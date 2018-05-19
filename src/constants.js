@@ -102,9 +102,6 @@ export const ChevronRight = (
 	</svg>
 );
 
-
-
-
 export const VideoIcon = (
     <svg
         className="align-middle"

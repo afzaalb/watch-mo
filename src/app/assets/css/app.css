@@ -778,12 +778,12 @@ div.white-card {
   background: #f5dd4e;
   font-weight: 600;
   font-size: 13px;
+  color: #2d2d2d;
 }
 
 .recommendations .rating-tag{
   position: absolute;
   top: 5px;
   right: 20px;
-  color: #2d2d2d;
   font-size: 11px;
 }

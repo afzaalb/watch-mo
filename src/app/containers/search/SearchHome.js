@@ -70,6 +70,7 @@ class SearchHome extends Component {
                         key={k.id}
                         id={k.id}
                         name={k.title}
+                        rating={k.vote_average}
                         release={k.release_date}
                         image={
                             k.poster_path != null
@@ -79,7 +80,6 @@ class SearchHome extends Component {
                     />
                 );
             });
-
             dataLoaded = <SearchResults list={allResults} />;
         } else if (tmdbResponse) {
             dataLoaded = (

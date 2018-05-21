@@ -2,6 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { ImageURL } from "../../../constants";
 import className from "classnames";
+import Rating from "../../components/Rating.js";
 
 const ListItem = props => (
   <li className="col-sm-6 mb-3 d-flex">
@@ -22,12 +23,9 @@ const ListItem = props => (
       <Link to={props.id + `/${_.kebabCase(props.name)}`} className="name mb-1">
         {_.deburr(props.name)}
       </Link>
-      <Link
-        to={props.id + `/${_.kebabCase(props.name)}`}
-        className="text-truncate d-block"
-      >
-        View More Info
-      </Link>
+      <p>
+        <Rating rated={props.rating} />
+      </p>
     </div>
   </li>
 );

@@ -1,74 +1,74 @@
 import React from "react";
 import pluralize from "pluralize";
 
-const ExtraDetails = props => (
+const ExtraDetails = ({title,status,link,budget,revenue,writer,director,producer}) => (
 	<div className="col-md-8">
 		<section className="pt-4 item-detail-meta">
 			<div className="row">
-				{props.status && (
+				{status && (
 					<div className="col-sm-6">
 						<h6>Status</h6>
 						<p>
 							<span className="gradient d-inline-block px-2 py-1 align-middle rounded">
-								{props.status}
+								{status}
 							</span>
 						</p>
 					</div>
 				)}
 
-				{props.link != null && (
+				{link != null && (
 					<div className="col-sm-6">
 						<h6>Homepage</h6>
 						<p>
-							<a href={props.link}>
+							<a href={link}>
 								<span className="gradient d-inline-block px-2 py-1 align-middle rounded">
-									{props.title}
+									{title}
 								</span>
 							</a>
 						</p>
 					</div>
 				)}
 
-				{props.budget > 0 && (
+				{budget > 0 && (
 					<div className="col-sm-6">
 						<h6>Budget</h6>
 						<p>
 							<span className="gradient d-inline-block px-2 py-1 align-middle rounded">
-								$ {props.budget.toLocaleString()}
+								$ {budget.toLocaleString()}
 							</span>
 						</p>
 					</div>
 				)}
 
-				{props.revenue > 0 && (
+				{revenue > 0 && (
 					<div className="col-sm-6">
 						<h6>Revenue</h6>
 						<p>
 							<span className="gradient d-inline-block px-2 py-1 align-middle rounded">
-								$ {props.revenue.toLocaleString()}
+								$ {revenue.toLocaleString()}
 							</span>
 						</p>
 					</div>
 				)}
 
-				{props.writer.length > 0 && (
+				{writer.length > 0 && (
 					<div className="col-sm-6">
-						<h6>{pluralize("Writer", props.writer.length)}</h6>
-						<p>{props.writer}</p>
+						<h6>{pluralize("Writer", writer.length)}</h6>
+						<p>{writer}</p>
 					</div>
 				)}
 
-				{props.director.length > 0 && (
+				{director.length > 0 && (
 					<div className="col-sm-6">
-						<h6>{pluralize("Director", props.director.length)}</h6>
-						<p>{props.director}</p>
+						<h6>{pluralize("Director", director.length)}</h6>
+						<p>{director}</p>
 					</div>
 				)}
 
-				{props.producer.length > 0 && (
+				{producer.length > 0 && (
 					<div className="col-sm-6">
-						<h6>{pluralize("Producer", props.producer.length)}</h6>
-						<p>{props.producer}</p>
+						<h6>{pluralize("Producer", producer.length)}</h6>
+						<p>{producer}</p>
 					</div>
 				)}
 			</div>

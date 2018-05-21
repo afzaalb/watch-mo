@@ -10,37 +10,37 @@ const handleRunTime = time => {
 	return `${hours}h ${minutes}m`;
 };
 
-const ItemMeta = props => (
+const ItemMeta = ({show,title,release,genres,runtime,topCast,imdb}) => (
 	<div
 		className={classNames("white-card rounded w-100 d-block animated", {
-			fadeOutUp: props.show,
-			fadeInDown: !props.show
+			fadeOutUp: show,
+			fadeInDown: !show
 		})}>
 		<h2 className="bold mb-3">
-			{props.title}
+			{title}
 		</h2>
-		<p title={`${props.title} released on ${props.release}.`}>
+		<p title={`${title} released on ${release}.`}>
 			{Calendar}
-			<span>{props.release}</span>
+			<span>{release}</span>
 		</p>
-		{props.genres.length > 0 && (
+		{genres.length > 0 && (
 			<p>
 				{Tag}
-				<span className="genre-list">{props.genres}</span>
+				<span className="genre-list">{genres}</span>
 			</p>
 		)}
-		{props.runtime > 0 && (
-			<p title={`Total Playing Time ${handleRunTime(props.runtime)}.`}>
+		{runtime > 0 && (
+			<p title={`Total Playing Time ${handleRunTime(runtime)}.`}>
 				{Clock}
-				<span>Runtime {handleRunTime(props.runtime)}</span>
+				<span>Runtime {handleRunTime(runtime)}</span>
 			</p>
 		)}
-		{props.topCast.length > 0 && <TopCast top={props.topCast} />}
+		{topCast.length > 0 && <TopCast top={topCast} />}
 
 		<a
 			target="_blank"
-			href={IMDB + `${props.imdb}`}
-			title={`View ${props.title} on IMDB.`}>
+			href={IMDB + `${imdb}`}
+			title={`View ${title} on IMDB.`}>
 			{ILink}
 			<span>View on IMDB</span>
 		</a>

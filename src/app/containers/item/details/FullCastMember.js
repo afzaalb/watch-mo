@@ -4,36 +4,36 @@ import classNames from "classnames";
 import Avatar from "../../../assets/images/avatar.png";
 import { ImageURL } from "../../../../constants";
 
-const FullCastMember = props => (
+const FullCastMember = ({id,name,profile,character}) => (
     <li
         className="col-md-4 col-sm-6 media mb-4">
-        <Link to={`/people/` + props.id + `/${_.kebabCase(props.name)}`}>
+        <Link to={`/people/` + id + `/${_.kebabCase(name)}`}>
             <img
                 width="66"
                 height="66"
                 className={classNames(
                     "cast mini-cast rounded-circle mb-3 mr-2",
-                    { "border-0": !props.profile }
+                    { "border-0": !profile }
                 )}
                 src={
-                    props.profile
+                    profile
                         ? ImageURL +
                           `/w66_and_h66_face` +
-                          props.profile
+                          profile
                         : Avatar
                 }
-                alt={props.name}
-                title={props.name + ` as ` + props.character}
+                alt={name}
+                title={name + ` as ` + character}
             />
         </Link>
         <div className="media-body">
             <p className="mt-0 mb-1 bold">
                 <Link
-                    to={`/people/` + props.id + `/${_.kebabCase(props.name)}`}>
-                    {props.name}
+                    to={`/people/` + id + `/${_.kebabCase(name)}`}>
+                    {name}
                 </Link>
             </p>
-            <p className="my-0">{props.character}</p>
+            <p className="my-0">{character}</p>
         </div>
     </li>
 );

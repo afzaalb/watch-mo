@@ -11,8 +11,8 @@ import TopCastMember from "./TopCastMember";
 import FullCast from "./details/FullCast";
 import FullCastMember from "./details/FullCastMember";
 import Recommendations from "./details/Recommendations";
-import ExtraDetails from "./details/ExtraDetails";
 import EachRecommendation from "./details/EachRecommendation";
+import ExtraDetails from "./details/ExtraDetails";
 
 class ItemInfo extends Component {
   constructor(props) {

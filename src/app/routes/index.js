@@ -19,7 +19,7 @@ const MyRouter = ({ location }) => (
         <Route exact path="/collection" component={Collection} />
         <Route exact path="/profile" component={Profile} />
         <Route exact path="/login" component={Login} />
-	    <Route path="*" render={() => (<Content isFlexed><div className="container"><NoDataFound spaceTop alignCenter message="You've landed nowhere. Go Back!" /></div></Content>)} />
+        <Route path="*" render={() => (<Content isFlexed><div className="container"><NoDataFound spaceTop alignCenter message="You've landed nowhere. Go Back!" /></div></Content>)} />
     </Switch>
 );
 

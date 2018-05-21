@@ -1,21 +1,23 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { CoverURL } from "../../../../constants";
+import Rating from "../../../components/Rating.js";
 import _ from "lodash";
 
-const EachRecommendation = props => (
+const EachRecommendation = ({name,id,poster,rating,force}) => (
 	<div className="col-sm-6">
 		<Link
-			title={props.name}
+			title={name}
 			className="mb-3 d-block"
-			onClick={props.force}
-			to={`/${props.id}` + `/` + _.kebabCase(props.name)}>
+			onClick={force}
+			to={`/${id}` + `/` + _.kebabCase(name)}>
 			<img
-				src={`${CoverURL}` + props.poster}
+				src={`${CoverURL}` + poster}
 				className="w-100 mb-1"
-				alt={props.name}
+				alt={name}
 			/>
-			<div className="text-truncate">{_.deburr(props.name)}</div>
+			<div className="text-truncate">{_.deburr(name)}</div>
+			<Rating rated={rating} />
 		</Link>
 	</div>
 );

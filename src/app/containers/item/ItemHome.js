@@ -235,7 +235,11 @@ class ItemInfo extends Component {
               runtime={response.runtime}
               imdb={response.imdb_id}
             />
-            <Synopsis show={playing} description={response.overview} />
+            <Synopsis
+              show={playing}
+              description={response.overview}
+              rating={response.vote_average}
+            />
           </div>
           <div className="row">
             <ExtraDetails

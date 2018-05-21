@@ -1,5 +1,6 @@
 import React from "react";
 import classNames from "classnames";
+import Rating from "../../components/Rating.js";
 
 const Synopsis = props => (
     <aside
@@ -8,7 +9,12 @@ const Synopsis = props => (
             fadeInUp: !props.show
         })}
     >
-        <h2 className="bold">Synopsis</h2>
+        <div className="d-flex justify-content-between align-items-start">
+          <h2 className="bold">Synopsis</h2>
+          {props.rating &&
+      			<Rating rated={props.rating} heading />
+      		}
+        </div>
         <p className="summary">{props.description}</p>
         <a
             href="/"

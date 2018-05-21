@@ -223,6 +223,23 @@ export const InfoIcon = (
 	</svg>
 );
 
+export const StarIcon = (
+	<svg
+    className="align-top mr-2"
+		id="i-star"
+		viewBox="0 0 32 32"
+		width="16"
+		height="16"
+		fill="none"
+		stroke="currentcolor"
+		strokeLinecap="round"
+		strokeLinejoin="round"
+		strokeWidth="2"
+	>
+		<path d="M16 2 L20 12 30 12 22 19 25 30 16 23 7 30 10 19 2 12 12 12 Z" />
+	</svg>
+);
+
 export const IMDB = "https://www.imdb.com/title/";
 export const ImageURL = "https://image.tmdb.org/t/p";
 export const CoverURL = `${ImageURL}/original`;

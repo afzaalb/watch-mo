@@ -13,9 +13,9 @@ const EachRecommendation = props => (
 			<img
 				src={`${CoverURL}` + props.poster}
 				className="w-100 mb-1"
-				alt={props.name + props.rating}
+				alt={props.name}
 			/>
-		<div className="text-truncate">{_.deburr(props.name)}</div>
+			<div className="text-truncate">{_.deburr(props.name)}</div>
 		</Link>
 	</div>
 );

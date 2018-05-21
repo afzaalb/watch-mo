@@ -773,3 +773,9 @@ div.white-card {
     margin-bottom: 6px;
 }
 /* Item Detail View */
+
+.rating-tag{
+  background: #f5dd4e;
+  font-weight: 600;
+  font-size: 13px;
+}

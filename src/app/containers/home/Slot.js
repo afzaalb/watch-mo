@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { CoverURL } from "../../../constants";
 import classNames from "classnames";
 
-const Slot = ({ id, name, tagline, cover }) => (
+const Slot = ({ id, name, cover }) => (
 	<li className="col-sm-4 col-md-4 movies-item h-100">
 		<Link
 			to={`/${id}/${_.kebabCase(name)}`}
@@ -18,7 +18,6 @@ const Slot = ({ id, name, tagline, cover }) => (
 				}
 			</div>
 			<div className="meta-movie w-100">
-				<div className="genre">{tagline}</div>
 				<p className="name">{name}</p>
 				<p className="description text-truncate mb-0">View More Info</p>
 			</div>

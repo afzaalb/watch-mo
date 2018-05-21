@@ -16,7 +16,9 @@ const ItemMeta = props => (
 			fadeOutUp: props.show,
 			fadeInDown: !props.show
 		})}>
-		<h2 className="bold mb-3">{props.title}</h2>
+		<h2 className="bold mb-3">
+			{props.title}
+		</h2>
 		<p title={`${props.title} released on ${props.release}.`}>
 			{Calendar}
 			<span>{props.release}</span>

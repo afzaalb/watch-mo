@@ -3,6 +3,7 @@ import Grid from "../../hoc/ItemsGrid";
 import Content from "../../hoc/ContentWrapper";
 import theMovieDb from "themoviedb-javascript-library";
 import Slot from "./Slot";
+import Loader from "../../components/Loader";
 import NoDataFound from "../../components/NoDataFound";
 
 class Home extends Component {
@@ -67,8 +68,8 @@ class Home extends Component {
 			tmdbResponse
 		} = this.state;
 
-		let upcomingResults = "",
-				nowPlayingResults = "";
+		let upcomingResults = <Loader />,
+				nowPlayingResults = <Loader />;
 
 		if (upcoming.total_results > 0) {
 			upcomingResults = (

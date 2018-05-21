@@ -52,24 +52,24 @@ const ExtraDetails = props => (
 				)}
 
 				{props.writer.length > 0 && (
-				<div className="col-sm-6">
-					<h6>{pluralize("Writer", props.writer.length)}</h6>
-					<p>{props.writer}</p>
-				</div>
+					<div className="col-sm-6">
+						<h6>{pluralize("Writer", props.writer.length)}</h6>
+						<p>{props.writer}</p>
+					</div>
 				)}
 
 				{props.director.length > 0 && (
-				<div className="col-sm-6">
-					<h6>{pluralize("Director", props.director.length)}</h6>
-					<p>{props.director}</p>
-				</div>
+					<div className="col-sm-6">
+						<h6>{pluralize("Director", props.director.length)}</h6>
+						<p>{props.director}</p>
+					</div>
 				)}
 
 				{props.producer.length > 0 && (
-				<div className="col-sm-6">
-					<h6>{pluralize("Producer", props.producer.length)}</h6>
-					<p>{props.producer}</p>
-				</div>
+					<div className="col-sm-6">
+						<h6>{pluralize("Producer", props.producer.length)}</h6>
+						<p>{props.producer}</p>
+					</div>
 				)}
 			</div>
 		</section>

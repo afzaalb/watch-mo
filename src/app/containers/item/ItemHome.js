@@ -205,7 +205,7 @@ class ItemInfo extends Component {
     }
 
     let dataLoaded = "";
-    if (response.title && response.overview) {
+    if (response.title && response.vote_average || response.overview) {
       dataLoaded = (
         <Fragment>
           <ItemPoster

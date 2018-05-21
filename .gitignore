@@ -3,3 +3,4 @@
 .babelrc
 dploy.yaml
 .gitignore
+/dist

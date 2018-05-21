@@ -10,12 +10,16 @@ const Synopsis = props => (
         })}
     >
         <div className="d-flex justify-content-between align-items-start">
-          <h2 className="bold">Synopsis</h2>
+          {props.description && (
+            <h2 className="bold">Synopsis</h2>
+          )}
           {props.rating &&
-      			<Rating rated={props.rating} heading />
+      			<Rating rated={props.rating} className={classNames({'mb-3':props.description == ''})} heading />
       		}
         </div>
-        <p className="summary">{props.description}</p>
+        {props.description && (
+          <p className="summary">{props.description}</p>
+        )}
         <a
             href="/"
             className="btn btn-special"

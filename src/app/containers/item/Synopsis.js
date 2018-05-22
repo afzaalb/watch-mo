@@ -2,23 +2,23 @@ import React from "react";
 import classNames from "classnames";
 import Rating from "../../components/Rating.js";
 
-const Synopsis = props => (
+const Synopsis = ({show,description,rating}) => (
     <aside
         className={classNames("white-card rounded w-100 d-block animated", {
-            fadeOutDown: props.show,
-            fadeInUp: !props.show
+            fadeOutDown: show,
+            fadeInUp: !show
         })}
     >
         <div className="d-flex justify-content-between align-items-start">
-          {props.description && (
+          {description && (
             <h2 className="bold">Synopsis</h2>
           )}
-          {props.rating &&
-      			<Rating rated={props.rating} className={classNames({'mb-3':props.description == ''})} heading />
+          {rating &&
+      			<Rating rated={rating} className={classNames({'mb-3':description == ''})} heading />
       		}
         </div>
-        {props.description && (
-          <p className="summary">{props.description}</p>
+        {description && (
+          <p className="summary">{description}</p>
         )}
         <a
             href="/"

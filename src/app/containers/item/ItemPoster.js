@@ -1,10 +1,10 @@
 import React, { Component } from "react";
 import { CoverURL } from "../../../constants";
 
-const ItemPoster = props => (
+const ItemPoster = ({poster}) => (
     <div
         className="movie-poster animated fadeIn w-100 h-100"
-        style={{ backgroundImage: `url(${CoverURL + props.poster})` }}
+        style={{ backgroundImage: `url(${CoverURL + poster})` }}
     />
 );
 

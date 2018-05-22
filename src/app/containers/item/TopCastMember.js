@@ -4,28 +4,28 @@ import classNames from "classnames";
 import Avatar from "../../assets/images/avatar.png";
 import { ImageURL } from "../../../constants";
 
-const TopCastMember = props => (
+const TopCastMember = ({id,name,character,profile}) => (
     <li className="mb-3 mr-2">
         <Link
-          to={`/people/` + props.id + `/${_.kebabCase(props.name)}`}
-          title={props.name + ` as ` + props.character}>
+          to={`/people/` + id + `/${_.kebabCase(name)}`}
+          title={name + ` as ` + character}>
             <img
                 width="66"
                 height="66"
                 className={classNames(
                     "cast mini-cast rounded-circle",
                     {
-                        "border-0": !props.profile
+                        "border-0": !profile
                     }
                 )}
                 src={
-                    props.profile
+                    profile
                         ? ImageURL +
                           `/w66_and_h66_face` +
-                          props.profile
+                          profile
                         : Avatar
                 }
-                alt={props.name}
+                alt={name}
             />
         </Link>
     </li>

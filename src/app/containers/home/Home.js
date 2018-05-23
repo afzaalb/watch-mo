@@ -82,6 +82,7 @@ class Home extends Component {
 									id={m.id}
 									name={m.title}
 									cover={m.backdrop_path}
+									release={m.release_date}
 								/>
 							);
 						})}
@@ -117,7 +118,9 @@ class Home extends Component {
 									key={m.id}
 									id={m.id}
 									name={m.title}
+									overview={m.overview}
 									cover={m.backdrop_path}
+									rating={m.vote_average}
 								/>
 							);
 						})}

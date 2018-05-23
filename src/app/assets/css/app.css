@@ -434,6 +434,7 @@ header .inline-fix {
   position: absolute;
   top: 0;
   left: 0;
+  z-index:  20;
 }
 
 .meta-movie {
@@ -786,4 +787,11 @@ div.white-card {
   top: 5px;
   right: 20px;
   font-size: 11px;
+}
+
+.movies-item a .rating-tag{
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  z-index:  30;
 }

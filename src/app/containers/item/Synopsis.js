@@ -13,9 +13,8 @@ const Synopsis = ({show,description,rating}) => (
           {description && (
             <h2 className="bold">Synopsis</h2>
           )}
-          {rating &&
-      			<Rating rated={rating} className={classNames({'mb-3':description == ''})} heading />
-      		}
+          {rating && rating > 0 ? (<Rating rated={rating} className={classNames({'mb-3':description == ''})} heading />
+          ): null}
         </div>
         {description && (
           <p className="summary">{description}</p>

@@ -2,10 +2,12 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { CoverURL } from "../../../constants";
 import classNames from "classnames";
+import Rating from "../../components/Rating.js";
 
-const Slot = ({ id, name, cover }) => (
+const Slot = ({ id, name, cover, rating, overview, release }) => (
 	<li className="col-sm-4 col-md-4 movies-item h-100">
 		<Link
+			title={overview}
 			to={`/${id}/${_.kebabCase(name)}`}
 			className="all-smooth">
 			<div className={classNames("cover",({'no-bg' : !cover}))}>
@@ -18,9 +20,13 @@ const Slot = ({ id, name, cover }) => (
 				}
 			</div>
 			<div className="meta-movie w-100">
+				{release && (
+					<p className="genre">{release}</p>
+				)}
 				<p className="name">{name}</p>
-				<p className="description text-truncate mb-0">View More Info</p>
+				{overview ? <p className="description text-truncate mb-0">{overview}</p> : <p className="mb-0">View More Info</p>}
 			</div>
+			{rating && <Rating rated={rating} />}
 		</Link>
 	</li>
 );

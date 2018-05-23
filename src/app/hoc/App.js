@@ -8,7 +8,7 @@ import { TMDB } from "../../utils.js";
 const App = ({ location })=> {
 	TMDB();
 	return(
-	    <Layout basename="watchMo">
+	    <Layout>
 	        <Router location={location} />
 	    </Layout>
 	);

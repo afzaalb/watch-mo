@@ -13,8 +13,9 @@ import FullCastMember from "./details/FullCastMember";
 import Recommendations from "./details/Recommendations";
 import EachRecommendation from "./details/EachRecommendation";
 import ExtraDetails from "./details/ExtraDetails";
+import { ImageURL } from "../../../constants";
 
-class ItemInfo extends Component {
+class ItemHome extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -109,7 +110,8 @@ class ItemInfo extends Component {
       allWriters = "",
       allDirectors = "",
       allProducers = "",
-      allRecommendations = "";
+      allRecommendations = "",
+      allCompanies = "";
 
     if (response.genres) {
       genreList = response.genres.map((g, index) => {
@@ -119,7 +121,7 @@ class ItemInfo extends Component {
 
     if (response.casts) {
       const writerList = _.filter(completeCrew, function(obj) {
-        return obj.job === "Writer" || obj.job === "Screenplay";
+        return (obj.job === "Writer" || obj.job === "Screenplay")
       });
       allWriters = writerList.map((crew, index) => {
         return (
@@ -204,6 +206,16 @@ class ItemInfo extends Component {
       });
     }
 
+    if (response.production_companies) {
+      allCompanies = response.production_companies.map((c, index) => {
+        return (
+          <span key={c.id} className="gradient d-inline-block px-2 py-1 align-middle rounded">
+            {c.name}
+          </span>
+        )
+      });
+    }
+
     let dataLoaded = "";
     if (response.title && response.vote_average || response.overview) {
       dataLoaded = (
@@ -248,6 +260,7 @@ class ItemInfo extends Component {
               writer={allWriters}
               director={allDirectors}
               producer={allProducers}
+              companies={allCompanies}
               link={response.homepage}
               budget={response.budget}
               revenue={response.revenue}
@@ -288,4 +301,4 @@ class ItemInfo extends Component {
   }
 }
 
-export default ItemInfo;
+export default ItemHome;

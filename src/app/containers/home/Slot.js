@@ -26,7 +26,7 @@ const Slot = ({ id, name, cover, rating, overview, release }) => (
 				<p className="name">{name}</p>
 				{overview ? <p className="description text-truncate mb-0">{overview}</p> : <p className="mb-0">View More Info</p>}
 			</div>
-			{rating && <Rating rated={rating} />}
+			{rating && rating > 0 ? (<Rating rated={rating} />):null}
 		</Link>
 	</li>
 );

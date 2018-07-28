@@ -1,7 +1,7 @@
 import React from "react";
 import pluralize from "pluralize";
 
-const ExtraDetails = ({title,status,link,budget,revenue,writer,director,producer}) => (
+const ExtraDetails = ({title,status,link,budget,revenue,writer,director,producer,companies}) => (
 	<div className="col-md-8">
 		<section className="pt-4 item-detail-meta">
 			<div className="row">
@@ -69,6 +69,13 @@ const ExtraDetails = ({title,status,link,budget,revenue,writer,director,producer
 					<div className="col-sm-6">
 						<h6>{pluralize("Producer", producer.length)}</h6>
 						<p>{producer}</p>
+					</div>
+				)}
+
+				{companies.length > 0 && (
+					<div className="col-sm-6">
+						<h6>{pluralize("Production Company", companies.length)}</h6>
+						<p>{companies}</p>
 					</div>
 				)}
 			</div>

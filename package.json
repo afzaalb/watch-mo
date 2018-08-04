@@ -1,6 +1,6 @@
 {
   "name": "WatchMo",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Movies,TV Series & People History. All in one place.",
   "private": true,
   "main": "index.js",

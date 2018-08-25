@@ -1,30 +1,33 @@
 # Watch-Mo
 
-Simple React App using TMDB Api for movies, tv shows and people
+Simple React App using TMDB api for movies, tv shows and people
 
 ## Getting Started
 
-These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See deployment for notes on how to deploy the project on a live system.
+These instructions will get you a copy of the project up and running on your local machine for development and testing purposes.
 
 ### Prerequisites
 
-What things you need to install the software and how to install them
-
-```
-Give examples
-```
+To get started with this project, you need to get an api key from TMDB. Get it [here](https://www.themoviedb.org/settings/api).
 
 ### Installing
 
-A step by step series of examples that tell you how to get a development env running
+Get a copy of the project by clicking Clone or Download button.
 
-Say what the step will be
-
+Install node modules.
 ```
-Give the example
+npm install
 ```
 
-End with an example of getting some data out of the system or using it for a little demo
+Set/Modify your api configurations in `src/util.js`. You should change the api_key to your own. You may ignore other settings.
+
+Start your application. This command will also watch for changes in your files.
+```
+npm start
+```
+
+For api options and methods details:
+[Documentation](https://developers.themoviedb.org/3/getting-started/introduction)
 
 ## Built With
 
@@ -40,9 +43,9 @@ For versioning and releases, following format will be used.
 <major>.<minor>.<fix>
 ```
 
-*	major -
-*	minor - 
-*	fix - 
+*	major - new feature release
+*	minor - ui/ux improvements
+*	fix - bugs/issues fixes and patches
 
 ## Authors
 

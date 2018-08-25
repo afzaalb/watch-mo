@@ -235,6 +235,7 @@ header {
     color: #6ac045;
     font-size: 24px;
     line-height: 36px;
+    margin-left: -1rem;
 }
 
 .navbar {
@@ -252,7 +253,8 @@ nav li {
 
 nav a {
     color: rgb(136, 136, 136);
-    font-size: 14px;
+    padding-left: 10px;
+    padding-right: 10px;
     text-transform: uppercase;
 }
 
@@ -260,6 +262,14 @@ nav a.active,
 nav a:active,
 nav a:hover {
     color: rgb(255, 255, 255);
+}
+
+.link-title{
+    margin-top: 3px;
+    font-size: 11px;
+    line-height: 1;
+    font-weight: 300;
+    letter-spacing: 0.1em;
 }
 
 .header-search {
@@ -794,4 +804,24 @@ div.white-card {
   top: 14px;
   right: 14px;
   z-index:  30;
+}
+
+@import "~slick-carousel/slick/slick.css";
+@import "~slick-carousel/slick/slick-theme.css";
+
+.carousel-gallery{
+    background: rgba(0, 0, 0, 0.4);
+}
+
+.carousel-gallery .slick-dots{
+    position: absolute;
+    bottom: 70px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 222;
+}
+
+.person-info-card.white-card{
+    position: relative!important;
+    max-height: 420px;
 }

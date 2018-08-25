@@ -33,7 +33,11 @@ module.exports = {
 					  	}
 					}
 		        ]
-	      	}
+	      	},
+            {
+                test: /\.(eot|woff|ttf|otf)$/,
+                loader: "file-loader"
+            }
         ]
     }
 };

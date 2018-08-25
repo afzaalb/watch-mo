@@ -5,7 +5,6 @@ import HeadWithTitle from "./HeadWithTitle";
 
 const HeaderNavigation = ({ item }) => (
   <nav className="navigation d-flex align-items-center">
-    <Route exact path="/:id/:name" component={() => <HeadWithTitle item={item} />} />
     <LogDataChoice />
   </nav>
 );

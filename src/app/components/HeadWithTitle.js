@@ -4,7 +4,7 @@ import { ArrowLeft, VideoIcon } from "../../constants";
 
 const HeadWithTitle = ({item}) => (
     <ul className="nav">
-        <li className="inline-fix ml-3">
+        <li className="inline-fix">
             <Link to="/" className="bold px-3" title="Go back">
                 {ArrowLeft}
             </Link>

@@ -5,13 +5,13 @@ export const HomeIcon = (
         className="align-middle"
         id="i-home"
         viewBox="0 0 32 32"
-        width="18"
-        height="18"
+        width="24"
+        height="24"
         fill="transparent"
         stroke="currentcolor"
         strokeLinecap="round"
         strokeLinejoin="round"
-        strokeWidth="2"
+        strokeWidth="1"
     >
         <path d="M12 20 L12 30 4 30 4 12 16 2 28 12 28 30 20 30 20 20 Z" />
     </svg>
@@ -22,13 +22,13 @@ export const SearchIcon = (
         className="align-middle"
         id="i-search"
         viewBox="0 0 32 32"
-        width="18"
-        height="18"
+        width="24"
+        height="24"
         fill="transparent"
         stroke="currentcolor"
         strokeLinecap="round"
         strokeLinejoin="round"
-        strokeWidth="2"
+        strokeWidth="1"
     >
         <circle cx="14" cy="14" r="12" />
         <path d="M23 23 L30 30" />
@@ -54,7 +54,7 @@ export const FolderIcon = (
 
 export const UserIcon = (
     <svg
-        className="align-middle"
+        className="align-top mr-2"
         id="i-user"
         viewBox="0 0 32 32"
         width="18"
@@ -240,6 +240,24 @@ export const StarIcon = (
 	</svg>
 );
 
+export const ILightning = (
+    <svg
+        className="align-top mr-2"
+        id="i-lightning"
+        viewBox="0 0 32 32"
+        width="18"
+        height="18"
+        fill="transparent"
+        stroke="currentcolor"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        strokeWidth="2"
+    >
+        <path d="M18 13 L26 2 8 13 14 19 6 30 24 19 Z" />
+    </svg>
+);
+
 export const IMDB = "https://www.imdb.com/title/";
+export const IMDBPeople = "https://www.imdb.com/name/";
 export const ImageURL = "https://image.tmdb.org/t/p";
 export const CoverURL = `${ImageURL}/original`;

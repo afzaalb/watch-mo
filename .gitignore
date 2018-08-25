@@ -1,6 +1,4 @@
 /node_modules
 .env
-.babelrc
 dploy.yaml
-.gitignore
 /dist

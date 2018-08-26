@@ -7,7 +7,7 @@ class Header extends Component {
     splitURL = () => {
       const completePath = location.pathname;
       const splitted = completePath.split('/');
-      const nameOnly = _.startCase(splitted[2]);
+      const nameOnly = _.startCase(splitted[splitted.length - 1]);
       return nameOnly.replace(/-/g,' ');
     }
     render() {

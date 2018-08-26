@@ -22,7 +22,7 @@ class SearchHome extends Component {
             this.setState({
                 loader: true
             });
-            theMovieDb.search.getMovie(
+            theMovieDb.search.getMulti(
                 { query: queryString.target.value },
                 this.successCB,
                 this.errorCB
@@ -61,24 +61,51 @@ class SearchHome extends Component {
     render() {
         const { searchResults, tmdbResponse, loader, disabled } = this.state;
 
-        let allResults = "";
-        let dataLoaded = "";
+        let allResults = "",
+            dataLoaded = "";
         if (searchResults.total_results > 0) {
             allResults = searchResults.results.map((k, index) => {
-                return (
-                    <ListItem
-                        key={k.id}
-                        id={k.id}
-                        name={k.title}
-                        rating={k.vote_average}
-                        release={k.release_date}
-                        image={
-                            k.poster_path != null
-                                ? k.poster_path
-                                : k.backdrop_path
-                        }
-                    />
-                );
+                if(k.media_type == 'tv'){
+                    return (
+                        <ListItem
+                            key={k.id}
+                            id={k.id}
+                            name={k.name}
+                            rating={k.vote_average}
+                            release={k.first_air_date}
+                            image={
+                                k.poster_path != null
+                                    ? k.poster_path
+                                    : k.backdrop_path
+                            }
+                        />
+                    )
+                } else if(k.media_type == 'person'){
+                    return (
+                        <ListItem
+                            key={k.id}
+                            id={k.id}
+                            name={k.name}
+                            image={k.profile_path}
+                            person
+                        />
+                    )
+                } else {
+                    return (
+                        <ListItem
+                            key={k.id}
+                            id={k.id}
+                            name={k.title}
+                            rating={k.vote_average}
+                            release={k.release_date}
+                            image={
+                                k.poster_path != null
+                                    ? k.poster_path
+                                    : k.backdrop_path
+                            }
+                        />
+                    )
+                }
             });
             dataLoaded = <SearchResults list={allResults} />;
         } else if (tmdbResponse) {
@@ -112,7 +139,7 @@ class SearchHome extends Component {
                                     disabled={disabled}
                                     autoFocus="true"
                                     className="form-control mb-4"
-                                    placeholder="Search for Movies"
+                                    placeholder="Search for Movies, TV Shows or People"
                                     onChange={queryString =>
                                         this.handleSearch(queryString)
                                     }

@@ -1,6 +1,6 @@
 import React from "react";
 import classNames from "classnames";
-import Rating from "../../components/Rating.js";
+import Rating from "../../components/Rating";
 
 const Synopsis = ({show,description,rating}) => (
     <aside
@@ -19,13 +19,6 @@ const Synopsis = ({show,description,rating}) => (
         {description && (
           <p className="summary">{description}</p>
         )}
-        <a
-            href="/"
-            className="btn btn-special"
-            title="Add to your own collection."
-        >
-            Add to Collection
-        </a>
     </aside>
 );
 

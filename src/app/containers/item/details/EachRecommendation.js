@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { CoverURL } from "../../../../constants";
-import Rating from "../../../components/Rating.js";
+import Rating from "../../../components/Rating";
 import _ from "lodash";
 
 const EachRecommendation = ({name,id,poster,rating,force}) => (

@@ -1,14 +1,9 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { Calendar, Tag, Clock, ILink, IMDB } from "../../../constants";
+import { handleRunTime } from "../../../utils";
 import TopCast from "./TopCast";
 import classNames from "classnames";
-
-const handleRunTime = time => {
-	const hours = parseInt(time / 60);
-	const minutes = time % 60;
-	return `${hours}h ${minutes}m`;
-};
 
 const ItemMeta = ({show,title,release,genres,runtime,topCast,imdb}) => (
 	<div

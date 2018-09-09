@@ -1,4 +1,5 @@
 import React, { Component, Fragment } from "react";
+import { Link } from "react-router-dom";
 import theMovieDb from "themoviedb-javascript-library";
 import Content from "../../hoc/ContentWrapper";
 import NoDataFound from "../../components/NoDataFound";
@@ -125,12 +126,14 @@ class ItemHome extends Component {
             });
             allWriters = writerList.map((crew, index) => {
                 return (
-                    <span
-                    key={crew.credit_id}
-                    className="gradient d-inline-block px-2 py-1 align-middle rounded"
-                    >
-                    {crew.name}
-                    </span>
+                    <Link to={`/people/` + crew.id + `/${_.kebabCase(crew.name)}`} key={crew.credit_id}>
+                        <span
+                        key={crew.credit_id}
+                        className="gradient d-inline-block px-2 py-1 align-middle rounded"
+                        >
+                        {crew.name}
+                        </span>
+                    </Link>
                 );
             });
 
@@ -139,12 +142,13 @@ class ItemHome extends Component {
             });
             allDirectors = directorList.map((crew, index) => {
                 return (
-                    <span
-                    key={crew.credit_id}
-                    className="gradient d-inline-block px-2 py-1 align-middle rounded"
-                    >
-                    {crew.name}
-                    </span>
+                    <Link to={`/people/` + crew.id + `/${_.kebabCase(crew.name)}`} key={crew.credit_id}>
+                        <span
+                        className="gradient d-inline-block px-2 py-1 align-middle rounded"
+                        >
+                        {crew.name}
+                        </span>
+                    </Link>
                 );
             });
 
@@ -153,12 +157,13 @@ class ItemHome extends Component {
             });
             allProducers = producerList.map((crew, index) => {
                 return (
-                    <span
-                    key={crew.credit_id}
-                    className="gradient d-inline-block px-2 py-1 align-middle rounded"
-                    >
-                    {crew.name}
-                    </span>
+                    <Link to={`/people/` + crew.id + `/${_.kebabCase(crew.name)}`} key={crew.credit_id}>
+                        <span
+                        className="gradient d-inline-block px-2 py-1 align-middle rounded"
+                        >
+                        {crew.name}
+                        </span>
+                    </Link>
                 );
             });
 

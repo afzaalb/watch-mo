@@ -36,7 +36,7 @@ class TorrentHome  extends Component{
         if(torrentList.length > 0){
             allTorrents = torrentList.map((torrent,index) => {
                 return(
-                    <a key={torrent.hash} href={torrent.url}>
+                    <a key={torrent.hash} href={torrent.url} title={`Seeds: ${torrent.seeds} | Peers: ${torrent.peers}`}>
                         <span className="gradient d-inline-block px-2 py-1 align-middle rounded">
                             {torrent.quality}
                             <sup className="ml-1">({torrent.size})</sup>

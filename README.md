@@ -1,6 +1,7 @@
 # Watch-Mo
 
-Simple React App using TMDB api for movies, tv shows and people
+Simple React App using TMDB api for movies, tv shows and people.
+Torrents for movies are also supported in `v1.1.0` and above.
 
 ## Getting Started
 
@@ -19,7 +20,7 @@ Install node modules.
 npm install
 ```
 
-Set/Modify your api configurations in `src/util.js`. You should change the api_key to your own. You may ignore other settings.
+Set/Modify your api configuration parameters in `src/constants.js`. You should change the `apiKey` to your own. You may ignore other settings.
 
 Start your application. This command will also watch for changes in your files.
 ```

@@ -1,10 +1,12 @@
 import React from "react";
 import pluralize from "pluralize";
+import Torrent from "../../torrent/TorrentHome";
 
-const ExtraDetails = ({title,status,link,budget,revenue,writer,director,producer,companies}) => (
+const ExtraDetails = ({title,status,link,budget,revenue,writer,director,producer,companies,imdb}) => (
 	<div className="col-md-8">
 		<section className="pt-4 item-detail-meta">
 			<div className="row">
+				<Torrent movie={imdb} />
 				{status && (
 					<div className="col-sm-6">
 						<h6>Status</h6>

@@ -1,3 +1,5 @@
+@import "~bootstrap/dist/css/bootstrap.min.css";
+
 /* Generic Styles */
 h1,
 h3,
@@ -779,6 +781,7 @@ div.white-card {
     height: auto;
 }
 
+.item-detail-meta p a:not(:only-child),
 .item-detail-meta p span:not(:only-child){
     margin-right: 6px;
     margin-bottom: 6px;

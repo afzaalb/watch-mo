@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { CoverURL } from "../../../constants";
 import classNames from "classnames";
-import Rating from "../../components/Rating.js";
+import Rating from "../../components/Rating";
 
 const Slot = ({ id, name, cover, rating, overview, release }) => (
 	<li className="col-sm-4 col-md-4 movies-item h-100">

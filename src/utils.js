@@ -1,10 +1,24 @@
 import theMovieDb from 'themoviedb-javascript-library';
 
-export const TMDB = () => {
-    theMovieDb.common.api_key = "9aae8884ab2c82ebf94b47f136cc8c52";
-    theMovieDb.common.base_uri = "https://api.themoviedb.org/3/";
-    theMovieDb.common.images_uri = "https://image.tmdb.org/t/p/";
-    theMovieDb.common.timeout = 30000;
+export const TMDB = (apiKey,baseURL,imagesURL,requestTimeout) => {
+    theMovieDb.common.api_key = apiKey;
+    theMovieDb.common.base_uri = baseURL;
+    theMovieDb.common.images_uri = imagesURL;
+    theMovieDb.common.timeout = requestTimeout;
 };
 
-TMDB();
+export const handleRunTime = time => {
+	const hours = parseInt(time / 60);
+	const minutes = time % 60;
+	return `${hours}h ${minutes}m`;
+};
+
+export const getMovieTorrents = movie => {
+    let torrentList = [];
+    const torrents = movie.map((t,index) => {
+        return t.torrents.map((tor,index) => {
+            return torrentList.push(tor);
+        });
+    });
+    return torrentList;
+}

@@ -257,7 +257,12 @@ export const ILightning = (
     </svg>
 );
 
-export const IMDB = "https://www.imdb.com/title/";
-export const IMDBPeople = "https://www.imdb.com/name/";
+export const apiKey = "9aae8884ab2c82ebf94b47f136cc8c52";
+export const apiURL = "https://api.themoviedb.org/3/";
+export const reqTime = 30000;
 export const ImageURL = "https://image.tmdb.org/t/p";
 export const CoverURL = `${ImageURL}/original`;
+export const IMDB = "https://www.imdb.com/title/";
+export const IMDBPeople = "https://www.imdb.com/name/";
+export const Yts = `https://yts.am/`;
+export const TorrQuery = `${Yts}api/v2/list_movies.json?query_term=`;

@@ -13,6 +13,8 @@
     "production": "webpack --progress -p"
   },
   "dependencies": {
+    "axios": "^0.18.0",
+    "bootstrap": "^4.0.0",
     "classnames": "^2.2.6",
     "pluralize": "^7.0.0",
     "prop-types": "^15.6.2",

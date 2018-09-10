@@ -2,6 +2,7 @@
 
 Simple React App using TMDB api for movies, tv shows and people.
 Torrents for movies are also supported in `v1.1.0` and above.
+Take a look at the [demo](http://react.admin-test.com).
 
 ## Getting Started
 

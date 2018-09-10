@@ -1,4 +1,4 @@
-var path = require('path');
+const path = require('path');
 
 module.exports = {
     entry: path.resolve(__dirname, 'src') + '/app/index.js',
@@ -31,12 +31,21 @@ module.exports = {
 					    	limit: 10240,
 							name: "[name].[ext]"
 					  	}
+					},
+                    {
+					  	loader: 'file-loader',
+                        options: {
+                            outputPath: 'assets/images/'
+                        }
 					}
 		        ]
 	      	},
             {
                 test: /\.(eot|woff|ttf|otf)$/,
-                loader: "file-loader"
+                loader: "file-loader",
+                options: {
+                    outputPath: 'assets/fonts/'
+                }
             }
         ]
     }

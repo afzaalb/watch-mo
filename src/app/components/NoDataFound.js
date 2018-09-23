@@ -1,6 +1,6 @@
 import React from "react";
 import classNames from "classnames";
-import { InfoIcon } from "../../constants";
+import { Info } from "react-bytesize-icons";
 
 const NoDataFound = ({
     message,
@@ -25,7 +25,7 @@ const NoDataFound = ({
         )}
         title={message + ` Try Again!`}
     >
-        {InfoIcon}
+        <Info width="24" height="24" />
         <span>{message}</span>
     </div>
 );

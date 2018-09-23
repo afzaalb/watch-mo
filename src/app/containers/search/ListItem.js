@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { ImageURL } from "../../../constants";
 import className from "classnames";
-import Rating from "../../components/Rating.js";
+import Rating from "../../components/Rating";
 
 const ListItem = ({person,id,name,image,release,rating}) => {
     let people = '';

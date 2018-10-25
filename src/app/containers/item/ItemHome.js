@@ -15,6 +15,7 @@ import Recommendations from "./details/Recommendations";
 import EachRecommendation from "./details/EachRecommendation";
 import ExtraDetails from "./details/ExtraDetails";
 import { ImageURL } from "../../../constants";
+import { uniqBy } from "lodash";
 
 class ItemHome extends Component {
     constructor(props) {
@@ -115,7 +116,7 @@ class ItemHome extends Component {
         allCompanies = "";
 
         if (response.genres) {
-            genreList = response.genres.map((g, index) => {
+            genreList = uniqBy(response.genres, 'id').map((g, index) => {
                 return <span key={g.id}>{g.name}</span>;
             });
         }

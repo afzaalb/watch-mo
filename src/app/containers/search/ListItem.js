@@ -10,32 +10,36 @@ const ListItem = ({person,id,name,image,release,rating}) => {
         people = 'people/';
     }
     return(
-        <li className="col-sm-6 mb-3 d-flex">
-        <Link
-          to={people + id + `/${_.kebabCase(name)}`}
-          className={className("mr-3", { "no-bg": image == null })}
-        >
-          {image != null && (
-            <img
-              src={`${ImageURL + "/w300" + image}`}
-              className="w-100 rounded"
-              alt={name}
-            />
-          )}
-        </Link>
-        <div className="search-meta mr-3 w-100">
-          {release &&
-              <p className="genre m-0">{release.substr(0, 4)}</p>
-          }
-          <Link to={people + id + `/${_.kebabCase(name)}`} className="name mb-1">
-            {_.deburr(name)}
-          </Link>
-          {rating && rating > 0 ?
-            <div className="mb-3">
-                <Rating rated={rating} />
-            </div> : null
-          }
-        </div>
+        <li className="col-sm-6 col-md-4 mb-3">
+            <span className="card-ui d-flex" title={name}>
+                <Link
+                  to={`${people}${id}/${_.kebabCase(name)}`}
+                  className={className({ "no-bg": image == null })}
+                >
+                  {image != null && (
+                    <img
+                      src={`${ImageURL + "/w300" + image}`}
+                      className="w-100"
+                      alt={name}
+                    />
+                  )}
+                </Link>
+                <span className="search-meta bg-white py-2 px-3">
+                    {release &&
+                      <span className="d-flex justify-content-between align-items-center mb-2">
+                      {release &&
+                          <span className="genre m-0">{release.substr(0, 4)}</span>
+                      }
+                      {rating && rating > 0 ?
+                        <Rating rated={rating} /> : null
+                      }
+                      </span>
+                    }
+                  <Link to={`${people}${id}/${_.kebabCase(name)}`} className="name d-block bold">
+                    {_.deburr(name)}
+                  </Link>
+                </span>
+            </span>
         </li>
     );
 }

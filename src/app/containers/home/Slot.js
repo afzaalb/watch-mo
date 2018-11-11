@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { CoverURL } from "../../../constants";
+import { ImageURL } from "../../../constants";
 import classNames from "classnames";
 import Rating from "../../components/Rating";
 
@@ -13,7 +13,7 @@ const Slot = ({ id, name, cover, rating, overview, release }) => (
 			<div className={classNames("cover",({'no-bg' : !cover}))}>
 				{cover &&
 					(<img
-						src={`${CoverURL}` + cover}
+						src={`${ImageURL}/w300${cover}`}
 						className="h-100 w-100 cover-fit mx-auto"
 						alt={name}
 					/>)

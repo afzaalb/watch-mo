@@ -16,7 +16,7 @@ class PeopleHome extends Component {
     };
   }
 
-  componentDidMount = () => {
+  componentDidMount(){
     theMovieDb.people.getById(
       {
         id: this.props.match.params.id,

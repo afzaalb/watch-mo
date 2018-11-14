@@ -37,7 +37,7 @@ class ItemHome extends Component {
         };
     }
 
-    componentDidMount = () => {
+    componentDidMount() {
         theMovieDb.movies.getById(
             {
                 id: this.props.match.params.id,

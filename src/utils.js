@@ -13,6 +13,13 @@ export const handleRunTime = time => {
 	return `${hours}h ${minutes}m`;
 };
 
+export const splitURL = () => {
+  const completePath = location.pathname;
+  const splitted = completePath.split('/');
+  const nameOnly = _.startCase(splitted[splitted.length - 1]);
+  return nameOnly.replace(/-/g,' ');
+}
+
 export const getMovieTorrents = movie => {
     let torrentList = [];
     const torrents = movie.map((t,index) => {

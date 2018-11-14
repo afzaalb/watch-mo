@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import HeaderNavigation from "./HeaderNavigation";
 import classNames from "classnames";
+import _ from "lodash";
 
 const Header = () => (
     <header className="px-3 w-100">
@@ -13,9 +14,7 @@ const Header = () => (
             </div>
             <HeaderNavigation />
             <div className="hamburger d-sm-none d-md-none">
-                <span />
-                <span />
-                <span />
+                {_.times(3,() => <span /> )}
             </div>
         </div>
     </header>

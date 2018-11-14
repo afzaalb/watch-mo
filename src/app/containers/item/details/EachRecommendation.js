@@ -1,8 +1,9 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import Link from "react-router-dom/Link";
 import { CoverURL } from "../../../../constants";
 import Rating from "../../../components/Rating";
-import _ from "lodash";
+import kebabCase from "lodash/kebabCase";
+import deburr from "lodash/deburr";
 
 const EachRecommendation = ({name,id,poster,rating,force}) => (
 	<div className="col-sm-6">
@@ -10,13 +11,13 @@ const EachRecommendation = ({name,id,poster,rating,force}) => (
 			title={name}
 			className="mb-3 d-block"
 			onClick={force}
-			to={`/${id}` + `/` + _.kebabCase(name)}>
+			to={`/${id}/${kebabCase(name)}`}>
 			<img
 				src={`${CoverURL}` + poster}
 				className="w-100 mb-1"
 				alt={name}
 			/>
-			<div className="text-truncate">{_.deburr(name)}</div>
+			<div className="text-truncate">{deburr(name)}</div>
 			<Rating rated={rating} />
 		</Link>
 	</div>

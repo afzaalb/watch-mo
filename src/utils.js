@@ -1,4 +1,5 @@
 import theMovieDb from 'themoviedb-javascript-library';
+import startCase from 'lodash/startCase';
 
 export const TMDB = (apiKey,baseURL,imagesURL,requestTimeout) => {
     theMovieDb.common.api_key = apiKey;
@@ -16,7 +17,7 @@ export const handleRunTime = time => {
 export const splitURL = () => {
   const completePath = location.pathname;
   const splitted = completePath.split('/');
-  const nameOnly = _.startCase(splitted[splitted.length - 1]);
+  const nameOnly = startCase(splitted[splitted.length - 1]);
   return nameOnly.replace(/-/g,' ');
 }
 

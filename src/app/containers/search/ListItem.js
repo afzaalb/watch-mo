@@ -1,8 +1,10 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import Link from "react-router-dom/Link";
 import { ImageURL } from "../../../constants";
 import className from "classnames";
 import Rating from "../../components/Rating";
+import kebabCase from "lodash/kebabCase";
+import deburr from "lodash/deburr";
 
 const ListItem = ({person,id,name,image,release,rating}) => {
     let people = '';
@@ -13,7 +15,7 @@ const ListItem = ({person,id,name,image,release,rating}) => {
         <li className="col-sm-6 col-md-4 mb-3">
             <span className="card-ui d-flex" title={name}>
                 <Link
-                  to={`${people}${id}/${_.kebabCase(name)}`}
+                  to={`${people}${id}/${kebabCase(name)}`}
                   className={className({ "no-bg": image == null })}
                 >
                   {image != null && (
@@ -35,8 +37,8 @@ const ListItem = ({person,id,name,image,release,rating}) => {
                       }
                       </span>
                     }
-                  <Link to={`${people}${id}/${_.kebabCase(name)}`} className="name d-block bold">
-                    {_.deburr(name)}
+                  <Link to={`${people}${id}/${kebabCase(name)}`} className="name d-block bold">
+                    {deburr(name)}
                   </Link>
                 </span>
             </span>

@@ -1,6 +1,5 @@
 import React from "react";
 import Slider from "react-slick";
-import { ImageURL } from "../../../constants";
 
 const Gallery = ({images}) => {
     const imgCount = images.length;

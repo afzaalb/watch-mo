@@ -1,14 +1,15 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import Link from "react-router-dom/Link";
 import { ImageURL } from "../../../constants";
 import classNames from "classnames";
 import Rating from "../../components/Rating";
+import kebabCase from "lodash/kebabCase";
 
 const Slot = ({ id, name, cover, rating, overview, release }) => (
 	<li className="col-sm-4 col-md-4 movies-item h-100">
 		<Link
 			title={overview}
-			to={`/${id}/${_.kebabCase(name)}`}
+			to={`/${id}/${kebabCase(name)}`}
 			className="all-smooth">
 			<div className={classNames("cover",({'no-bg' : !cover}))}>
 				{cover &&

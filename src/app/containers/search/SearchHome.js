@@ -5,7 +5,7 @@ import Loader from "../../components/Loader";
 import NoDataFound from "../../components/NoDataFound";
 import SearchResults from "./SearchResults";
 import ListItem from "./ListItem";
-import _ from "lodash";
+import debounce from "lodash/debounce";
 
 class SearchHome extends Component {
     constructor(props) {
@@ -17,7 +17,7 @@ class SearchHome extends Component {
         };
     }
 
-    delayedCallback = _.debounce(queryString => {
+    delayedCallback = debounce(queryString => {
         this.setState({
             loader: true
         });

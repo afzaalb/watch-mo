@@ -1,5 +1,5 @@
 import React, { Component, Fragment } from "react";
-import { Link } from "react-router-dom";
+import Link from "react-router-dom/Link";
 import theMovieDb from "themoviedb-javascript-library";
 import Content from "../../hoc/ContentWrapper";
 import NoDataFound from "../../components/NoDataFound";
@@ -14,8 +14,9 @@ import FullCastMember from "./details/FullCastMember";
 import Recommendations from "./details/Recommendations";
 import EachRecommendation from "./details/EachRecommendation";
 import ExtraDetails from "./details/ExtraDetails";
-import { ImageURL } from "../../../constants";
-import { uniqBy } from "lodash";
+import uniqBy from "lodash/uniqBy";
+import filter from "lodash/filter";
+import kebabCase from "lodash/kebabCase";
 
 class ItemHome extends Component {
     constructor(props) {
@@ -122,12 +123,12 @@ class ItemHome extends Component {
         }
 
         if (response.casts) {
-            const writerList = _.filter(completeCrew, function(obj) {
+            const writerList = filter(completeCrew, function(obj) {
                 return (obj.job === "Writer" || obj.job === "Screenplay")
             });
             allWriters = writerList.map((crew, index) => {
                 return (
-                    <Link to={`/people/` + crew.id + `/${_.kebabCase(crew.name)}`} key={crew.credit_id}>
+                    <Link to={`/people/` + crew.id + `/${kebabCase(crew.name)}`} key={crew.credit_id}>
                         <span
                         key={crew.credit_id}
                         className="gradient d-inline-block px-2 py-1 align-middle rounded"
@@ -138,12 +139,12 @@ class ItemHome extends Component {
                 );
             });
 
-            const directorList = _.filter(completeCrew, function(obj) {
+            const directorList = filter(completeCrew, function(obj) {
                 return obj.job === "Director";
             });
             allDirectors = directorList.map((crew, index) => {
                 return (
-                    <Link to={`/people/` + crew.id + `/${_.kebabCase(crew.name)}`} key={crew.credit_id}>
+                    <Link to={`/people/` + crew.id + `/${kebabCase(crew.name)}`} key={crew.credit_id}>
                         <span
                         className="gradient d-inline-block px-2 py-1 align-middle rounded"
                         >
@@ -153,12 +154,12 @@ class ItemHome extends Component {
                 );
             });
 
-            const producerList = _.filter(completeCrew, function(obj) {
+            const producerList = filter(completeCrew, function(obj) {
                 return obj.job === "Producer";
             });
             allProducers = producerList.map((crew, index) => {
                 return (
-                    <Link to={`/people/` + crew.id + `/${_.kebabCase(crew.name)}`} key={crew.credit_id}>
+                    <Link to={`/people/` + crew.id + `/${kebabCase(crew.name)}`} key={crew.credit_id}>
                         <span
                         className="gradient d-inline-block px-2 py-1 align-middle rounded"
                         >

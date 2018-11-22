@@ -4,10 +4,10 @@ import HeaderNavigation from "./HeaderNavigation";
 import times from "lodash/times";
 
 const Header = () => (
-    <header className="px-3 w-100">
-        <div className="container-fluid navbar justify-content-start align-items-center">
+    <header className="w-100">
+        <div className="container-fluid navbar p-0 justify-content-start align-items-center">
             <div className="logo">
-                <Link to="/" className="p-3" title="WatchMo.com">
+                <Link to="/" className="bold text-lowercase px-3" title="WatchMo.com">
                     WatchMo
                 </Link>
             </div>

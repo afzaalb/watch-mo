@@ -5,7 +5,7 @@ import { IMDBPeople } from "../../../constants";
 const PersonInfo = ({name,gender,bio,bornIn,bornOn,known,imdb,home}) => {
     return (
         <aside className="person-info-card white-card mw-100 mh-100 d-flex flex-column flex-1-1-a">
-            <h2 className="bold mb-3">{name}</h2>
+            <h1 className="bold mb-3 tracking-tight">{name}</h1>
             <p title={`Gender: ${gender == 2 ? 'Male' : 'Female'}`}>
                 <User className="align-top mr-2" width="18" height="18" strokeWidth="2" />
                 <span>{gender == 2 ? 'Male' : 'Female'}</span>

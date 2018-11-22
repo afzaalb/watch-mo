@@ -44,6 +44,10 @@ body {
     -webkit-flex: 1 1 auto;
 }
 
+.tracking-tight{
+    letter-spacing: -.04em;
+}
+
 a {
     display: inline-block;
     color: inherit;
@@ -394,7 +398,6 @@ header .inline-fix {
 .movies-section h4 {
     font-size: 30px;
     color: #333333;
-    letter-spacing: -0.04em;
 }
 
 .movies-item a {

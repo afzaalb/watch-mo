@@ -1,6 +1,6 @@
 import React from "react";
-import { Link } from "react-router-dom";
-import { Calendar, Tag, Clock, ILink, IMDB } from "../../../constants";
+import { Calendar,Tag,Clock,Link } from 'react-bytesize-icons';
+import { IMDB } from "../../../constants";
 import { handleRunTime } from "../../../utils";
 import TopCast from "./TopCast";
 import classNames from "classnames";
@@ -15,18 +15,18 @@ const ItemMeta = ({show,title,release,genres,runtime,topCast,imdb}) => (
 			{title}
 		</h2>
 		<p title={`${title} released on ${release}.`}>
-			{Calendar}
+			<Calendar className="align-top mr-2" width="18" height="18" strokeWidth="2" />
 			<span>{release}</span>
 		</p>
 		{genres.length > 0 && (
 			<p>
-				{Tag}
+				<Tag className="align-top mr-2" width="18" height="18" strokeWidth="2" />
 				<span className="genre-list">{genres}</span>
 			</p>
 		)}
 		{runtime > 0 && (
 			<p title={`Total Playing Time ${handleRunTime(runtime)}.`}>
-				{Clock}
+				<Clock className="align-top mr-2" width="18" height="18" strokeWidth="2" />
 				<span>Runtime {handleRunTime(runtime)}</span>
 			</p>
 		)}
@@ -36,7 +36,7 @@ const ItemMeta = ({show,title,release,genres,runtime,topCast,imdb}) => (
 			target="_blank"
 			href={IMDB + `${imdb}`}
 			title={`View ${title} on IMDB.`}>
-			{ILink}
+			<Link className="align-top mr-2" width="18" height="18" strokeWidth="2"/>
 			<span>View on IMDB</span>
 		</a>
 	</div>

@@ -1,8 +1,6 @@
 import React, { Component } from "react";
 import theMovieDb from "themoviedb-javascript-library";
 import Content from "../../hoc/ContentWrapper";
-import NoDataFound from "../../components/NoDataFound";
-import Loader from "../../components/Loader";
 import Gallery from "./Gallery";
 import PersonInfo from "./PersonInfo";
 import { ImageURL } from "../../../constants";
@@ -16,7 +14,7 @@ class PeopleHome extends Component {
     };
   }
 
-  componentDidMount = () => {
+  componentDidMount(){
     theMovieDb.people.getById(
       {
         id: this.props.match.params.id,

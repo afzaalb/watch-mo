@@ -1,5 +1,5 @@
 import React from "react";
-import { ChevronRight } from "../../../../constants";
+import { ChevronRight } from 'react-bytesize-icons';
 import classNames from "classnames";
 
 const FullCast = ({toggle,showAll,count,casts}) => (
@@ -7,7 +7,8 @@ const FullCast = ({toggle,showAll,count,casts}) => (
 		<section
 			className={classNames("pt-4 full-cast", { showing: toggle })}>
 			<h4 className="mb-4" onClick={showAll}>
-				{ChevronRight} Full Cast ({count})
+				<ChevronRight className="align-middle" width="16"
+				height="16" strokeWidth="2" /> Full Cast ({count})
 			</h4>
 			<ul className="row">{casts}</ul>
 		</section>

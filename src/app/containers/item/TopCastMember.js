@@ -1,13 +1,14 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import Link from "react-router-dom/Link";
 import classNames from "classnames";
 import Avatar from "../../assets/images/avatar.png";
 import { ImageURL } from "../../../constants";
+import kebabCase from "lodash/kebabCase";
 
 const TopCastMember = ({id,name,character,profile}) => (
     <li className="mb-3 mr-2">
         <Link
-          to={`/people/` + id + `/${_.kebabCase(name)}`}
+          to={`/people/` + id + `/${kebabCase(name)}`}
           title={name + ` as ` + character}>
             <img
                 width="66"

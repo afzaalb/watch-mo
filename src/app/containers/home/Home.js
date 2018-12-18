@@ -16,7 +16,7 @@ class Home extends Component {
 		};
 	}
 
-	componentDidMount = () => {
+	componentDidMount(){
 		theMovieDb.movies.getUpcoming(
 			{ region: "US" },
 			this.upcomingCB,
@@ -41,9 +41,9 @@ class Home extends Component {
 	playingCB = data => {
 		const fetchedData = JSON.parse(data);
 		this.setState({
-      loader: false,
-      nowPlaying: fetchedData
-    });
+	      loader: false,
+	      nowPlaying: fetchedData
+	    });
 	};
 
 	errorCB = data => {

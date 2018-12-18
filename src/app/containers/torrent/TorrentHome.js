@@ -16,10 +16,12 @@ class TorrentHome  extends Component{
     componentDidMount(){
         axios.get(`${TorrQuery+this.props.movie}`)
         .then(response => {
-            this.setState({
-                torrentList: getMovieTorrents(response.data.data.movies),
-                show: true
-            })
+            if ( response.data.data.movies ) {
+                this.setState({
+                    torrentList: getMovieTorrents(response.data.data.movies),
+                    show: true
+                });
+            }
         })
         .catch(error => {
             console.log(error);

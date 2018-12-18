@@ -8,17 +8,19 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "npm run build",
-    "build": "webpack -d && webpack-dev-server --content-base src/ --inline --hot --port 1234 --history-api-fallback",
+    "start": "npm run dev",
+    "dev": "webpack -d && webpack-dev-server --content-base src/ --inline --hot --port 1234 --history-api-fallback",
     "production": "webpack --progress -p"
   },
   "dependencies": {
     "axios": "^0.18.0",
     "bootstrap": "^4.0.0",
     "classnames": "^2.2.6",
+    "lodash": "^4.17.11",
     "pluralize": "^7.0.0",
     "prop-types": "^15.6.2",
     "react": "^16.4.1",
+    "react-bytesize-icons": "^0.8.3",
     "react-dom": "^16.4.1",
     "react-router-dom": "^4.3.1",
     "react-slick": "^0.23.1",

@@ -1,21 +1,22 @@
 import React, { Fragment } from "react";
-import { Calendar, UserIcon, ILightning, ILink, IMDBPeople } from "../../../constants";
+import { Calendar,User,Lightning,Link } from 'react-bytesize-icons';
+import { IMDBPeople } from "../../../constants";
 
 const PersonInfo = ({name,gender,bio,bornIn,bornOn,known,imdb,home}) => {
     return (
         <aside className="person-info-card white-card mw-100 mh-100 d-flex flex-column flex-1-1-a">
-            <h2 className="bold mb-3">{name}</h2>
+            <h1 className="bold mb-3 tracking-tight">{name}</h1>
             <p title={`Gender: ${gender == 2 ? 'Male' : 'Female'}`}>
-                {UserIcon}
+                <User className="align-top mr-2" width="18" height="18" strokeWidth="2" />
                 <span>{gender == 2 ? 'Male' : 'Female'}</span>
             </p>
             <p title={`${name} is known for ${known}`}>
-                {ILightning}
+                <Lightning className="align-top mr-2" width="18" height="18" strokeWidth="2" />
                 <span>{`Known for ${known}`}</span>
             </p>
             {bornOn != null &&
                 <p title={`Born in ${bornIn}, on ${bornOn}.`}>
-        			{Calendar}
+        			<Calendar className="align-top mr-2" width="18" height="18" strokeWidth="2" />
         			<span>{`Birthday ${bornOn}`}</span>
         		</p>
             }
@@ -31,7 +32,7 @@ const PersonInfo = ({name,gender,bio,bornIn,bornOn,known,imdb,home}) => {
             			target="_blank"
             			href={home}
             			title={`View ${name} Official site.`}>
-                			{ILink}
+                			<Link className="align-top mr-2" width="18" height="18" strokeWidth="2" />
                 			<span>View official site</span>
                     </a>
                 </p>
@@ -41,7 +42,7 @@ const PersonInfo = ({name,gender,bio,bornIn,bornOn,known,imdb,home}) => {
                 className="mt-auto"
     			href={IMDBPeople + `${imdb}`}
     			title={`View ${name} on IMDB.`}>
-    			{ILink}
+    			<Link className="align-top mr-2" width="18" height="18" strokeWidth="2" />
     			<span>View on IMDB</span>
     		</a>}
         </aside>

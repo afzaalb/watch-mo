@@ -5,7 +5,7 @@ import Loader from "../../components/Loader";
 import NoDataFound from "../../components/NoDataFound";
 import SearchResults from "./SearchResults";
 import ListItem from "./ListItem";
-import _ from "lodash";
+import debounce from "lodash/debounce";
 
 class SearchHome extends Component {
     constructor(props) {
@@ -17,18 +17,16 @@ class SearchHome extends Component {
         };
     }
 
-    componentDidMount = () => {
-        this.delayedCallback = _.debounce(queryString => {
-            this.setState({
-                loader: true
-            });
-            theMovieDb.search.getMulti(
-                { query: queryString.target.value },
-                this.successCB,
-                this.errorCB
-            );
-        }, 1000);
-    };
+    delayedCallback = debounce(queryString => {
+        this.setState({
+            loader: true
+        });
+        theMovieDb.search.getMulti(
+            { query: queryString.target.value },
+            this.successCB,
+            this.errorCB
+        );
+    }, 1000);
 
     successCB = data => {
         const fetchedData = JSON.parse(data);

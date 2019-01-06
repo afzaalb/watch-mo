@@ -228,8 +228,11 @@ header {
 .logo {
     font-size: 24px;
     height: 60px;
-    line-height: 60px;
     letter-spacing: -0.06em;
+}
+
+.logo a{
+    height: 60px;
 }
 
 .navigation {
@@ -238,8 +241,6 @@ header {
 
 nav a {
     color: rgb(136, 136, 136);
-    padding: 10px;
-    height: 60px;
     text-transform: uppercase;
 }
 
@@ -288,16 +289,11 @@ nav a:hover {
 }
 
 .inline-fix {
-    font-size: 0;
-    line-height: 60px;
-}
-
-header .inline-fix {
     border-left: 1px solid #aaaaaa4d;
 }
 
-.inline-fix * {
-    font-size: 14px;
+.inline-fix a {
+    line-height: 36px;
 }
 
 .hamburger {

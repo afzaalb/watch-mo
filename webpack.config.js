@@ -1,14 +1,28 @@
 const path = require('path');
+const webpack = require('webpack');
+const dotenv = require('dotenv');
+const HtmlWebPackPlugin = require('html-webpack-plugin');
+
+
+const env = dotenv.config().parsed;
+const envKeys = Object.keys(env).reduce((prev, next) => {
+  prev[`process.env.${next}`] = JSON.stringify(env[next]);
+  return prev;
+}, {});
 
 module.exports = {
-    entry: path.resolve(__dirname, 'src') + '/app/index.js',
+    entry: './src/app/index.js',
     output: {
-        path: path.resolve(__dirname, 'dist') + '/app',
-        filename: 'bundle.js',
-        publicPath: '/app/'
+        path: path.join(__dirname, 'dist'),
+        filename: 'bundle.js'
+    },
+    devServer: {
+        port: process.env.NODE_PORT,
+        open: true,
+        hot: true
     },
     module: {
-        loaders: [
+        rules: [
             {
                 test: /\.js$/,
                 include: path.resolve(__dirname, 'src'),
@@ -48,5 +62,11 @@ module.exports = {
                 }
             }
         ]
-    }
+    },
+    plugins: [
+        new HtmlWebPackPlugin({
+            template: './dist/index.html'
+        }),
+        new webpack.DefinePlugin(envKeys)
+    ]
 };

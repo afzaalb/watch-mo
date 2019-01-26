@@ -51,9 +51,6 @@ class PeopleHome extends Component {
   render() {
     const {
       response,
-      tmdbResponse,
-      loader,
-      castCredit,
       gallery
     } = this.state;
 

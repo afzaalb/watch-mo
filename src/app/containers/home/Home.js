@@ -12,7 +12,9 @@ class Home extends Component {
 		this.state = {
 			upcoming: {},
 			nowPlaying: {},
-			loader: false
+			loader: false,
+			nowPlayingSlide: 1,
+			upcomingSlide: 1
 		};
 	}
 
@@ -29,6 +31,18 @@ class Home extends Component {
 			this.errorCB
 		);
 	};
+
+	getCurrentActiveSlide = (current,type) => {
+		if(type){
+			this.setState({
+				upcomingSlide: current+1
+			});
+		} else {
+			this.setState({
+				nowPlayingSlide: current+1
+			});
+		}
+	}
 
 	upcomingCB = data => {
 		const fetchedData = JSON.parse(data);
@@ -64,7 +78,8 @@ class Home extends Component {
 		const {
 			upcoming,
 			nowPlaying,
-			loader,
+			nowPlayingSlide,
+			upcomingSlide,
 			tmdbResponse
 		} = this.state;
 
@@ -72,23 +87,20 @@ class Home extends Component {
 				nowPlayingResults = <Loader />;
 
 		if (upcoming.total_results > 0) {
-			upcomingResults = (
-				<Fragment>
-					<ul className="row no-gutters">
-						{upcoming.results.map((m, index) => {
-							return (
-								<Slot
-									key={m.id}
-									id={m.id}
-									name={m.title}
-									cover={m.backdrop_path}
-									release={m.release_date}
-								/>
-							);
-						})}
-					</ul>
-				</Fragment>
-			);
+			upcomingResults = upcoming.results.map((m, index) => {
+				return (
+					<Slot
+						totalSlides={upcoming.results.length}
+						currentSlide={upcomingSlide}
+						category="Upcoming movies"
+						key={m.id}
+						id={m.id}
+						name={m.title}
+						cover={m.backdrop_path}
+						release={m.release_date}
+					/>
+				);
+			});
 		} else if (tmdbResponse) {
       upcomingResults = (
 				<NoDataFound
@@ -109,24 +121,21 @@ class Home extends Component {
     }
 
 		if (nowPlaying.total_results > 0) {
-			nowPlayingResults = (
-				<Fragment>
-					<ul className="row no-gutters">
-						{nowPlaying.results.map((m, index) => {
-							return (
-								<Slot
-									key={m.id}
-									id={m.id}
-									name={m.title}
-									overview={m.overview}
-									cover={m.backdrop_path}
-									rating={m.vote_average}
-								/>
-							);
-						})}
-					</ul>
-				</Fragment>
-			);
+			nowPlayingResults = nowPlaying.results.map((m, index) => {
+				return (
+					<Slot
+						totalSlides={nowPlaying.results.length}
+						currentSlide={nowPlayingSlide}
+						category="Now playing"
+						key={m.id}
+						id={m.id}
+						name={m.title}
+						overview={m.overview}
+						cover={m.backdrop_path}
+						rating={m.vote_average}
+					/>
+				);
+			});
 		} else if (tmdbResponse) {
       nowPlayingResults = (
 				<NoDataFound
@@ -148,9 +157,17 @@ class Home extends Component {
 
 		return(
 			<Content isFlexed>
-				<div className="d-flex flex-column flex-1-1-a w-100">
-					<Grid name='Playing in theaters' results={nowPlayingResults} />
-					<Grid name='Upcoming movies' results={upcomingResults} />
+				<div className="container featured">
+					<Grid
+						type={0}
+						getCurrentActiveSlide={this.getCurrentActiveSlide}
+						results={nowPlayingResults}
+					/>
+					<Grid
+						type={1}
+						getCurrentActiveSlide={this.getCurrentActiveSlide}
+						results={upcomingResults}
+					/>
 				</div>
 			</Content>
 		);

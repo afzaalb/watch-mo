@@ -41,5 +41,5 @@ For api options and methods details:
 ## Authors
 
 * **Muhammad Afzaal**
-	*	[Github](https://github.com/afzaalopera)
+	*	[Github](https://github.com/afzaalb)
 	*	[Twitter](https://twitter.com/afzaalopera?lang=en)

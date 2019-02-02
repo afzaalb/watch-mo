@@ -5,15 +5,11 @@
   "license": "ISC",
   "description": "Movies,TV Series & People History. All in one place.",
   "private": true,
-  "main": "index.js",
-  "homepage": "https://afzaalb.github.io/watch-mo/",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "npm run dev",
     "dev": "webpack-dev-server --config webpack.config.js --mode development --hot --inline",
-    "production": "webpack --mode production",
-    "predeploy": "npm run production",
-    "deploy": "gh-pages -d production"
+    "production": "webpack --mode production"
   },
   "dependencies": {
     "axios": "^0.18.0",

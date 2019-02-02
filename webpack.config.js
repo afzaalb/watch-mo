@@ -2,7 +2,6 @@ const path = require('path');
 const webpack = require('webpack');
 const dotenv = require('dotenv');
 const HtmlWebPackPlugin = require('html-webpack-plugin');
-const CleanWebpackPlugin = require('clean-webpack-plugin');
 
 const env = dotenv.config().parsed;
 const envKeys = Object.keys(env).reduce((prev, next) => {

@@ -2,7 +2,6 @@ const path = require('path');
 const webpack = require('webpack');
 const dotenv = require('dotenv');
 const HtmlWebPackPlugin = require('html-webpack-plugin');
-const CleanWebpackPlugin = require('clean-webpack-plugin');
 
 const env = dotenv.config().parsed;
 const envKeys = Object.keys(env).reduce((prev, next) => {
@@ -13,7 +12,7 @@ const envKeys = Object.keys(env).reduce((prev, next) => {
 module.exports = {
     entry: './src/app/index.js',
     output: {
-        path: path.join(__dirname, 'dist'),
+        path: path.join(__dirname),
         filename: 'bundle.js',
         publicPath: 'https://afzaalb.github.io/watch-mo/'
     },
@@ -65,7 +64,6 @@ module.exports = {
         ]
     },
     plugins: [
-        new CleanWebpackPlugin('dist'),
         new HtmlWebPackPlugin({
             template: './src/index.html'
         }),

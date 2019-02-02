@@ -37,20 +37,9 @@ For api options and methods details:
 * [TMDB](https://www.themoviedb.org/documentation/api) - API
 * [Bootstrap](http://getbootstrap.com/) - CSS Framework
 
-## Versioning
-
-For versioning and releases, following format will be used.
-
-```
-<major>.<minor>.<fix>
-```
-
-*	major - new feature release
-*	minor - ui/ux improvements
-*	fix - bugs/issues fixes and patches
 
 ## Authors
 
 * **Muhammad Afzaal**
-	*	[Github](https://github.com/afzaalopera)
+	*	[Github](https://github.com/afzaalb)
 	*	[Twitter](https://twitter.com/afzaalopera?lang=en)

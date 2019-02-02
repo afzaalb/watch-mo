@@ -14,7 +14,7 @@ module.exports = {
     output: {
         path: path.join(__dirname),
         filename: 'bundle.js',
-        publicPath: '/'
+        publicPath: 'https://afzaalb.github.io/watch-mo/'
     },
     devServer: {
         port: process.env.NODE_PORT,

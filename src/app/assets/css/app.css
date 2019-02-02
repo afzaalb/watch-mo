@@ -241,7 +241,7 @@ nav a:hover {
     left: 0;
     top: 50%;
     margin: 0;
-    width: 48px;
+    width: 44px;
     transform: translateY(-50%);
     z-index: 10;
     cursor: pointer;

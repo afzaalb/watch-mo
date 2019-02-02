@@ -25,7 +25,7 @@ const ItemsGrid = ({ type,results,getCurrentActiveSlide }) => {
     adaptiveHeight: true,
     autoplay: true,
     autoplaySpeed: 4000,
-    speed: 800,
+    speed: 400,
     nextArrow: <NextArrow />,
     prevArrow: <PrevArrow />,
     afterChange: current => getCurrentActiveSlide(current,type)

@@ -1,4 +1,4 @@
-import React, { Component, Fragment } from "react";
+import React, { Component } from "react";
 import Grid from "../../hoc/ItemsGrid";
 import Content from "../../hoc/ContentWrapper";
 import theMovieDb from "themoviedb-javascript-library";
@@ -7,61 +7,47 @@ import Loader from "../../components/Loader";
 import NoDataFound from "../../components/NoDataFound";
 
 class Home extends Component {
-	constructor(props) {
-		super(props);
-		this.state = {
-			upcoming: {},
-			nowPlaying: {},
-			loader: false,
-			nowPlayingSlide: 1,
-			upcomingSlide: 1
-		};
-	}
+  constructor(props) {
+    super(props);
+    this.state = {
+      upcoming: {},
+      nowPlaying: {},
+      loader: false
+    };
+  }
 
-	componentDidMount(){
-		theMovieDb.movies.getUpcoming(
-			{ region: "US" },
-			this.upcomingCB,
-			this.errorCB
-		);
+  componentDidMount() {
+    theMovieDb.movies.getUpcoming(
+      { region: "US" },
+      this.upcomingCB,
+      this.errorCB
+    );
 
-		theMovieDb.movies.getNowPlaying(
-			{ region: "US" },
-			this.playingCB,
-			this.errorCB
-		);
-	};
+    theMovieDb.movies.getNowPlaying(
+      { region: "US" },
+      this.playingCB,
+      this.errorCB
+    );
+  }
 
-	getCurrentActiveSlide = (current,type) => {
-		if(type){
-			this.setState({
-				upcomingSlide: current+1
-			});
-		} else {
-			this.setState({
-				nowPlayingSlide: current+1
-			});
-		}
-	}
-
-	upcomingCB = data => {
-		const fetchedData = JSON.parse(data);
-		this.setState({
+  upcomingCB = data => {
+    const fetchedData = JSON.parse(data);
+    this.setState({
       loader: false,
       upcoming: fetchedData
     });
-	};
+  };
 
-	playingCB = data => {
-		const fetchedData = JSON.parse(data);
-		this.setState({
-	      loader: false,
-	      nowPlaying: fetchedData
-	    });
-	};
+  playingCB = data => {
+    const fetchedData = JSON.parse(data);
+    this.setState({
+      loader: false,
+      nowPlaying: fetchedData
+    });
+  };
 
-	errorCB = data => {
-		if (data) {
+  errorCB = data => {
+    if (data) {
       this.setState({
         loader: false,
         tmdbResponse: JSON.parse(data).status_message
@@ -69,50 +55,38 @@ class Home extends Component {
     } else {
       this.setState({
         upcoming: "",
-				nowPlaying: ""
+        nowPlaying: ""
       });
     }
-	};
+  };
 
-	render() {
-		const {
-			upcoming,
-			nowPlaying,
-			nowPlayingSlide,
-			upcomingSlide,
-			tmdbResponse
-		} = this.state;
+  render() {
+    const { upcoming, nowPlaying, tmdbResponse } = this.state;
 
-		let upcomingResults = <Loader />,
-				nowPlayingResults = <Loader />;
+    let upcomingResults = <Loader />,
+      nowPlayingResults = <Loader />;
 
-		if (upcoming.total_results > 0) {
-			upcomingResults = upcoming.results.map((m, index) => {
-				return (
-					<Slot
-						totalSlides={upcoming.results.length}
-						currentSlide={upcomingSlide}
-						category="Upcoming movies"
-						key={m.id}
-						id={m.id}
-						name={m.title}
-						cover={m.backdrop_path}
-						release={m.release_date}
-					/>
-				);
-			});
-		} else if (tmdbResponse) {
+    if (upcoming.total_results > 0) {
+      upcomingResults = upcoming.results.map((m, index) => {
+        return (
+          <Slot
+            category="Upcoming movies"
+            key={m.id}
+            id={m.id}
+            name={m.title}
+            cover={m.backdrop_path}
+            release={m.release_date}
+          />
+        );
+      });
+    } else if (tmdbResponse) {
       upcomingResults = (
-				<NoDataFound
-					noHorzMargin
-					alignCenter
-					spaceTop
-					message={tmdbResponse} />
-			);
+        <NoDataFound noHorzMargin alignCenter spaceTop message={tmdbResponse} />
+      );
     } else if (upcoming == "") {
       upcomingResults = (
         <NoDataFound
-					noHorzMargin
+          noHorzMargin
           alignCenter
           spaceTop
           message="Perhaps a communications breakdown!"
@@ -120,34 +94,28 @@ class Home extends Component {
       );
     }
 
-		if (nowPlaying.total_results > 0) {
-			nowPlayingResults = nowPlaying.results.map((m, index) => {
-				return (
-					<Slot
-						totalSlides={nowPlaying.results.length}
-						currentSlide={nowPlayingSlide}
-						category="Now playing"
-						key={m.id}
-						id={m.id}
-						name={m.title}
-						overview={m.overview}
-						cover={m.backdrop_path}
-						rating={m.vote_average}
-					/>
-				);
-			});
-		} else if (tmdbResponse) {
+    if (nowPlaying.total_results > 0) {
+      nowPlayingResults = nowPlaying.results.map((m, index) => {
+        return (
+          <Slot
+            category="Now playing"
+            key={m.id}
+            id={m.id}
+            name={m.title}
+            overview={m.overview}
+            cover={m.backdrop_path}
+            rating={m.vote_average}
+          />
+        );
+      });
+    } else if (tmdbResponse) {
       nowPlayingResults = (
-				<NoDataFound
-					noHorzMargin
-					alignCenter
-					spaceTop
-					message={tmdbResponse} />
-			);
+        <NoDataFound noHorzMargin alignCenter spaceTop message={tmdbResponse} />
+      );
     } else if (nowPlaying == "") {
       nowPlayingResults = (
         <NoDataFound
-					noHorzMargin
+          noHorzMargin
           alignCenter
           spaceTop
           message="Perhaps a communications breakdown!"
@@ -155,23 +123,15 @@ class Home extends Component {
       );
     }
 
-		return(
-			<Content isFlexed>
-				<div className="container featured">
-					<Grid
-						type={0}
-						getCurrentActiveSlide={this.getCurrentActiveSlide}
-						results={nowPlayingResults}
-					/>
-					<Grid
-						type={1}
-						getCurrentActiveSlide={this.getCurrentActiveSlide}
-						results={upcomingResults}
-					/>
-				</div>
-			</Content>
-		);
-	}
+    return (
+      <Content isFlexed>
+        <div className="container featured">
+          <Grid results={nowPlayingResults} />
+          <Grid results={upcomingResults} />
+        </div>
+      </Content>
+    );
+  }
 }
 
 export default Home;

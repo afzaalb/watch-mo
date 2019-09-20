@@ -1,6 +1,6 @@
 import React from "react";
 import Link from "react-router-dom/Link";
-import { ImageURL } from "../../../constants";
+import { IMAGE_URL } from "../../../constants";
 import className from "classnames";
 import Rating from "../../components/Rating";
 import kebabCase from "lodash/kebabCase";
@@ -20,7 +20,7 @@ const ListItem = ({person,id,name,image,release,rating}) => {
                 >
                   {image != null && (
                     <img
-                      src={`${ImageURL + "/w300" + image}`}
+                      src={`${IMAGE_URL + "/w300" + image}`}
                       className="w-100"
                       alt={name}
                     />

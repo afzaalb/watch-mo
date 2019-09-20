@@ -40,7 +40,7 @@ const PersonInfo = ({name,gender,bio,bornIn,bornOn,known,imdb,home}) => {
             {imdb && <a
     			target="_blank"
                 className="mt-auto"
-    			href={IMDBPeople + `${imdb}`}
+    			href={IMDB_TITLEPeople + `${imdb}`}
     			title={`View ${name} on IMDB.`}>
     			<Link className="align-top mr-2" width="18" height="18" strokeWidth="2" />
     			<span>View on IMDB</span>

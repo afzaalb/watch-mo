@@ -2,7 +2,7 @@ import React from "react";
 import Link from "react-router-dom/Link";
 import classNames from "classnames";
 import Avatar from "../../../assets/images/avatar.png";
-import { ImageURL } from "../../../../constants";
+import { IMAGE_URL } from "../../../../constants";
 import kebabCase from "lodash/kebabCase";
 
 const FullCastMember = ({id,name,profile,character}) => (
@@ -18,7 +18,7 @@ const FullCastMember = ({id,name,profile,character}) => (
                 )}
                 src={
                     profile
-                        ? ImageURL +
+                        ? IMAGE_URL +
                           `/w66_and_h66_face` +
                           profile
                         : Avatar

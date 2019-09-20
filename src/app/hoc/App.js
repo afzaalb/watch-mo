@@ -3,21 +3,20 @@ import Layout from "./Layout";
 import Router from "../routes";
 import "../assets/css/app.css";
 import { TMDB } from "../../utils";
-import { apiKey,apiURL,ImageURL,reqTime } from "../../constants";
+import { API_KEY, API_URL, IMAGE_URL, REQ_TIMEOUT } from "../../constants";
+import { Provider } from "react-redux";
+import { store } from "../redux/store";
 
 const App = ({ location }) => {
-    TMDB(
-        apiKey,
-        apiURL,
-        ImageURL,
-        reqTime
-    );
+  TMDB(API_KEY, API_URL, IMAGE_URL, REQ_TIMEOUT);
 
-    return(
-        <Layout>
-          <Router location={location} />
-        </Layout>
-    );
-}
+  return (
+    <Provider store={store}>
+      <Layout>
+        <Router location={location} />
+      </Layout>
+    </Provider>
+  );
+};
 
 export default App;

@@ -1,7 +1,8 @@
-const path = require('path');
-const webpack = require('webpack');
-const dotenv = require('dotenv');
-const HtmlWebPackPlugin = require('html-webpack-plugin');
+const path = require("path");
+const webpack = require("webpack");
+const dotenv = require("dotenv");
+const CleanWebpackPlugin = require("clean-webpack-plugin");
+const HtmlWebPackPlugin = require("html-webpack-plugin");
 
 const env = dotenv.config().parsed;
 const envKeys = Object.keys(env).reduce((prev, next) => {
@@ -10,64 +11,60 @@ const envKeys = Object.keys(env).reduce((prev, next) => {
 }, {});
 
 module.exports = {
-    entry: './src/app/index.js',
-    output: {
-        path: path.join(__dirname,'dist'),
-        filename: 'bundle.js',
-        publicPath: '/'
-    },
-    devServer: {
-        port: process.env.NODE_PORT,
-        open: true,
-        hot: true
-    },
-    module: {
-        rules: [
-            {
-                test: /\.js$/,
-                include: path.resolve(__dirname, 'src'),
-                loader: 'babel-loader',
-                query: {
-                    presets: ['react', 'es2015'],
-		            plugins: ['transform-class-properties']
-                }
-            },
-            {
-                test: /\.css$/,
-                loader: 'style-loader!css-loader'
-            },
-			{
-		        test: /\.(png|jpg|gif|svg)$/,
-		        use: [
-					{
-					  	loader: 'url-loader',
-					  	options: {
-					    	limit: 10240,
-							name: "[name].[ext]"
-					  	}
-					},
-                    {
-					  	loader: 'file-loader',
-                        options: {
-                            outputPath: 'assets/images/'
-                        }
-					}
-		        ]
-	      	},
-            {
-                test: /\.(eot|woff|ttf|otf)$/,
-                loader: "file-loader",
-                options: {
-                    outputPath: 'assets/fonts/'
-                }
+  entry: "./src/app/index.js",
+  output: {
+    path: path.join(__dirname, "dist"),
+    filename: "bundle.js",
+    publicPath: "/"
+  },
+  devServer: {
+    port: process.env.NODE_PORT,
+    historyApiFallback: true, // Reloads the app on last visited route (important)
+    open: true
+  },
+  module: {
+    rules: [
+      {
+        test: /\.(js|jsx)$/,
+        exclude: /node_modules/,
+        loader: "babel-loader"
+      },
+      {
+        test: /\.css$/,
+        loader: "style-loader!css-loader"
+      },
+      {
+        test: /\.(png|jpg|gif|svg)$/,
+        use: [
+          {
+            loader: "url-loader",
+            options: {
+              limit: 10240,
+              name: "[name].[ext]"
             }
+          },
+          {
+            loader: "file-loader",
+            options: {
+              outputPath: "assets/images/"
+            }
+          }
         ]
-    },
-    plugins: [
-        new CleanWebpackPlugin(['dist']),
-        new HtmlWebPackPlugin({
-            template: './src/index.html'
-        }),
-        new webpack.DefinePlugin(envKeys)
+      },
+      {
+        test: /\.(eot|woff|ttf|otf)$/,
+        loader: "file-loader",
+        options: {
+          outputPath: "assets/fonts/"
+        }
+      }
     ]
+  },
+  plugins: [
+    new CleanWebpackPlugin(["dist"]),
+    new HtmlWebPackPlugin({
+      template: "./src/index.html"
+    }),
+    new webpack.DefinePlugin(envKeys)
+  ]
 };

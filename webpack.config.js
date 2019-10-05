@@ -11,7 +11,7 @@ const envKeys = Object.keys(env).reduce((prev, next) => {
 }, {});
 
 module.exports = {
-  entry: "./src/app/index.js",
+  entry: "./src/main.js",
   output: {
     path: path.join(__dirname, "dist"),
     filename: "bundle.js",

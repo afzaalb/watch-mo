@@ -1,6 +1,6 @@
 import React from "react";
 import pluralize from "pluralize";
-import Torrent from "../../shared/Torrent";
+import Torrent from "../shared/Torrent";
 
 const ExtraDetails = ({
   title,
@@ -11,7 +11,6 @@ const ExtraDetails = ({
   writer,
   director,
   producer,
-  companies,
   imdb
 }) => (
   <div className="col-md-8">
@@ -82,13 +81,6 @@ const ExtraDetails = ({
           <div className="col-sm-6">
             <h6>{pluralize("Producer", producer.length)}</h6>
             <p>{producer}</p>
-          </div>
-        )}
-
-        {companies.length > 0 && (
-          <div className="col-sm-6">
-            <h6>{pluralize("Production Company", companies.length)}</h6>
-            <p>{companies}</p>
           </div>
         )}
       </div>

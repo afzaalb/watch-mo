@@ -40,7 +40,7 @@ a:focus {
 .wrapper {
   --primary: #eaeef9;
   --secondary: #11102c;
-  --light: #cccccc;
+  --light: #e0e0e0;
   height: 100vh;
   overflow-x: hidden;
   background: var(--primary);
@@ -144,14 +144,15 @@ nav a:hover {
 }
 
 .form-control {
-  border: 0;
-  border-radius: 0;
-  border-bottom: 1px solid var(--light);
+  border: 1px solid var(--light);
+  background: var(--primary);
 }
+
 .form-control:focus {
   outline: 0;
   box-shadow: none;
-  border-bottom-color: #11102c;
+  background: var(--primary);
+  border-color: var(--secondary);
 }
 
 .search-bar {
@@ -162,9 +163,7 @@ nav a:hover {
   padding: 12px 60px 12px 12px;
   font-weight: 300;
   letter-spacing: 0.05em;
-  border: 0;
   height: auto;
-  background: var(--primary);
   border-radius: 8px;
 }
 
@@ -182,10 +181,12 @@ nav a:hover {
 
 .search-results a {
   padding: 8px;
+  border: 1px solid var(--primary);
   border-radius: 8px;
 }
 
 .search-results a:hover {
+  border-color: var(--light);
   background: var(--primary);
 }
 
@@ -193,6 +194,46 @@ nav a:hover {
   width: 72px;
   height: 72px;
   border-radius: 8px;
+}
+
+.yt-player {
+  background: var(--primary);
+  cursor: pointer;
+  margin-bottom: 30px;
+  border-radius: 24px;
+  overflow: hidden;
+}
+
+.yt-player img {
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1;
+}
+
+.yt-player:after {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background: linear-gradient(transparent 30%, var(--secondary));
+  z-index: 2;
+}
+
+.yt-player .play-icon {
+  background: rgba(0, 0, 0.75);
+  color: var(--white);
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 3;
+  border-radius: 50%;
+}
+
+.yt-player .embed-responsive-item {
+  z-index: 3;
 }
 /* Fixed till here */
 

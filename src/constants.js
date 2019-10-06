@@ -33,6 +33,15 @@ export const themes = {
     lightColor: "#ccc"
   }
 };
+export const youTubeConfig = {
+  playerVars: {
+    enablejsapi: 1,
+    showinfo: 0,
+    controls: 1,
+    autoplay: 1,
+    rel: 0
+  }
+};
 export const imageSizes = {
   backdrop_sizes: ["w300", "w780", "w1280", "original"],
   logo_sizes: ["w45", "w92", "w154", "w185", "w300", "w500", "original"],

@@ -4,7 +4,7 @@ import Loader from "../../components/shared/Loader";
 import theMovieDb from "themoviedb-javascript-library";
 import FormControl from "react-bootstrap/FormControl";
 import SearchIcon from "react-bytesize-icons/Search";
-import { routes, SEARCH_DELAY } from "../../constants";
+import { SEARCH_DELAY } from "../../constants";
 import SearchResults from "../../components/search/SearchResults";
 
 class SearchHome extends React.Component {
@@ -59,8 +59,6 @@ class SearchHome extends React.Component {
       <>
         <div className="search-bar position-relative">
           <FormControl
-            autoFocus={true}
-            className="form-control"
             placeholder="Search for Movies, TV Shows or People"
             onChange={e => this.handleSearch(e)}
           />

@@ -18,7 +18,6 @@ const SearchItem = ({ person, id, name, image, release, rating }) => {
         <ReactImageFallback
           src={`${IMAGE_URL + "/w92" + image}`}
           fallbackImage={FALLBACK_IMAGE}
-          initialImage={FALLBACK_IMAGE}
           alt={name}
           className="cover-fit"
         />

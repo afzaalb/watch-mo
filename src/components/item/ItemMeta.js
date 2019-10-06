@@ -1,17 +1,11 @@
 import React from "react";
-import classNames from "classnames";
+import uniqBy from "lodash/uniqBy";
 import { Calendar, Tag, Clock, Link } from "react-bytesize-icons";
-import TopCast from "./TopCast";
 import { IMDB_TITLE } from "../../constants";
 import { handleRunTime } from "../../utils";
 
-const ItemMeta = ({ show, title, release, genres, runtime, topCast, imdb }) => (
-  <div
-    className={classNames("white-card rounded w-100 d-block animated", {
-      fadeOutUp: show,
-      fadeInDown: !show
-    })}
-  >
+const ItemMeta = ({ title, release, genres, runtime, topCast, imdb }) => (
+  <div className="white-card rounded w-100 d-block animated">
     <h2 className="bold mb-3">{title}</h2>
     <p title={`${title} released on ${release}.`}>
       <Calendar
@@ -30,7 +24,11 @@ const ItemMeta = ({ show, title, release, genres, runtime, topCast, imdb }) => (
           height="18"
           strokeWidth="2"
         />
-        <span className="genre-list">{genres}</span>
+        <span className="genre-list">
+          {uniqBy(genres, "id").map(g => {
+            return <span key={g.id}>{g.name}</span>;
+          })}
+        </span>
       </p>
     )}
     {runtime > 0 && (
@@ -44,8 +42,6 @@ const ItemMeta = ({ show, title, release, genres, runtime, topCast, imdb }) => (
         <span>Runtime {handleRunTime(runtime)}</span>
       </p>
     )}
-    {topCast.length > 0 && <TopCast top={topCast} />}
-
     <a
       target="_blank"
       href={IMDB_TITLE + `${imdb}`}

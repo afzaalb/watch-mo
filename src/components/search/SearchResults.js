@@ -12,7 +12,6 @@ const SearchResults = ({ tmdbResponse, searchResults }) => {
     return (
       <ul className="search-results row">
         {map(results, r => {
-          console.log(r);
           if (r.media_type === TV) {
             return (
               <SearchItem
@@ -51,10 +50,9 @@ const SearchResults = ({ tmdbResponse, searchResults }) => {
     );
   } else if (tmdbResponse) {
     return <NoDataFound alignCenter spaceTop message={tmdbResponse} />;
-  } else {
-    return <NoDataFound alignCenter spaceTop message="No results found." />;
   }
-  return null;
+
+  return <NoDataFound alignCenter spaceTop message="No results found." />;
 };
 
 export default SearchResults;

@@ -2,8 +2,8 @@ import React from "react";
 import Link from "react-router-dom/Link";
 import classNames from "classnames";
 import kebabCase from "lodash/kebabCase";
-import Avatar from "../../../assets/images/avatar.png";
-import { IMAGE_URL } from "../../../constants";
+import Avatar from "../../assets/images/avatar.png";
+import { IMAGE_URL } from "../../constants";
 
 const FullCastMember = ({ id, name, profile, character }) => (
   <li className="col-md-4 col-sm-6 media mb-4">

@@ -1,11 +1,20 @@
 import React from "react";
 import uniqBy from "lodash/uniqBy";
 import { Calendar, Tag, Clock, Link } from "react-bytesize-icons";
+import Rating from "../../components/shared/Rating";
 import { IMDB_TITLE } from "../../constants";
 import { handleRunTime } from "../../utils";
 
-const ItemMeta = ({ title, release, genres, runtime, topCast, imdb }) => (
-  <div className="white-card rounded w-100 d-block animated">
+const ItemMeta = ({
+  overview,
+  rating,
+  title,
+  release,
+  genres,
+  runtime,
+  imdb
+}) => (
+  <>
     <h2 className="bold mb-3">{title}</h2>
     <p title={`${title} released on ${release}.`}>
       <Calendar
@@ -50,7 +59,10 @@ const ItemMeta = ({ title, release, genres, runtime, topCast, imdb }) => (
       <Link className="align-top mr-2" width="18" height="18" strokeWidth="2" />
       <span>View on IMDB</span>
     </a>
-  </div>
+
+    {rating && rating > 0 ? <Rating rated={rating} heading /> : null}
+    <p className="summary">{overview}</p>
+  </>
 );
 
 export default ItemMeta;

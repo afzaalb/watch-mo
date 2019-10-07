@@ -86,7 +86,7 @@ strong,
 }
 
 .spinner-border {
-  color: rgb(254, 0, 64);
+  color: var(--secondary);
 }
 
 .container {
@@ -225,9 +225,8 @@ nav a:hover {
 .yt-player .play-icon {
   background: rgba(0, 0, 0.75);
   color: var(--white);
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+  top: 24px;
+  left: 24px;
   z-index: 3;
   border-radius: 50%;
 }

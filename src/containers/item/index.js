@@ -5,7 +5,6 @@ import isEmpty from "lodash/isEmpty";
 import NoDataFound from "../../components/shared/NoDataFound";
 import Loader from "../../components/shared/Loader";
 import Player from "../../components/item/Player";
-import ItemMeta from "../../components/item/ItemMeta";
 import ItemDetails from "../../components/item/ItemDetails";
 import Recommendations from "../../components/item/Recommendations";
 
@@ -104,17 +103,14 @@ class ItemHome extends Component {
             handlePlayerState={this.handlePlayerState}
           />
         )}
-        <ItemMeta
+        <ItemDetails
           title={title}
           release={release_date}
           genres={genres}
           runtime={runtime}
-          imdb={imdb_id}
           overview={overview}
           rating={vote_average}
-        />
-        <ItemDetails
-          title={title}
+          poster={poster_path}
           status={status}
           link={homepage}
           budget={budget}

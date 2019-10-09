@@ -24,22 +24,17 @@ class Navigation extends React.Component {
             </NavLink>
           </li>
           <li>
-            <NavLink to="/search" title="Find Here">
+            <NavLink to="/movies" title="Find Here">
               Movies
             </NavLink>
           </li>
           <li>
-            <NavLink to="/search" title="Find Here">
+            <NavLink to="/tv-shows" title="Find Here">
               TV Shows
             </NavLink>
           </li>
           <li>
-            <NavLink to="/search" title="Find Here">
-              People
-            </NavLink>
-          </li>
-          <li>
-            <NavLink to="/search" title="Find Here">
+            <NavLink to="/settings" title="Find Here">
               Settings
             </NavLink>
           </li>

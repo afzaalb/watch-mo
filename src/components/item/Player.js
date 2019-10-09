@@ -9,7 +9,7 @@ const Player = ({ videoId, poster, title, playing, handlePlayerState }) => {
   return (
     <div
       onClick={handlePlayerState}
-      className="yt-player embed-responsive embed-responsive-16by9"
+      className="yt-player over-shadow embed-responsive embed-responsive-16by9"
     >
       {playing ? (
         <YTPlayer
@@ -26,7 +26,7 @@ const Player = ({ videoId, poster, title, playing, handlePlayerState }) => {
             alt={title}
             className="img-fluid position-absolute w-100"
           />
-          <div className="play-icon position-absolute p-4">
+          <div className="play-icon position-absolute p-4 m-4">
             <Play width="36" height="36" />
           </div>
         </>

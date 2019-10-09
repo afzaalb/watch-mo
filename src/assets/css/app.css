@@ -48,6 +48,9 @@ a:focus {
   color: var(--secondary);
 }
 
+/* Dark Mode for iOS/macOS */
+/* @media (prefers-color-scheme: dark) {} */
+
 .wrapper > .container {
   min-height: 100%;
 }
@@ -152,7 +155,8 @@ nav a:hover {
   outline: 0;
   box-shadow: none;
   background: var(--primary);
-  border-color: var(--secondary);
+  border-color: var(--light);
+  box-shadow: 0 1px 1px 1px var(--light);
 }
 
 .search-bar {
@@ -197,11 +201,8 @@ nav a:hover {
 }
 
 .yt-player {
-  background: var(--primary);
   cursor: pointer;
   margin-bottom: 30px;
-  border-radius: 24px;
-  overflow: hidden;
 }
 
 .yt-player img {
@@ -211,7 +212,13 @@ nav a:hover {
   z-index: 1;
 }
 
-.yt-player:after {
+.over-shadow {
+  background: var(--primary);
+  overflow: hidden;
+  border-radius: 24px;
+}
+
+.over-shadow:after {
   content: "";
   position: absolute;
   top: 0;
@@ -225,8 +232,8 @@ nav a:hover {
 .yt-player .play-icon {
   background: rgba(0, 0, 0.75);
   color: var(--white);
-  top: 24px;
-  left: 24px;
+  top: 0;
+  left: 0;
   z-index: 3;
   border-radius: 50%;
 }
@@ -234,6 +241,7 @@ nav a:hover {
 .yt-player .embed-responsive-item {
   z-index: 3;
 }
+
 /* Fixed till here */
 
 /* .btn {

@@ -38,7 +38,8 @@ export const imageSizes = {
   still_sizes: ["w92", "w185", "w300", "original"]
 };
 export const videoTypes = {
-  TRAILER: "Trailer"
+  TRAILER: "Trailer",
+  TEASER: "Teaser"
 };
 export const crewTypes = {
   WRITER: "Writer",

@@ -1,9 +1,9 @@
 import React from "react";
 import uniqBy from "lodash/uniqBy";
 import ReactImageFallback from "react-image-fallback";
-import { Calendar, Tag, Clock, Link } from "react-bytesize-icons";
+import { Calendar, Tag, Clock } from "react-bytesize-icons";
 import Rating from "../../components/shared/Rating";
-import { IMDB_TITLE, IMAGE_URL, FALLBACK_IMAGE } from "../../constants";
+import { IMAGE_URL, FALLBACK_IMAGE } from "../../constants";
 import { handleRunTime } from "../../utils";
 
 const ItemMeta = ({
@@ -13,73 +13,67 @@ const ItemMeta = ({
   release,
   genres,
   runtime,
-  imdb,
   poster
 }) => (
-  <div className="item-meta d-flex">
-    <div className="meta">
-      <h2 className="bold mb-3">{title}</h2>
-      <p title={`${title} released on ${release}.`}>
-        <Calendar
-          className="align-top mr-2"
-          width="18"
-          height="18"
-          strokeWidth="2"
-        />
-        <span>{release}</span>
-      </p>
-      {genres.length > 0 && (
-        <p>
-          <Tag
-            className="align-top mr-2"
-            width="18"
-            height="18"
-            strokeWidth="2"
-          />
-          <span className="genre-list">
-            {uniqBy(genres, "id").map(g => {
-              return <span key={g.id}>{g.name}</span>;
-            })}
-          </span>
-        </p>
-      )}
-      {runtime > 0 && (
-        <p title={`Total Playing Time ${handleRunTime(runtime)}.`}>
-          <Clock
-            className="align-top mr-2"
-            width="18"
-            height="18"
-            strokeWidth="2"
-          />
-          <span>Runtime {handleRunTime(runtime)}</span>
-        </p>
-      )}
-
-      {rating && rating > 0 ? <Rating rated={rating} heading /> : null}
-      <p className="summary">{overview}</p>
-      <a
-        target="_blank"
-        href={IMDB_TITLE + `${imdb}`}
-        title={`View ${title} on IMDB.`}
-      >
-        <Link
-          className="align-top mr-2"
-          width="18"
-          height="18"
-          strokeWidth="2"
-        />
-        <span>View on IMDB</span>
-      </a>
-    </div>
+  <section className="item-meta d-flex">
     <div className="poster-shot">
       <ReactImageFallback
-        src={`${IMAGE_URL + "/w780" + poster}`}
+        src={`${IMAGE_URL + "/w342" + poster}`}
         fallbackImage={FALLBACK_IMAGE}
         alt={title}
-        className="img-fluid w-100"
+        className="cover-fit w-100 h-100"
       />
     </div>
-  </div>
+    <div className="meta">
+      <h2 className="bold">
+        {title}
+        <small> ({release.slice(0, 4)})</small>
+      </h2>
+      <ul className="d-flex flex-wrap">
+        {rating && rating > 0 ? (
+          <li className="pill px-3 py-1 mr-2 mb-2 d-flex align-items-center">
+            <Rating rated={rating} />
+          </li>
+        ) : null}
+        {runtime > 0 && (
+          <li className="pill px-3 py-1 mr-2 mb-2 d-flex align-items-center">
+            <Clock
+              className="align-top mr-2"
+              width="14"
+              height="14"
+              strokeWidth="2"
+            />
+            <span>{handleRunTime(runtime)}</span>
+          </li>
+        )}
+        {genres.length > 0 && (
+          <li className="pill px-3 py-1 mr-2 mb-2 d-flex align-items-center">
+            <Tag
+              className="align-top mr-2"
+              width="14"
+              height="14"
+              strokeWidth="2"
+            />
+            <span className="genre-list">
+              {uniqBy(genres, "id").map(g => {
+                return <span key={g.id}>{g.name}</span>;
+              })}
+            </span>
+          </li>
+        )}
+        <li className="pill px-3 py-1 mr-2 mb-2 d-flex align-items-center">
+          <Calendar
+            className="align-top mr-2"
+            width="14"
+            height="14"
+            strokeWidth="2"
+          />
+          <span>{release}</span>
+        </li>
+      </ul>
+      <p className="summary">{overview}</p>
+    </div>
+  </section>
 );
 
 export default ItemMeta;

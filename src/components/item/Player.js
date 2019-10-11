@@ -7,7 +7,7 @@ import { youTubeConfig } from "../../containers/item/constants";
 
 const Player = ({ videoId, poster, title, playing, handlePlayerState }) => {
   return (
-    <div
+    <section
       onClick={handlePlayerState}
       className="yt-player over-shadow embed-responsive embed-responsive-16by9"
     >
@@ -31,7 +31,7 @@ const Player = ({ videoId, poster, title, playing, handlePlayerState }) => {
           </div>
         </>
       )}
-    </div>
+    </section>
   );
 };
 

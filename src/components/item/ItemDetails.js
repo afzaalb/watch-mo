@@ -1,6 +1,8 @@
 import React from "react";
+import { Link } from "react-bytesize-icons";
 import ItemMeta from "./ItemMeta";
 import CastWithCrew from "./CastWithCrew";
+import { IMDB_TITLE } from "../../constants";
 
 const ItemDetails = ({
   title,
@@ -26,11 +28,26 @@ const ItemDetails = ({
       release={release}
       genres={genres}
       runtime={runtime}
-      imdb={imdb}
       overview={overview}
       rating={rating}
       poster={poster}
     />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <a
+      target="_blank"
+      href={IMDB_TITLE + `${imdb}`}
+      title={`View ${title} on IMDB.`}
+    >
+      <Link className="align-top mr-2" width="18" height="18" strokeWidth="2" />
+      <span>View on IMDB</span>
+    </a>
     {status}
     <br />
     {link}

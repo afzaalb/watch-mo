@@ -14,7 +14,10 @@ const SearchItem = ({ person, id, name, image, release, rating }) => {
 
   return (
     <li className="col-sm-12 col-md-6">
-      <Link to={`${link}${id}/${kebabCase(name)}`} className="d-flex">
+      <Link
+        to={`${link}${id}/${kebabCase(name)}`}
+        className="d-flex rounded-card"
+      >
         <ReactImageFallback
           src={`${IMAGE_URL + "/w92" + image}`}
           fallbackImage={FALLBACK_IMAGE}

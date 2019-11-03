@@ -4,13 +4,13 @@ import { videoTypes } from "../../constants";
 
 export const getItemTrailer = videos => {
   let videoKey = videos[0].key;
-  const teaser = find(videos, v => v.type === videoTypes.TEASER).key;
-  const trailer = find(videos, v => v.type === videoTypes.TRAILER).key;
+  const teaser = find(videos, v => v.type === videoTypes.TEASER);
+  const trailer = find(videos, v => v.type === videoTypes.TRAILER);
 
   if (trailer) {
-    videoKey = trailer;
+    videoKey = trailer.key;
   } else if (teaser) {
-    videoKey = teaser;
+    videoKey = teaser.key;
   }
 
   return videoKey;

@@ -183,18 +183,18 @@ nav a:hover {
   margin-bottom: 30px;
 }
 
-.search-results a {
+.rounded-card {
   padding: 8px;
   border: 1px solid var(--primary);
   border-radius: 8px;
 }
 
-.search-results a:hover {
+.rounded-card:hover {
   border-color: var(--light);
   background: var(--primary);
 }
 
-.search-results li img {
+.rounded-card img {
   width: 72px;
   height: 72px;
   border-radius: 8px;
@@ -247,6 +247,10 @@ section h2 {
   line-height: 1.4;
 }
 
+section h6 {
+  font-size: 14px;
+}
+
 section p {
   line-height: 1.8;
 }
@@ -276,7 +280,30 @@ section p {
   border: 1px solid var(--light);
 }
 
-.genre-list span:not(:last-child):after {
-  content: ", ";
+.genre-list span:not(:last-child)::after {
+  content: attr(data-separator);
+}
+
+.imdb-status {
+  border-top: 1px solid var(--light);
+  border-bottom: 1px solid var(--light);
+  margin-bottom: 30px;
+}
+
+.imdb-status img {
+  max-width: 40px;
+}
+
+.item-detail-meta {
+  border-left: 1px solid var(--light);
+}
+
+.recommendations {
+  margin-top: 30px;
+}
+
+.recommendations img {
+  border-radius: 12px;
+  /* overflow: hidden; */
 }
 /* Fixed till here */

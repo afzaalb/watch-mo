@@ -31,12 +31,18 @@ const ItemMeta = ({
       </h2>
       <ul className="d-flex flex-wrap">
         {rating && rating > 0 ? (
-          <li className="pill px-3 py-1 mr-2 mb-2 d-flex align-items-center">
+          <li
+            title="Rating"
+            className="pill px-3 py-1 mr-2 mb-2 d-flex align-items-center"
+          >
             <Rating rated={rating} />
           </li>
         ) : null}
         {runtime > 0 && (
-          <li className="pill px-3 py-1 mr-2 mb-2 d-flex align-items-center">
+          <li
+            title="Runtime"
+            className="pill px-3 py-1 mr-2 mb-2 d-flex align-items-center"
+          >
             <Clock
               className="align-top mr-2"
               width="14"
@@ -47,7 +53,10 @@ const ItemMeta = ({
           </li>
         )}
         {genres.length > 0 && (
-          <li className="pill px-3 py-1 mr-2 mb-2 d-flex align-items-center">
+          <li
+            title="Genres"
+            className="pill px-3 py-1 mr-2 mb-2 d-flex align-items-center"
+          >
             <Tag
               className="align-top mr-2"
               width="14"
@@ -56,12 +65,19 @@ const ItemMeta = ({
             />
             <span className="genre-list">
               {uniqBy(genres, "id").map(g => {
-                return <span key={g.id}>{g.name}</span>;
+                return (
+                  <span data-separator=", " key={g.id}>
+                    {g.name}
+                  </span>
+                );
               })}
             </span>
           </li>
         )}
-        <li className="pill px-3 py-1 mr-2 mb-2 d-flex align-items-center">
+        <li
+          title="Released"
+          className="pill px-3 py-1 mr-2 mb-2 d-flex align-items-center"
+        >
           <Calendar
             className="align-top mr-2"
             width="14"

@@ -1,9 +1,14 @@
 {
-  "name": "WatchMo",
+  "name": "watch-mo",
   "version": "2.0.0",
-  "author": "Muhammad Afzaal Khalid",
+  "author": {
+    "name": "Muhammad Afzaal Khalid",
+    "email": "afzaalopera@gmail.com",
+    "url": "https://github.com/afzaalb"
+  },
   "license": "ISC",
   "description": "Movies,TV Series & People History. All in one place.",
+  "homepage": "https://github.com/afzaalb/watch-mo",
   "private": true,
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",

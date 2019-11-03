@@ -1,7 +1,7 @@
 import React from "react";
-import { Link } from "react-bytesize-icons";
 import ItemMeta from "./ItemMeta";
-import CastWithCrew from "./CastWithCrew";
+import ItemSidebar from "./ItemSidebar";
+import CastMembers from "./CastMembers";
 import { IMDB_TITLE } from "../../constants";
 
 const ItemDetails = ({
@@ -32,31 +32,32 @@ const ItemDetails = ({
       rating={rating}
       poster={poster}
     />
-    <br />
-    <br />
-    <br />
-    <br />
-    <br />
-    <br />
-    <br />
-    <br />
-    <a
-      target="_blank"
-      href={IMDB_TITLE + `${imdb}`}
-      title={`View ${title} on IMDB.`}
-    >
-      <Link className="align-top mr-2" width="18" height="18" strokeWidth="2" />
-      <span>View on IMDB</span>
-    </a>
-    {status}
-    <br />
-    {link}
-    <br />
-    {budget}
-    <br />
-    {revenue}
-    <br />
-    <CastWithCrew cast={cast} crew={crew} />
+    <ul className="d-flex flex-wrap imdb-status py-2 align-items-center justify-content-between">
+      <li className="bold">{status}</li>
+      <li>
+        <small className="mr-2">View on</small>
+        <a target="_blank" href={IMDB_TITLE + imdb} title="View on IMDb">
+          <img
+            src="../../src/assets/images/imdb.png"
+            className="img-fluid w-100"
+            alt="View on IMDb"
+          />
+        </a>
+      </li>
+    </ul>
+
+    <section className="row item-details">
+      <CastMembers cast={cast} />
+      <ItemSidebar
+        title={title}
+        link={link}
+        budget={budget}
+        revenue={revenue}
+        crew={crew}
+        imdb={imdb}
+        productionCompanies={productionCompanies}
+      />
+    </section>
   </>
 );
 

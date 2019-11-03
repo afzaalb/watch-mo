@@ -23,6 +23,14 @@ class ItemHome extends Component {
     this.getItemById(id);
   }
 
+  componentDidUpdate(prevProps, prevState) {
+    const { id } = this.props.match.params;
+    if (id !== prevProps.match.params.id) {
+      // window && window.scrollTo(0, 0); Scroll Issue - Needs fix
+      this.getItemById(id);
+    }
+  }
+
   getItemById = id => {
     theMovieDb.movies.getById(
       {
@@ -122,7 +130,7 @@ class ItemHome extends Component {
           productionCompanies={production_companies}
         />
         <Recommendations
-          recommendations={recommendations.results.slice(0, 4)}
+          recommendations={recommendations.results.slice(0, 3)}
         />
       </>
     ) : tmdbResponse ? (

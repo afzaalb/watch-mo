@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import map from "lodash/map";
 import deburr from "lodash/deburr";
 import kebabCase from "lodash/kebabCase";
@@ -7,16 +7,14 @@ import { IMAGE_URL, FALLBACK_IMAGE } from "../../constants";
 import { Link } from "react-router-dom";
 
 const CastWithCrew = ({ cast }) => {
-  console.log("TCL: CastWithCrew -> cast", cast);
-
-  // Used Hooks for cast togle button and number of cast members to show
-  const [showAllCastBtn, toggleFullCastBtn] = useState(false);
   // Initially Showing 6 members only
   const [castToShow, toggleFullCastShow] = useState(cast.slice(0, 6));
+  // Used Hooks for cast togle button and number of cast members to show
+  const [showAllCastBtn, toggleFullCastBtn] = useState(false);
 
   const viewFullCastHandler = () => {
     toggleFullCastBtn(true); // Hide View all cast button
-    toggleFullCastShow([...cast]);
+    toggleFullCastShow(cast);
   };
 
   return (

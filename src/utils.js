@@ -1,6 +1,7 @@
 import theMovieDb from "themoviedb-javascript-library";
 import startCase from "lodash/startCase";
 import map from "lodash/map";
+import { scroller } from "react-scroll";
 
 // Function to initialize TMDB API
 export const TMDB = (apiKey, baseURL, imagesURL, requestTimeout) => {
@@ -42,4 +43,13 @@ export const setAppTheme = theme => {
   // forEach(theme, function(v, p) {
   //   themeRoot.style.setProperty("--p", "v");
   // });
+};
+
+export const scrollToElement = elementName => {
+  scroller.scrollTo(`${elementName}`, {
+    duration: 300,
+    delay: 0,
+    smooth: "easeInOutQuart",
+    isDynamic: true
+  });
 };

@@ -10,7 +10,7 @@ ul {
 html,
 body {
   height: 100%;
-  overflow: hidden;
+  /* overflow: hidden; */
 }
 
 a {
@@ -41,7 +41,7 @@ a:focus {
   --primary: #eaeef9;
   --secondary: #11102c;
   --light: #e0e0e0;
-  height: 100vh;
+  min-height: 100vh;
   overflow-x: hidden;
   background: var(--primary);
   /* My Tea Pink - #FFE0D9 */
@@ -110,6 +110,7 @@ strong,
 .navigation {
   position: relative;
   width: 240px;
+  min-height: 100vh;
   height: 100%;
   font-size: 18px;
   font-weight: 600;

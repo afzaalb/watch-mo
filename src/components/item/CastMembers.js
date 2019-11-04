@@ -42,7 +42,7 @@ const CastWithCrew = ({ cast }) => {
           </li>
         ))}
       </ul>
-      {!showAllCastBtn && (
+      {!showAllCastBtn && cast.length > 6 && (
         <button
           className="btn btn-block btn-light active"
           onClick={() => viewFullCastHandler()}

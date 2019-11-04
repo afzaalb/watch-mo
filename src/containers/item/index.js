@@ -129,9 +129,11 @@ class ItemHome extends Component {
           crew={crew}
           productionCompanies={production_companies}
         />
-        <Recommendations
-          recommendations={recommendations.results.slice(0, 3)}
-        />
+        {recommendations.results.length > 0 && (
+          <Recommendations
+            recommendations={recommendations.results.slice(0, 3)}
+          />
+        )}
       </>
     ) : tmdbResponse ? (
       <NoDataFound alignCenter spaceTop message={tmdbResponse} />

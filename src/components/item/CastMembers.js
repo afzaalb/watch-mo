@@ -22,9 +22,9 @@ const CastWithCrew = ({ cast }) => {
       <h6>Cast</h6>
       <ul className="row">
         {map(castToShow, ({ name, id, profile_path, character }) => (
-          <li key={id} className="col-sm-12 col-md-6 mb-3">
+          <li key={name + character + id} className="col-sm-12 col-md-6 mb-3">
             <Link
-              to={`/people/${id}/${kebabCase(name)}`}
+              to={`/person/${id}/${kebabCase(name)}`}
               className="d-flex rounded-card"
             >
               <ReactImageFallback
@@ -34,9 +34,13 @@ const CastWithCrew = ({ cast }) => {
                 className="cover-fit"
               />
               <span className="flex-1-1-a py-2 px-3">
-                <span>
-                  {deburr(name)} as <i>{character}</i>
-                </span>
+                {character ? (
+                  <span>
+                    {deburr(name)} as <i>{character}</i>
+                  </span>
+                ) : (
+                  deburr(name)
+                )}
               </span>
             </Link>
           </li>

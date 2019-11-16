@@ -26,7 +26,6 @@ class ItemHome extends Component {
   componentDidUpdate(prevProps, prevState) {
     const { id } = this.props.match.params;
     if (id !== prevProps.match.params.id) {
-      // window && window.scrollTo(0, 0); Scroll Issue - Needs fix
       this.getItemById(id);
     }
   }
@@ -59,7 +58,8 @@ class ItemHome extends Component {
       });
     } else {
       this.setState({
-        itemDetails: ""
+        loading: false,
+        itemDetails: {}
       });
     }
   };

@@ -9,7 +9,7 @@ import Rating from "../shared/Rating";
 const SearchItem = ({ person, id, name, image, release, rating }) => {
   let link = "";
   if (person) {
-    link = "people/";
+    link = "person/";
   }
 
   return (

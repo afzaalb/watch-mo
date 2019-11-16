@@ -52,7 +52,7 @@ const ItemSidebar = ({
         <ul className="mb-3">
           {map(getCrewMembersByType(crew, crewTypes.WRITER), ({ name, id }) => (
             <li key={id}>
-              <Link to={`/people/${id}/${kebabCase(name)}`}>{name}</Link>
+              <Link to={`/person/${id}/${kebabCase(name)}`}>{name}</Link>
             </li>
           ))}
         </ul>
@@ -72,7 +72,7 @@ const ItemSidebar = ({
             getCrewMembersByType(crew, crewTypes.DIRECTOR),
             ({ name, id }) => (
               <li key={id}>
-                <Link to={`/people/${id}/${kebabCase(name)}`}>{name}</Link>
+                <Link to={`/person/${id}/${kebabCase(name)}`}>{name}</Link>
               </li>
             )
           )}
@@ -93,7 +93,7 @@ const ItemSidebar = ({
             getCrewMembersByType(crew, crewTypes.PRODUCER),
             ({ name, id }) => (
               <li key={id}>
-                <Link to={`/people/${id}/${kebabCase(name)}`}>{name}</Link>
+                <Link to={`/person/${id}/${kebabCase(name)}`}>{name}</Link>
               </li>
             )
           )}

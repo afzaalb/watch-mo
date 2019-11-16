@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import theMovieDb from "themoviedb-javascript-library";
-import Slot from "../../components/item/Slot";
+import isEmpty from "lodash/isEmpty";
+import ItemsList from "../../components/home/ItemsList";
 import Loader from "../../components/shared/Loader";
 import NoDataFound from "../../components/shared/NoDataFound";
 
@@ -10,7 +11,7 @@ class Home extends Component {
     this.state = {
       upcoming: {},
       nowPlaying: {},
-      loader: false
+      loading: true
     };
   }
 
@@ -31,7 +32,7 @@ class Home extends Component {
   upcomingCB = data => {
     const fetchedData = JSON.parse(data);
     this.setState({
-      loader: false,
+      loading: false,
       upcoming: fetchedData
     });
   };
@@ -39,7 +40,7 @@ class Home extends Component {
   playingCB = data => {
     const fetchedData = JSON.parse(data);
     this.setState({
-      loader: false,
+      loading: false,
       nowPlaying: fetchedData
     });
   };
@@ -47,84 +48,38 @@ class Home extends Component {
   errorCB = data => {
     if (data) {
       this.setState({
-        loader: false,
+        loading: false,
         tmdbResponse: JSON.parse(data).status_message
       });
     } else {
       this.setState({
-        upcoming: "",
-        nowPlaying: ""
+        loading: false,
+        upcoming: {},
+        nowPlaying: {}
       });
     }
   };
 
   render() {
-    const { upcoming, nowPlaying, tmdbResponse } = this.state;
-
-    let upcomingResults = <Loader />,
-      nowPlayingResults = <Loader />;
-
-    if (upcoming.total_results > 0) {
-      upcomingResults = upcoming.results.map((m, index) => {
-        return (
-          <Slot
-            category="Upcoming movies"
-            key={m.id}
-            id={m.id}
-            name={m.title}
-            cover={m.backdrop_path}
-            release={m.release_date}
-          />
-        );
-      });
-    } else if (tmdbResponse) {
-      upcomingResults = (
-        <NoDataFound noHorzMargin alignCenter spaceTop message={tmdbResponse} />
-      );
-    } else if (upcoming == "") {
-      upcomingResults = (
-        <NoDataFound
-          noHorzMargin
-          alignCenter
-          spaceTop
-          message="Perhaps a communications breakdown!"
-        />
-      );
-    }
-
-    if (nowPlaying.total_results > 0) {
-      nowPlayingResults = nowPlaying.results.map((m, index) => {
-        return (
-          <Slot
-            category="Now playing"
-            key={m.id}
-            id={m.id}
-            name={m.title}
-            overview={m.overview}
-            cover={m.backdrop_path}
-            rating={m.vote_average}
-          />
-        );
-      });
-    } else if (tmdbResponse) {
-      nowPlayingResults = (
-        <NoDataFound noHorzMargin alignCenter spaceTop message={tmdbResponse} />
-      );
-    } else if (nowPlaying == "") {
-      nowPlayingResults = (
-        <NoDataFound
-          noHorzMargin
-          alignCenter
-          spaceTop
-          message="Perhaps a communications breakdown!"
-        />
-      );
-    }
+    const { upcoming, nowPlaying, tmdbResponse, loading } = this.state;
 
     return (
-      <section>
-        <h4>Home</h4>
-      </section>
+      <>
+        {!isEmpty(nowPlaying) ? (
+          <ItemsList item={nowPlaying} name="Now playing" />
+        ) : tmdbResponse ? (
+          <NoDataFound alignCenter spaceTop message={tmdbResponse} />
+        ) : loading ? (
+          <Loader spaceTop />
+        ) : null}
+        {!isEmpty(upcoming) ? (
+          <ItemsList item={upcoming} name="Upcoming movies" />
+        ) : tmdbResponse ? (
+          <NoDataFound alignCenter spaceTop message={tmdbResponse} />
+        ) : loading ? (
+          <Loader spaceTop />
+        ) : null}
+      </>
     );
   }
 }

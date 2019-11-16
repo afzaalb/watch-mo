@@ -318,4 +318,11 @@ section p {
   border-radius: 24px;
   box-shadow: 0 1px 1px 1px var(--light);
 }
+
+.media-tag {
+  background: var(--secondary);
+  line-height: 1;
+  color: #fff;
+  padding: 0 3px 2px;
+}
 /* Fixed till here */

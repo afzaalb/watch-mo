@@ -1,41 +1,32 @@
 import React from "react";
 import Link from "react-router-dom/Link";
-import kebabCase from "lodash/kebabCase";
 import deburr from "lodash/deburr";
 import ReactImageFallback from "react-image-fallback";
+import { showMediaTypeTag } from "../../containers/search/utils";
 import { IMAGE_URL, FALLBACK_IMAGE } from "../../constants";
 import Rating from "../shared/Rating";
 
-const SearchItem = ({ person, id, name, image, release, rating }) => {
-  let link = "";
-  if (person) {
-    link = "person/";
-  }
-
-  return (
-    <li className="col-sm-12 col-md-6">
-      <Link
-        to={`${link}${id}/${kebabCase(name)}`}
-        className="d-flex rounded-card"
-      >
-        <ReactImageFallback
-          src={`${IMAGE_URL + "/w92" + image}`}
-          fallbackImage={FALLBACK_IMAGE}
-          alt={name}
-          className="cover-fit"
-        />
-        <span className="flex-1-1-a py-2 px-3">
-          <span className="d-flex justify-content-between align-items-center mb-2">
-            {release && (
-              <span className="genre m-0">{release.substr(0, 4)}</span>
-            )}
-            {rating && rating > 0 ? <Rating rated={rating} /> : null}
-          </span>
-          <span>{deburr(name)}</span>
+const SearchItem = ({ route, name, image, release, rating, type }) => (
+  <li className="col-sm-12 col-md-6">
+    <Link to={route} className="d-flex rounded-card">
+      <ReactImageFallback
+        src={`${IMAGE_URL + "/w92" + image}`}
+        fallbackImage={FALLBACK_IMAGE}
+        alt={name}
+        className="cover-fit"
+      />
+      <span className="flex-1-1-a py-2 px-3">
+        <span className="d-flex justify-content-between align-items-center mb-2">
+          <div className="mr-2 media-tag rounded" title={type}>
+            <small className="bold">{showMediaTypeTag(type)}</small>
+          </div>
+          {release && <span className="genre m-0">{release.substr(0, 4)}</span>}
+          {rating && rating > 0 ? <Rating rated={rating} /> : null}
         </span>
-      </Link>
-    </li>
-  );
-};
+        <span>{deburr(name)}</span>
+      </span>
+    </Link>
+  </li>
+);
 
 export default SearchItem;

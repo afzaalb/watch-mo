@@ -1,6 +1,7 @@
-import React, { Fragment } from "react";
+import React from "react";
 import { Calendar, User, Lightning, Link } from "react-bytesize-icons";
 import { IMDB_NAME_URL } from "../../constants";
+import imdbLogo from "../../assets/images/imdb.png";
 
 const PersonInfo = ({
   name,
@@ -82,7 +83,7 @@ const PersonInfo = ({
             <small className="mr-2">View on</small>
             <a target="_blank" href={IMDB_NAME_URL + imdb} title="View on IMDb">
               <img
-                src="../../src/assets/images/imdb.png"
+                src={imdbLogo}
                 className="img-fluid w-100"
                 alt="View on IMDb"
               />

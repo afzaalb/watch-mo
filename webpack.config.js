@@ -34,21 +34,22 @@ module.exports = {
         loader: "style-loader!css-loader"
       },
       {
-        test: /\.(png|jpg|gif|svg)$/,
+        test: /\.(png|jpg)$/,
         use: [
-          {
-            loader: "url-loader",
-            options: {
-              limit: 10240,
-              name: "[name].[ext]"
-            }
-          },
           {
             loader: "file-loader",
             options: {
               outputPath: "assets/images/"
             }
           }
+          // ,
+          // {
+          //   loader: "url-loader",
+          //   options: {
+          //     limit: 4096,
+          //     name: "[name].[ext]"
+          //   }
+          // }
         ]
       },
       {

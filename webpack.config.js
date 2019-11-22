@@ -65,7 +65,7 @@ module.exports = {
     new CleanWebpackPlugin(["dist"]),
     new HtmlWebPackPlugin({
       template: "./src/index.html"
-    }),
-    new webpack.DefinePlugin(envKeys)
+    })
+    // new webpack.DefinePlugin(envKeys)
   ]
 };

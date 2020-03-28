@@ -1,0 +1,2 @@
+export const ADD_NOW_PLAYING = "ADD_CURR_PLAYING";
+export const ADD_UPCOMING = "ADD_CURR_PLAYING";

@@ -17,18 +17,13 @@ export const mediaTypes = {
   MOVIE: "movie",
   PERSON: "person"
 };
+
 export const themes = {
-  LITE: {
-    primaryColor: "#ecf0f6",
-    secondaryColor: "#11102c",
-    lightColor: "#ccc"
-  },
-  DARK: {
-    primaryColor: "#222",
-    secondaryColor: "#fff",
-    lightColor: "#ccc"
-  }
+  LITE: "wm-lite",
+  DARK: "wm-dark",
+  GIRLY: "wm-girly"
 };
+
 // Image Sizes are just for reference but are not being used anywhere
 export const imageSizes = {
   backdrop_sizes: ["w300", "w780", "w1280", "original"],
@@ -37,10 +32,12 @@ export const imageSizes = {
   profile_sizes: ["w45", "w185", "h632", "original"],
   still_sizes: ["w92", "w185", "w300", "original"]
 };
+
 export const videoTypes = {
   TRAILER: "Trailer",
   TEASER: "Teaser"
 };
+
 export const crewTypes = {
   WRITER: "Writer",
   DIRECTOR: "Director",

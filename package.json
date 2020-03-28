@@ -40,6 +40,8 @@
     "react-youtube": "^7.6.0",
     "reactstrap": "^8.0.1",
     "redux": "^4.0.1",
+    "redux-devtools-extension": "^2.13.8",
+    "redux-thunk": "^2.3.0",
     "themoviedb-javascript-library": "^3.0.3"
   },
   "devDependencies": {

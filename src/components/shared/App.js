@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Component } from "react";
 import { Provider } from "react-redux";
 import Layout from "../layout";
 import Router from "../../routes";
@@ -10,20 +10,29 @@ import {
   REQ_TIMEOUT,
   themes
 } from "../../constants";
-import { store } from "../../redux/store";
+import initializeStore from "../../redux/store";
 import "../../assets/css/app.css";
 
-const App = () => {
-  TMDB(API_KEY, API_URL, IMAGE_URL, REQ_TIMEOUT);
-  setAppTheme(themes.DARK);
+class App extends Component {
+  constructor(props) {
+    super(props);
 
-  return (
-    <Provider store={store}>
-      <Layout>
-        <Router />
-      </Layout>
-    </Provider>
-  );
-};
+    // Initialize TMDB api & set default theme
+    TMDB(API_KEY, API_URL, IMAGE_URL, REQ_TIMEOUT);
+    setAppTheme(themes.LITE);
+  }
+
+  render() {
+    const store = initializeStore();
+
+    return (
+      <Provider store={store}>
+        <Layout>
+          <Router />
+        </Layout>
+      </Provider>
+    );
+  }
+}
 
 export default App;

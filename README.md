@@ -22,7 +22,7 @@ Install node modules.
 npm install
 ```
 
-Set/Modify your api configuration parameters in `src/constants`. You should change the `apiKey` to your own. You may ignore other settings.
+Set the api key you got from TMDB to `TMDB_KEY` in `.env` file. You can also modify your api configuration parameters in `src/constants`.
 
 Start your application. This command will also watch for changes in your files.
 

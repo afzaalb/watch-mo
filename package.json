@@ -6,6 +6,9 @@
     "email": "afzaalopera@gmail.com",
     "url": "https://github.com/afzaalb"
   },
+  "engines": {
+    "node": ">=8.16.2"
+  },
   "license": "ISC",
   "description": "Movies,TV Series & People History. All in one place.",
   "homepage": "https://github.com/afzaalb/watch-mo",

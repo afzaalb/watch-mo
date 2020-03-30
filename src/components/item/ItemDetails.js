@@ -3,6 +3,7 @@ import ItemMeta from "./ItemMeta";
 import ItemSidebar from "./ItemSidebar";
 import CastMembers from "./CastMembers";
 import { IMDB_TITLE } from "../../constants";
+import imdbLogo from "../../assets/images/imdb.png";
 
 const ItemDetails = ({
   title,
@@ -37,11 +38,7 @@ const ItemDetails = ({
       <li>
         <small className="mr-2">View on</small>
         <a target="_blank" href={IMDB_TITLE + imdb} title="View on IMDb">
-          <img
-            src="../../src/assets/images/imdb.png"
-            className="img-fluid w-100"
-            alt="View on IMDb"
-          />
+          <img src={imdbLogo} className="img-fluid w-100" alt="View on IMDb" />
         </a>
       </li>
     </ul>

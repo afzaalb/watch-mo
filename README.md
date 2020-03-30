@@ -17,13 +17,15 @@ To get started with this project, you need to get an api key from TMDB. Get it [
 Get a copy of the project by clicking Clone or Download button.
 
 Install node modules.
+
 ```
 npm install
 ```
 
-Set the api key you got from TMDB to `TMDB_KEY` in `.env` file.
+Set the api key you got from TMDB to `TMDB_KEY` in `.env` file. You can also modify your api configuration parameters in `src/constants`.
 
 Start your application. This command will also watch for changes in your files.
+
 ```
 npm start
 ```
@@ -33,13 +35,12 @@ For api options and methods details:
 
 ## Built With
 
-* [React](https://reactjs.org/) - A JS library for UI
-* [TMDB](https://www.themoviedb.org/documentation/api) - API
-* [Bootstrap](http://getbootstrap.com/) - CSS Framework
-
+- [React](https://reactjs.org/) - A JS library for UI
+- [TMDB](https://www.themoviedb.org/documentation/api) - API
+- [Bootstrap](http://getbootstrap.com/) - CSS Framework
 
 ## Authors
 
-* **Muhammad Afzaal**
-	*	[Github](https://github.com/afzaalb)
-	*	[Twitter](https://twitter.com/afzaalopera?lang=en)
+- **Muhammad Afzaal**
+  _ [Github](https://github.com/afzaalb)
+  _ [Twitter](https://twitter.com/afzaalopera?lang=en)

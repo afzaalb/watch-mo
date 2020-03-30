@@ -38,11 +38,11 @@ export const getMovieTorrents = movie => {
 
 // Set Application Theme
 export const setAppTheme = theme => {
-  console.log("MyTheme:", theme);
-  // let themeRoot = document.getElementById("reactive-movies-base");
-  // forEach(theme, function(v, p) {
-  //   themeRoot.style.setProperty("--p", "v");
-  // });
+  let themeRoot = document.getElementById("reactive-movies-base");
+  // if (isMobileSafari) {
+  //   themeRoot.classList.add(`wm-${theme}`);
+  // }
+  themeRoot.className = theme;
 };
 
 export const scrollToElement = elementName => {

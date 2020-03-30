@@ -37,10 +37,19 @@ a:focus {
   font-weight: 300;
 }
 
-.wrapper {
-  --primary: #eaeef9;
+/* Themes */
+.wm-lite {
+  --primary: #ecf0f6;
   --secondary: #11102c;
-  --light: #e0e0e0;
+  --light: #cccccc;
+}
+.wm-girly {
+  --primary: #ffe0d9;
+  --secondary: #222222;
+  --light: #cccccc;
+}
+
+.wrapper {
   min-height: 100vh;
   overflow-x: hidden;
   background: var(--primary);

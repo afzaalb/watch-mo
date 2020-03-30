@@ -4,11 +4,11 @@ const dotenv = require("dotenv");
 const CleanWebpackPlugin = require("clean-webpack-plugin");
 const HtmlWebPackPlugin = require("html-webpack-plugin");
 
-// const env = dotenv.config().parsed;
-// const envKeys = Object.keys(env).reduce((prev, next) => {
-//   prev[`process.env.${next}`] = JSON.stringify(env[next]);
-//   return prev;
-// }, {});
+const env = dotenv.config().parsed;
+const envKeys = Object.keys(env).reduce((prev, next) => {
+  prev[`process.env.${next}`] = JSON.stringify(env[next]);
+  return prev;
+}, {});
 
 module.exports = {
   entry: "./src/main.js",
@@ -34,22 +34,21 @@ module.exports = {
         loader: "style-loader!css-loader"
       },
       {
-        test: /\.(png|jpg)$/,
+        test: /\.(png|jpg|gif|svg)$/,
         use: [
+          {
+            loader: "url-loader",
+            options: {
+              limit: 10240,
+              name: "[name].[ext]"
+            }
+          },
           {
             loader: "file-loader",
             options: {
               outputPath: "assets/images/"
             }
           }
-          // ,
-          // {
-          //   loader: "url-loader",
-          //   options: {
-          //     limit: 4096,
-          //     name: "[name].[ext]"
-          //   }
-          // }
         ]
       },
       {
@@ -65,7 +64,7 @@ module.exports = {
     new CleanWebpackPlugin(["dist"]),
     new HtmlWebPackPlugin({
       template: "./src/index.html"
-    })
-    // new webpack.DefinePlugin(envKeys)
+    }),
+    new webpack.DefinePlugin(envKeys)
   ]
 };

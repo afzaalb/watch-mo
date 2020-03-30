@@ -1,9 +1,6 @@
 import React, { Component } from "react";
 import theMovieDb from "themoviedb-javascript-library";
-import isEmpty from "lodash/isEmpty";
-import ItemsList from "../../components/home/ItemsList";
-import Loader from "../../components/shared/Loader";
-import NoDataFound from "../../components/shared/NoDataFound";
+import HomeSection from "../../components/home/HomeSection";
 
 class Home extends Component {
   constructor(props) {
@@ -30,7 +27,9 @@ class Home extends Component {
   }
 
   upcomingCB = data => {
-    const fetchedData = JSON.parse(data);
+    const { results } = JSON.parse(data);
+    const fetchedData = results.slice(0, 6);
+
     this.setState({
       loading: false,
       upcoming: fetchedData
@@ -38,7 +37,9 @@ class Home extends Component {
   };
 
   playingCB = data => {
-    const fetchedData = JSON.parse(data);
+    const { results } = JSON.parse(data);
+    const fetchedData = results.slice(0, 6);
+
     this.setState({
       loading: false,
       nowPlaying: fetchedData
@@ -65,20 +66,20 @@ class Home extends Component {
 
     return (
       <>
-        {!isEmpty(nowPlaying) ? (
-          <ItemsList item={nowPlaying} name="Now playing" />
-        ) : tmdbResponse ? (
-          <NoDataFound alignCenter spaceTop message={tmdbResponse} />
-        ) : loading ? (
-          <Loader spaceTop />
-        ) : null}
-        {!isEmpty(upcoming) ? (
-          <ItemsList item={upcoming} name="Upcoming movies" />
-        ) : tmdbResponse ? (
-          <NoDataFound alignCenter spaceTop message={tmdbResponse} />
-        ) : loading ? (
-          <Loader spaceTop />
-        ) : null}
+        <HomeSection
+          name="Now Playing"
+          content={nowPlaying}
+          tmdbResponse={tmdbResponse}
+          loading={loading}
+          route="/movies/now-playing"
+        />
+        <HomeSection
+          name="Upcoming Movies"
+          content={upcoming}
+          tmdbResponse={tmdbResponse}
+          loading={loading}
+          route="/movies/upcoming"
+        />
       </>
     );
   }

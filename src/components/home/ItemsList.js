@@ -1,16 +1,20 @@
 import React from "react";
 import map from "lodash/map";
 import Slot from "./Slot";
+import { Link } from "react-router-dom";
+import ArrowRight from "react-bytesize-icons/ArrowRight";
 
-const ItemsList = ({ item, name, route }) => {
-  const { results } = item;
-  const firstSixItems = results.slice(0, 6);
-
+const ItemsList = ({ items, name, route }) => {
   return (
     <section className="mb-4">
-      <h2 className="bold">{name}</h2>
+      <h2 className="d-flex justify-content-between align-items-center view-all-head">
+        <span className="bold">{name}</span>
+        <Link to={route}>
+          View All <ArrowRight className="ml-2" width="14" height="14" />
+        </Link>
+      </h2>
       <div className="row">
-        {map(firstSixItems, m => (
+        {map(items, m => (
           <Slot
             key={m.id}
             id={m.id}
@@ -22,10 +26,8 @@ const ItemsList = ({ item, name, route }) => {
           />
         ))}
       </div>
-      {/* Route prop will be used for detail page when its created */}
-      {/* Currently there's no page for complete list */}
       {/* <div className="d-flex justify-content-around">
-        <Link className="btn btn-light active" to={route}>
+        <Link className="btn btn-block btn-light active" to={route}>
           View all
         </Link>
       </div> */}

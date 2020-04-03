@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import { Provider } from "react-redux";
 import Layout from "../layout";
 import Router from "../../routes";
 import { TMDB, setAppTheme } from "../../utils";
@@ -10,7 +9,6 @@ import {
   REQ_TIMEOUT,
   themes
 } from "../../constants";
-import initializeStore from "../../redux/store";
 import "../../assets/css/app.css";
 
 class App extends Component {
@@ -23,14 +21,10 @@ class App extends Component {
   }
 
   render() {
-    const store = initializeStore();
-
     return (
-      <Provider store={store}>
-        <Layout>
-          <Router />
-        </Layout>
-      </Provider>
+      <Layout>
+        <Router />
+      </Layout>
     );
   }
 }

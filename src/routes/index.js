@@ -11,7 +11,7 @@ import NoDataFound from "../components/shared/NoDataFound";
 
 const MyRouter = () => (
   <Switch>
-    <Route exact path="/" component={Home} />
+    <Route exact path="/" component={() => <Home />} />
     <Route exact path="/person/:id/:name" component={Person} />
     <Route exact path="/:id/:name" component={Item} />
     <Route exact path="/search" component={Search} />

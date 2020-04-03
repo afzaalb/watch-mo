@@ -1,83 +1,47 @@
 import React, { Component } from "react";
 import theMovieDb from "themoviedb-javascript-library";
 import HomeSection from "../../components/home/HomeSection";
+import { addNowPlaying, addUpcoming } from "../../redux/action-creators/home";
+import { setTmdbErrorMsg } from "../../redux/action-creators/tmdb";
+import { connect } from "react-redux";
+import isEmpty from "lodash/isEmpty";
 
 class Home extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      upcoming: {},
-      nowPlaying: {},
-      loading: true
-    };
-  }
-
   componentDidMount() {
-    theMovieDb.movies.getUpcoming(
-      { region: "US" },
-      this.upcomingCB,
-      this.errorCB
-    );
+    const { addUpcoming, addNowPlaying, setTmdbErrorMsg, home } = this.props;
 
-    theMovieDb.movies.getNowPlaying(
-      { region: "US" },
-      this.playingCB,
-      this.errorCB
-    );
-  }
+    // Prevent repetitive calls and redux updates for home page
+    if (isEmpty(home)) {
+      theMovieDb.movies.getUpcoming(
+        { region: "US" },
+        addUpcoming,
+        setTmdbErrorMsg
+      );
 
-  upcomingCB = data => {
-    const { results } = JSON.parse(data);
-    const fetchedData = results.slice(0, 6);
-
-    this.setState({
-      loading: false,
-      upcoming: fetchedData
-    });
-  };
-
-  playingCB = data => {
-    const { results } = JSON.parse(data);
-    const fetchedData = results.slice(0, 6);
-
-    this.setState({
-      loading: false,
-      nowPlaying: fetchedData
-    });
-  };
-
-  errorCB = data => {
-    if (data) {
-      this.setState({
-        loading: false,
-        tmdbResponse: JSON.parse(data).status_message
-      });
-    } else {
-      this.setState({
-        loading: false,
-        upcoming: {},
-        nowPlaying: {}
-      });
+      theMovieDb.movies.getNowPlaying(
+        { region: "US" },
+        addNowPlaying,
+        setTmdbErrorMsg
+      );
     }
-  };
+  }
 
   render() {
-    const { upcoming, nowPlaying, tmdbResponse, loading } = this.state;
+    const { home, tmdbResponse } = this.props;
+    const { nowPlaying, upcoming } = home;
 
     return (
       <>
         <HomeSection
           name="Now Playing"
           content={nowPlaying}
-          tmdbResponse={tmdbResponse}
-          loading={loading}
+          tmdbMsg={tmdbResponse.message}
           route="/movies/now-playing"
         />
         <HomeSection
           name="Upcoming Movies"
           content={upcoming}
-          tmdbResponse={tmdbResponse}
-          loading={loading}
+          tmdbMsg={tmdbResponse.message}
           route="/movies/upcoming"
         />
       </>
@@ -85,4 +49,17 @@ class Home extends Component {
   }
 }
 
-export default Home;
+const actionCreators = {
+  addNowPlaying,
+  addUpcoming,
+  setTmdbErrorMsg
+};
+
+const mapStateToProps = ({ home, tmdbResponse }) => {
+  return {
+    home,
+    tmdbResponse
+  };
+};
+
+export default connect(mapStateToProps, actionCreators)(Home);

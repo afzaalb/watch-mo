@@ -26,11 +26,6 @@ const ItemsList = ({ items, name, route }) => {
           />
         ))}
       </div>
-      {/* <div className="d-flex justify-content-around">
-        <Link className="btn btn-block btn-light active" to={route}>
-          View all
-        </Link>
-      </div> */}
     </section>
   );
 };

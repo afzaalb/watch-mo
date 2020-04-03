@@ -1,7 +1,7 @@
 // Generic Constants
 export const API_KEY = process.env.TMDB_KEY;
 export const API_URL = `https://api.themoviedb.org/3/`;
-export const REQ_TIMEOUT = 30000;
+export const REQ_TIMEOUT = 15000;
 export const IMAGE_URL = `https://image.tmdb.org/t/p`;
 export const COVER_URL = `${IMAGE_URL}/original`;
 export const IMDB_TITLE = `https://www.imdb.com/title/`;

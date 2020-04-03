@@ -4,13 +4,13 @@ import Loader from "../../components/shared/Loader";
 import NoDataFound from "../../components/shared/NoDataFound";
 import ItemsList from "../../components/home/ItemsList";
 
-const HomeSection = ({ name, content, tmdbResponse, loading, route }) =>
+const HomeSection = ({ name, content, tmdbMsg, route }) =>
   !isEmpty(content) ? (
     <ItemsList items={content} name={name} route={route} />
-  ) : tmdbResponse ? (
-    <NoDataFound alignCenter spaceTop message={tmdbResponse} />
-  ) : loading ? (
+  ) : tmdbMsg ? (
+    <NoDataFound alignCenter spaceTop message={tmdbMsg} />
+  ) : (
     <Loader spaceTop />
-  ) : null;
+  );
 
 export default HomeSection;

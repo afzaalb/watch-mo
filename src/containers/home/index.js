@@ -1,25 +1,29 @@
-import React, { Component } from "react";
-import theMovieDb from "themoviedb-javascript-library";
-import HomeSection from "../../components/home/HomeSection";
-import { addNowPlaying, addUpcoming } from "../../redux/action-creators/home";
-import { setTmdbErrorMsg } from "../../redux/action-creators/tmdb";
-import { connect } from "react-redux";
 import isEmpty from "lodash/isEmpty";
+import kebabCase from "lodash/kebabCase";
+import map from "lodash/map";
+import React, { Component } from "react";
+import { connect } from "react-redux";
+import theMovieDb from "themoviedb-javascript-library";
+import ListSection from "../../components/shared/ListSection";
+import { API_REGION, mediaTypes, movieCategories } from "../../constants";
+import { addNowPlaying, addUpcoming } from "../../redux/action-creators/movie";
+import { setTmdbErrorMsg } from "../../redux/action-creators/tmdb";
 
 class Home extends Component {
   componentDidMount() {
-    const { addUpcoming, addNowPlaying, setTmdbErrorMsg, home } = this.props;
+    const { addUpcoming, addNowPlaying, setTmdbErrorMsg, movie } = this.props;
 
-    // Prevent repetitive calls and redux updates for home page
-    if (isEmpty(home)) {
+    if (isEmpty(movie.upcoming)) {
       theMovieDb.movies.getUpcoming(
-        { region: "US" },
+        { region: API_REGION, page: 1 },
         addUpcoming,
         setTmdbErrorMsg
       );
+    }
 
+    if (isEmpty(movie.nowPlaying)) {
       theMovieDb.movies.getNowPlaying(
-        { region: "US" },
+        { region: API_REGION, page: 1 },
         addNowPlaying,
         setTmdbErrorMsg
       );
@@ -27,25 +31,21 @@ class Home extends Component {
   }
 
   render() {
-    const { home, tmdbResponse } = this.props;
-    const { nowPlaying, upcoming } = home;
+    const { movie, tmdbResponse } = this.props;
+    const { nowPlaying, upcoming } = movieCategories;
+    const { MOVIE } = mediaTypes;
 
-    return (
-      <>
-        <HomeSection
-          name="Now Playing"
-          content={nowPlaying}
-          tmdbMsg={tmdbResponse.message}
-          route="/movies/now-playing"
-        />
-        <HomeSection
-          name="Upcoming Movies"
-          content={upcoming}
-          tmdbMsg={tmdbResponse.message}
-          route="/movies/upcoming"
-        />
-      </>
-    );
+    const homeMovieCategories = { nowPlaying, upcoming };
+
+    return map(homeMovieCategories, (category, i) => (
+      <ListSection
+        key={i}
+        name={category}
+        content={movie[i] && movie[i].slice(0, 6)}
+        tmdbMsg={tmdbResponse.message}
+        route={`/${MOVIE}/${kebabCase(category)}`}
+      />
+    ));
   }
 }
 
@@ -55,9 +55,9 @@ const actionCreators = {
   setTmdbErrorMsg
 };
 
-const mapStateToProps = ({ home, tmdbResponse }) => {
+const mapStateToProps = ({ movie, tmdbResponse }) => {
   return {
-    home,
+    movie,
     tmdbResponse
   };
 };

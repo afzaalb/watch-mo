@@ -2,13 +2,13 @@ import React from "react";
 import Link from "react-router-dom/Link";
 import kebabCase from "lodash/kebabCase";
 import Rating from "../shared/Rating";
-import { IMAGE_URL } from "../../constants";
+import { IMAGE_URL, mediaTypes } from "../../constants";
 
 const Slot = ({ id, name, poster, rating, overview, release }) => (
   <div className="movies-item col-sm-6 col-xs-12 mb-3">
     <Link
       title={`${name} (${rating})`}
-      to={`/${id}/${kebabCase(name)}`}
+      to={`/${mediaTypes.MOVIE}/${id}/${kebabCase(name)}`}
       className="d-flex rounded-card"
     >
       {poster && (

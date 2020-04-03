@@ -1,10 +1,10 @@
 import React from "react";
 import isEmpty from "lodash/isEmpty";
-import Loader from "../../components/shared/Loader";
-import NoDataFound from "../../components/shared/NoDataFound";
-import ItemsList from "../../components/home/ItemsList";
+import Loader from "./Loader";
+import NoDataFound from "./NoDataFound";
+import ItemsList from "./ItemsList";
 
-const HomeSection = ({ name, content, tmdbMsg, route }) =>
+const ListSection = ({ name, content, tmdbMsg, route }) =>
   !isEmpty(content) ? (
     <ItemsList items={content} name={name} route={route} />
   ) : tmdbMsg ? (
@@ -13,4 +13,4 @@ const HomeSection = ({ name, content, tmdbMsg, route }) =>
     <Loader spaceTop />
   );
 
-export default HomeSection;
+export default ListSection;

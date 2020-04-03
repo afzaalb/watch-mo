@@ -1,6 +1,7 @@
 // Generic Constants
 export const API_KEY = process.env.TMDB_KEY;
 export const API_URL = `https://api.themoviedb.org/3/`;
+export const API_REGION = "US";
 export const REQ_TIMEOUT = 15000;
 export const IMAGE_URL = `https://image.tmdb.org/t/p`;
 export const COVER_URL = `${IMAGE_URL}/original`;
@@ -42,4 +43,11 @@ export const crewTypes = {
   WRITER: "Writer",
   DIRECTOR: "Director",
   PRODUCER: "Producer"
+};
+
+export const movieCategories = {
+  nowPlaying: "Now Playing",
+  upcoming: "Upcoming"
+  // popular: "Popular",
+  // topRated: "Top Rated"
 };

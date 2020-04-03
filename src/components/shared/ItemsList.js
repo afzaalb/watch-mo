@@ -9,9 +9,11 @@ const ItemsList = ({ items, name, route }) => {
     <section className="mb-4">
       <h2 className="d-flex justify-content-between align-items-center view-all-head">
         <span className="bold">{name}</span>
-        <Link to={route}>
-          View All <ArrowRight className="ml-2" width="14" height="14" />
-        </Link>
+        {route && (
+          <Link to={route}>
+            View All <ArrowRight className="ml-2" width="14" height="14" />
+          </Link>
+        )}
       </h2>
       <div className="row">
         {map(items, m => (

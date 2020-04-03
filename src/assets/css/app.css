@@ -122,7 +122,7 @@ strong,
   min-height: 100vh;
   height: 100%;
   font-size: 18px;
-  font-weight: 600;
+  font-weight: 500;
   padding: 30px 90px 30px 0;
   flex-shrink: 0;
 }
@@ -130,6 +130,15 @@ strong,
 .navigation li:not(.logo) a {
   padding-bottom: 6px;
   margin-bottom: 6px;
+}
+
+.droplist a {
+  border: 1px solid var(--light);
+  background-color: var(--white);
+  font-size: 11px;
+  font-weight: 300;
+  line-height: 0.8;
+  border-radius: 10px;
 }
 
 main {

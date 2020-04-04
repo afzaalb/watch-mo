@@ -129,7 +129,7 @@ class ItemHome extends Component {
           crew={crew}
           productionCompanies={production_companies}
         />
-        {recommendations.results.length > 0 && (
+        {recommendations && recommendations.results.length > 0 && (
           <Recommendations
             recommendations={recommendations.results.slice(0, 3)}
           />

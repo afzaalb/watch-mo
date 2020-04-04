@@ -32,29 +32,28 @@ class Torrent extends Component {
   render() {
     const { show, torrentList } = this.state;
 
-    let allTorrents;
-    if (torrentList.length > 0) {
-      allTorrents = torrentList.map((torrent, index) => {
-        return (
-          <a
-            key={torrent.hash}
-            href={torrent.url}
-            title={`Seeds: ${torrent.seeds} | Peers: ${torrent.peers}`}
-          >
-            <span className="gradient d-inline-block px-2 py-1 align-middle rounded">
-              {torrent.quality}
-              <sup className="ml-1">({torrent.size})</sup>
-            </span>
-          </a>
-        );
-      });
-    }
-
     return (
-      <div className={classNames("col-sm-6", { "d-none": !show })}>
-        <h6>Download Now</h6>
-        <p>{allTorrents}</p>
-      </div>
+      show && (
+        <div className={classNames({ "d-none": !show })}>
+          <h6>Download Now</h6>
+          <p>
+            {torrentList.map(({ url, hash, seeds, peers, quality, size }) => (
+              <a
+                href={url}
+                key={hash}
+                href={url}
+                title={`Seeds: ${seeds} | Peers: ${peers}`}
+                className="btn btn-light active mr-1 mb-2"
+              >
+                <span className="d-inline-block align-middle">
+                  {quality}
+                  <sup className="ml-1">({size})</sup>
+                </span>
+              </a>
+            ))}
+          </p>
+        </div>
+      )
     );
   }
 }

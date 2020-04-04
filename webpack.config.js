@@ -35,21 +35,10 @@ module.exports = {
       },
       {
         test: /\.(png|jpg|gif|svg)$/,
-        use: [
-          {
-            loader: "url-loader",
-            options: {
-              limit: 10240,
-              name: "[name].[ext]"
-            }
-          },
-          {
-            loader: "file-loader",
-            options: {
-              outputPath: "assets/images/"
-            }
-          }
-        ]
+        loader: "file-loader",
+        options: {
+          outputPath: "assets/images/"
+        }
       },
       {
         test: /\.(eot|woff|ttf|otf)$/,

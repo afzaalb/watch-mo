@@ -1,7 +1,7 @@
 import React from "react";
 import map from "lodash/map";
 import { Link } from "react-router-dom";
-import { IMAGE_URL, FALLBACK_IMAGE } from "../../constants";
+import { IMAGE_URL, FALLBACK_IMAGE, mediaTypes } from "../../constants";
 import kebabCase from "lodash/kebabCase";
 import deburr from "lodash/deburr";
 import ReactImageFallback from "react-image-fallback";
@@ -16,7 +16,7 @@ const Recommendations = ({ recommendations }) => (
           <Link
             onClick={() => scrollToElement("wrapper")}
             className="rounded-card mb-3 d-block"
-            to={`/${id}/${kebabCase(title)}`}
+            to={`/${mediaTypes.MOVIE}/${id}/${kebabCase(title)}`}
           >
             <ReactImageFallback
               src={`${IMAGE_URL + "/w300" + backdrop_path}`}

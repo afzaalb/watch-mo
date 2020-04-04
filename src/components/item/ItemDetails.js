@@ -32,6 +32,7 @@ const ItemDetails = ({
       overview={overview}
       rating={rating}
       poster={poster}
+      backdrops={backdrops}
     />
     <ul className="d-flex flex-wrap imdb-status py-2 align-items-center justify-content-between">
       <li className="bold">{status}</li>

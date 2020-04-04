@@ -1,87 +1,65 @@
-import React, { Component } from "react";
-import theMovieDb from "themoviedb-javascript-library";
 import isEmpty from "lodash/isEmpty";
-import ItemsList from "../../components/home/ItemsList";
-import Loader from "../../components/shared/Loader";
-import NoDataFound from "../../components/shared/NoDataFound";
+import kebabCase from "lodash/kebabCase";
+import map from "lodash/map";
+import React, { Component } from "react";
+import { connect } from "react-redux";
+import theMovieDb from "themoviedb-javascript-library";
+import ListSection from "../../components/shared/ListSection";
+import { API_REGION, mediaTypes, movieCategories } from "../../constants";
+import { addNowPlaying, addUpcoming } from "../../redux/action-creators/movie";
+import { setTmdbErrorMsg } from "../../redux/action-creators/tmdb";
 
 class Home extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      upcoming: {},
-      nowPlaying: {},
-      loading: true
-    };
-  }
-
   componentDidMount() {
-    theMovieDb.movies.getUpcoming(
-      { region: "US" },
-      this.upcomingCB,
-      this.errorCB
-    );
+    const { addUpcoming, addNowPlaying, setTmdbErrorMsg, movie } = this.props;
 
-    theMovieDb.movies.getNowPlaying(
-      { region: "US" },
-      this.playingCB,
-      this.errorCB
-    );
-  }
-
-  upcomingCB = data => {
-    const fetchedData = JSON.parse(data);
-    this.setState({
-      loading: false,
-      upcoming: fetchedData
-    });
-  };
-
-  playingCB = data => {
-    const fetchedData = JSON.parse(data);
-    this.setState({
-      loading: false,
-      nowPlaying: fetchedData
-    });
-  };
-
-  errorCB = data => {
-    if (data) {
-      this.setState({
-        loading: false,
-        tmdbResponse: JSON.parse(data).status_message
-      });
-    } else {
-      this.setState({
-        loading: false,
-        upcoming: {},
-        nowPlaying: {}
-      });
+    if (isEmpty(movie.upcoming)) {
+      theMovieDb.movies.getUpcoming(
+        { region: API_REGION, page: 1 },
+        addUpcoming,
+        setTmdbErrorMsg
+      );
     }
-  };
+
+    if (isEmpty(movie.nowPlaying)) {
+      theMovieDb.movies.getNowPlaying(
+        { region: API_REGION, page: 1 },
+        addNowPlaying,
+        setTmdbErrorMsg
+      );
+    }
+  }
 
   render() {
-    const { upcoming, nowPlaying, tmdbResponse, loading } = this.state;
+    const { movie, tmdbResponse } = this.props;
+    const { nowPlaying, upcoming } = movieCategories;
+    const { MOVIE } = mediaTypes;
 
-    return (
-      <>
-        {!isEmpty(nowPlaying) ? (
-          <ItemsList item={nowPlaying} name="Now playing" />
-        ) : tmdbResponse ? (
-          <NoDataFound alignCenter spaceTop message={tmdbResponse} />
-        ) : loading ? (
-          <Loader spaceTop />
-        ) : null}
-        {!isEmpty(upcoming) ? (
-          <ItemsList item={upcoming} name="Upcoming movies" />
-        ) : tmdbResponse ? (
-          <NoDataFound alignCenter spaceTop message={tmdbResponse} />
-        ) : loading ? (
-          <Loader spaceTop />
-        ) : null}
-      </>
-    );
+    const homeMovieCategories = { nowPlaying, upcoming };
+
+    return map(homeMovieCategories, (category, i) => (
+      <ListSection
+        key={i}
+        name={category}
+        content={movie[i] && movie[i].slice(0, 6)}
+        tmdbMsg={tmdbResponse.message}
+        route={`/${MOVIE}/${kebabCase(category)}`}
+      />
+    ));
   }
 }
 
-export default Home;
+const actionCreators = {
+  addNowPlaying,
+  addUpcoming,
+  setTmdbErrorMsg
+};
+
+const mapStateToProps = ({ movie, tmdbResponse }) => {
+  return {
+    movie,
+    tmdbResponse
+  };
+};
+
+export default connect(mapStateToProps, actionCreators)(Home);

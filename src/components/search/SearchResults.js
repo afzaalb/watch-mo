@@ -25,7 +25,9 @@ const SearchResults = ({ tmdbResponse, searchResults }) => {
           const route =
             r.media_type === PERSON
               ? `${PERSON}/${r.id}/${kebabCase(name)}`
-              : `${r.id}/${kebabCase(name)}`;
+              : r.media_type === TV
+              ? `${TV}/${r.id}/${kebabCase(name)}`
+              : `${MOVIE}/${r.id}/${kebabCase(name)}`;
 
           return (
             <SearchItem

@@ -1,5 +1,8 @@
 import React from "react";
 import NavLink from "react-router-dom/NavLink";
+import map from "lodash/map";
+import kebabCase from "lodash/kebabCase";
+import { movieCategories } from "../../constants";
 
 const Navigation = () => (
   <nav className="navigation">
@@ -15,9 +18,16 @@ const Navigation = () => (
         </NavLink>
       </li>
       <li>
-        <NavLink to="/movies" title="Find Here">
-          Movies
-        </NavLink>
+        <span>Movies</span>
+        <ul className="droplist my-2 d-flex flex-wrap align-items-center">
+          {map(movieCategories, (c, i) => (
+            <li key={i} className="mr-1">
+              <NavLink className="p-1" to={`/movie/${kebabCase(c)}`}>
+                {c}
+              </NavLink>
+            </li>
+          ))}
+        </ul>
       </li>
       <li>
         <NavLink to="/tv-shows" title="Find Here">

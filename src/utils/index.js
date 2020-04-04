@@ -53,3 +53,8 @@ export const scrollToElement = elementName => {
     isDynamic: true
   });
 };
+
+export const getParsedJsonResults = data => {
+  const { results } = JSON.parse(data);
+  return results;
+};

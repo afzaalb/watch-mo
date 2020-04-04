@@ -3,6 +3,7 @@ import map from "lodash/map";
 import Slot from "./Slot";
 import { Link } from "react-router-dom";
 import ArrowRight from "react-bytesize-icons/ArrowRight";
+import { scrollToElement } from "../../utils";
 
 const ItemsList = ({ items, name, route }) => {
   return (
@@ -10,7 +11,7 @@ const ItemsList = ({ items, name, route }) => {
       <h2 className="d-flex justify-content-between align-items-center view-all-head">
         <span className="bold">{name}</span>
         {route && (
-          <Link to={route}>
+          <Link to={route} onClick={() => scrollToElement("wrapper")}>
             View All <ArrowRight className="ml-2" width="14" height="14" />
           </Link>
         )}

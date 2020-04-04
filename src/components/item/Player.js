@@ -9,7 +9,7 @@ const Player = ({ videoId, poster, title, playing, handlePlayerState }) => {
   return (
     <section
       onClick={handlePlayerState}
-      className="yt-player over-shadow embed-responsive embed-responsive-16by9"
+      className="yt-player c-hand over-shadow overflow-hidden embed-responsive embed-responsive-16by9"
     >
       {playing ? (
         <YTPlayer

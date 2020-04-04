@@ -10,7 +10,6 @@ ul {
 html,
 body {
   height: 100%;
-  /* overflow: hidden; */
 }
 
 a {
@@ -95,6 +94,10 @@ strong,
 .cover-fit {
   -o-object-fit: cover;
   object-fit: cover;
+}
+
+.c-hand {
+  cursor: pointer;
 }
 
 .spinner-border {
@@ -220,7 +223,6 @@ nav a:hover {
 }
 
 .yt-player {
-  cursor: pointer;
   margin-bottom: 30px;
 }
 
@@ -233,7 +235,6 @@ nav a:hover {
 
 .over-shadow {
   background: var(--primary);
-  overflow: hidden;
   border-radius: 24px;
 }
 
@@ -249,7 +250,7 @@ nav a:hover {
 }
 
 .yt-player .play-icon {
-  background: rgba(0, 0, 0.75);
+  background: rgba(0, 0, 0, 0.75);
   color: var(--white);
   top: 0;
   left: 0;
@@ -275,7 +276,6 @@ section p {
 }
 
 .poster-shot {
-  overflow: hidden;
   width: 144px;
   height: 144px;
   border-radius: 24px;
@@ -322,7 +322,6 @@ section p {
 }
 
 .movies-item .description {
-  overflow: hidden;
   max-height: 50px;
 }
 .movies-item .description:after {
@@ -347,4 +346,23 @@ section p {
 .view-all-head a {
   font-size: 12px;
   color: var(--gray);
+}
+
+.gallery-preview {
+  border-radius: 24px;
+  height: inherit;
+}
+.expand-preview {
+  visibility: hidden;
+  opacity: 0;
+  transition: opacity 0.2s linear;
+}
+
+.gallery-preview:hover .expand-preview {
+  background: rgba(0, 0, 0, 0.75);
+  left: 0;
+  bottom: 0;
+  color: var(--light);
+  visibility: visible;
+  opacity: 1;
 }

@@ -26,7 +26,7 @@ const Slot = ({ id, name, poster, rating, overview, release }) => (
         </div>
         <div className="meta-movie">
           {overview && (
-            <p className="description my-1 pr-2 position-relative">
+            <p className="description overflow-hidden my-1 pr-2 position-relative">
               {overview}
             </p>
           )}

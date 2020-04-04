@@ -5,6 +5,7 @@ import { Calendar, Tag, Clock } from "react-bytesize-icons";
 import Rating from "../../components/shared/Rating";
 import { IMAGE_URL, FALLBACK_IMAGE } from "../../constants";
 import { handleRunTime } from "../../utils";
+import GalleryModal from "../shared/gallery-modal";
 
 const ItemMeta = ({
   overview,
@@ -13,16 +14,19 @@ const ItemMeta = ({
   release,
   genres,
   runtime,
-  poster
+  poster,
+  backdrops
 }) => (
   <section className="item-meta d-flex">
-    <div className="poster-shot">
-      <ReactImageFallback
-        src={`${IMAGE_URL + "/w342" + poster}`}
-        fallbackImage={FALLBACK_IMAGE}
-        alt={title}
-        className="cover-fit w-100 h-100"
-      />
+    <div className="poster-shot overflow-hidden">
+      <GalleryModal title={title} images={backdrops}>
+        <ReactImageFallback
+          src={`${IMAGE_URL + "/w342" + poster}`}
+          fallbackImage={FALLBACK_IMAGE}
+          alt={title}
+          className="cover-fit w-100 h-100"
+        />
+      </GalleryModal>
     </div>
     <div className="meta">
       <h2 className="bold">

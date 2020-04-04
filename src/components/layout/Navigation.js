@@ -2,7 +2,7 @@ import React from "react";
 import NavLink from "react-router-dom/NavLink";
 import map from "lodash/map";
 import kebabCase from "lodash/kebabCase";
-import { movieCategories } from "../../../constants";
+import { movieCategories } from "../../constants";
 
 const Navigation = () => (
   <nav className="navigation">

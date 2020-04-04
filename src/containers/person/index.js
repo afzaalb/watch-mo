@@ -6,6 +6,7 @@ import { IMAGE_URL, FALLBACK_IMAGE } from "../../constants";
 import NoDataFound from "../../components/shared/NoDataFound";
 import Loader from "../../components/shared/Loader";
 import PersonInfo from "../../components/person/PersonInfo";
+import GalleryModal from "../../components/shared/gallery-modal";
 
 class PeopleHome extends Component {
   constructor(props) {
@@ -20,7 +21,7 @@ class PeopleHome extends Component {
     theMovieDb.people.getById(
       {
         id: this.props.match.params.id,
-        append_to_personDetails: "images,credits"
+        append_to_response: "images,credits"
       },
       this.successCB,
       this.errorCB
@@ -60,19 +61,22 @@ class PeopleHome extends Component {
       biography,
       known_for_department,
       imdb_id,
-      homepage
+      homepage,
+      images
     } = personDetails;
 
     return !isEmpty(personDetails) ? (
       <section>
         <div className="row mb-3">
           <div className="col-xs-12 col-sm-5 person-poster">
-            <ReactImageFallback
-              src={`${IMAGE_URL}/w300` + profile_path}
-              fallbackImage={FALLBACK_IMAGE}
-              alt={name}
-              className="img-fluid w-100"
-            />
+            <GalleryModal title={name} images={images.profiles}>
+              <ReactImageFallback
+                src={`${IMAGE_URL}/w300` + profile_path}
+                fallbackImage={FALLBACK_IMAGE}
+                alt={name}
+                className="img-fluid w-100"
+              />
+            </GalleryModal>
           </div>
           <div className="col-xs-12 col-sm-7 d-flex flex-column">
             <PersonInfo

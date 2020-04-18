@@ -16,13 +16,20 @@ export const FALLBACK_IMAGE = `data:image/svg+xml;utf8;base64,PD94bWwgdmVyc2lvbj
 export const mediaTypes = {
   TV: "tv",
   MOVIE: "movie",
-  PERSON: "person"
+  PERSON: "person",
+};
+
+export const filterTypes = {
+  ALL: "all",
+  TV: mediaTypes.TV,
+  MOVIE: mediaTypes.MOVIE,
+  PERSON: mediaTypes.PERSON,
 };
 
 export const themes = {
   LITE: "wm-lite",
   DARK: "wm-dark",
-  GIRLY: "wm-girly"
+  GIRLY: "wm-girly",
 };
 
 // Image Sizes are just for reference but are not being used anywhere
@@ -31,23 +38,23 @@ export const imageSizes = {
   logo_sizes: ["w45", "w92", "w154", "w185", "w300", "w500", "original"],
   poster_sizes: ["w92", "w154", "w185", "w342", "w500", "w780", "original"],
   profile_sizes: ["w45", "w185", "h632", "original"],
-  still_sizes: ["w92", "w185", "w300", "original"]
+  still_sizes: ["w92", "w185", "w300", "original"],
 };
 
 export const videoTypes = {
   TRAILER: "Trailer",
-  TEASER: "Teaser"
+  TEASER: "Teaser",
 };
 
 export const crewTypes = {
   WRITER: "Writer",
   DIRECTOR: "Director",
-  PRODUCER: "Producer"
+  PRODUCER: "Producer",
 };
 
 export const movieCategories = {
   nowPlaying: "Now Playing",
-  upcoming: "Upcoming"
+  upcoming: "Upcoming",
   // popular: "Popular",
   // topRated: "Top Rated"
 };

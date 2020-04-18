@@ -182,8 +182,9 @@ nav a:hover {
   box-shadow: 0 1px 1px 1px var(--light);
 }
 
-.search-bar {
-  margin-bottom: 30px;
+.filter-list .btn {
+  text-transform: capitalize;
+  line-height: 1;
 }
 
 .search-bar .form-control {

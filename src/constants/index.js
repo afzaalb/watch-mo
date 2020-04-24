@@ -1,5 +1,5 @@
 // Generic Constants
-export const API_KEY = "9aae8884ab2c82ebf94b47f136cc8c52";
+export const API_KEY = process.env.TMDB_KEY;
 export const API_URL = `https://api.themoviedb.org/3/`;
 export const API_REGION = "US";
 export const REQ_TIMEOUT = 15000;

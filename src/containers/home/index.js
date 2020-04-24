@@ -15,7 +15,7 @@ class Home extends Component {
 
     if (isEmpty(movie.upcoming)) {
       theMovieDb.movies.getUpcoming(
-        { region: API_REGION, page: 1 },
+        { region: API_REGION },
         addUpcoming,
         setTmdbErrorMsg
       );
@@ -23,7 +23,7 @@ class Home extends Component {
 
     if (isEmpty(movie.nowPlaying)) {
       theMovieDb.movies.getNowPlaying(
-        { region: API_REGION, page: 1 },
+        { region: API_REGION },
         addNowPlaying,
         setTmdbErrorMsg
       );
@@ -52,13 +52,13 @@ class Home extends Component {
 const actionCreators = {
   addNowPlaying,
   addUpcoming,
-  setTmdbErrorMsg
+  setTmdbErrorMsg,
 };
 
 const mapStateToProps = ({ movie, tmdbResponse }) => {
   return {
     movie,
-    tmdbResponse
+    tmdbResponse,
   };
 };
 

@@ -17,8 +17,8 @@ class Movies extends Component {
       setTmdbErrorMsg,
       movie,
       match: {
-        params: { category }
-      }
+        params: { category },
+      },
     } = this.props;
     const { nowPlaying, upcoming } = movieCategories;
 
@@ -26,14 +26,14 @@ class Movies extends Component {
       switch (category) {
         case kebabCase(upcoming):
           theMovieDb.movies.getUpcoming(
-            { region: API_REGION, page: 1 },
+            { region: API_REGION },
             addUpcoming,
             setTmdbErrorMsg
           );
 
         case kebabCase(nowPlaying):
           theMovieDb.movies.getNowPlaying(
-            { region: API_REGION, page: 1 },
+            { region: API_REGION },
             addNowPlaying,
             setTmdbErrorMsg
           );
@@ -46,8 +46,8 @@ class Movies extends Component {
       movie,
       tmdbResponse,
       match: {
-        params: { category }
-      }
+        params: { category },
+      },
     } = this.props;
 
     return (
@@ -63,13 +63,13 @@ class Movies extends Component {
 const actionCreators = {
   addNowPlaying,
   addUpcoming,
-  setTmdbErrorMsg
+  setTmdbErrorMsg,
 };
 
 const mapStateToProps = ({ movie, tmdbResponse }) => {
   return {
     movie,
-    tmdbResponse
+    tmdbResponse,
   };
 };
 

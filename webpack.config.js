@@ -3,10 +3,8 @@ const path = require("path");
 const webpack = require("webpack");
 const CleanWebpackPlugin = require("clean-webpack-plugin");
 const HtmlWebPackPlugin = require("html-webpack-plugin");
-const config = require(path.join(__dirname, "config"));
 
-const mergedEnvConfig = { ...env, ...config };
-const envKeys = Object.keys(mergedEnvConfig).reduce((prev, next) => {
+const envKeys = Object.keys(env).reduce((prev, next) => {
   prev[`process.env.${next}`] = JSON.stringify(env[next]);
   return prev;
 }, {});

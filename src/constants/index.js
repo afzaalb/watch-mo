@@ -20,7 +20,6 @@ export const mediaTypes = {
 };
 
 export const filterTypes = {
-  ALL: "all",
   TV: mediaTypes.TV,
   MOVIE: mediaTypes.MOVIE,
   PERSON: mediaTypes.PERSON,

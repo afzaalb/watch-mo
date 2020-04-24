@@ -15,7 +15,7 @@ class SearchHome extends React.Component {
     this.state = {
       searchResults: [],
       loading: false,
-      selectedFilters: [filterTypes.ALL],
+      selectedFilters: [],
       filteredResults: [],
     };
   }
@@ -61,13 +61,13 @@ class SearchHome extends React.Component {
 
   searchFilterHandler = () => {
     const { searchResults, selectedFilters } = this.state;
-    if (selectedFilters.includes(filterTypes.ALL)) {
+
+    if (!selectedFilters.length) {
       this.setState({ loading: false, filteredResults: searchResults });
     } else {
       const filteredResults = filter(searchResults, ({ media_type }) =>
         selectedFilters.includes(media_type)
       );
-
       this.setState({ loading: false, filteredResults });
     }
   };

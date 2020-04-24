@@ -17,7 +17,7 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "npm run dev",
     "dev": "webpack-dev-server --config webpack.config.js --mode development --hot --inline",
-    "production": "webpack --config webpack.config.js --mode production",
+    "production": "webpack --mode production",
     "prod": "npm run production"
   },
   "dependencies": {

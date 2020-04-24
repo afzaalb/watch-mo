@@ -29,7 +29,7 @@
 # Specific branch context: all deploys from this specific branch will inherit
 # these settings.
 [context.dev] # 'dev' is a branch name
-  environment = { NODE_ENV = "dev", TMDB_KEY = "9aae8884ab2c82ebf94b47f136cc8c52" }
+  environment = { NODE_ENV = "dev" }
 
 # Redirects and headers are GLOBAL for all builds – they do not get scoped to
 # contexts no matter where you define them in the file.

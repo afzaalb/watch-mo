@@ -9,6 +9,8 @@ const envKeys = Object.keys(env).reduce((prev, next) => {
   return prev;
 }, {});
 
+console.log("envKeys", envKeys);
+
 module.exports = {
   entry: "./src/main.js",
   output: {
@@ -53,6 +55,5 @@ module.exports = {
     new HtmlWebPackPlugin({
       template: "./src/index.html",
     }),
-    new webpack.DefinePlugin(envKeys),
   ],
 };

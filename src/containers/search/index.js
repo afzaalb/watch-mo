@@ -5,9 +5,10 @@ import Loader from "../../components/shared/Loader";
 import theMovieDb from "themoviedb-javascript-library";
 import FormControl from "react-bootstrap/FormControl";
 import SearchIcon from "react-bytesize-icons/Search";
-import { SEARCH_DELAY, filterTypes } from "../../constants";
+import { SEARCH_DELAY } from "../../constants";
 import Filters from "../../components/search/Filters";
 import SearchResults from "../../components/search/SearchResults";
+import { connect } from "react-redux";
 
 class SearchHome extends React.Component {
   constructor(props) {
@@ -21,11 +22,12 @@ class SearchHome extends React.Component {
   }
 
   delayedCallback = debounce((value) => {
+    const { adult } = this.props;
     this.setState({
       loading: true,
     });
     theMovieDb.search.getMulti(
-      { query: value, include_adult: true },
+      { query: value, include_adult: adult },
       this.successCB,
       this.errorCB
     );
@@ -119,4 +121,8 @@ class SearchHome extends React.Component {
   }
 }
 
-export default SearchHome;
+const mapStateToProps = ({ adult }) => {
+  return { adult };
+};
+
+export default connect(mapStateToProps)(SearchHome);

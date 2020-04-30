@@ -1,37 +1,27 @@
-import isEmpty from "lodash/isEmpty";
 import kebabCase from "lodash/kebabCase";
 import map from "lodash/map";
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import theMovieDb from "themoviedb-javascript-library";
 import ListSection from "../../components/shared/ListSection";
-import { API_REGION, mediaTypes, movieCategories } from "../../constants";
+import { mediaTypes, movieCategories } from "../../constants";
 import { addNowPlaying, addUpcoming } from "../../redux/action-creators/movie";
 import { setTmdbErrorMsg } from "../../redux/action-creators/tmdb";
+import { getMoviesByCategoryInfo } from "../../utils";
 
 class Home extends Component {
   componentDidMount() {
-    const { addUpcoming, addNowPlaying, setTmdbErrorMsg, movie } = this.props;
+    const { addUpcoming, addNowPlaying, setTmdbErrorMsg, movies } = this.props;
 
-    if (isEmpty(movie.upcoming)) {
-      theMovieDb.movies.getUpcoming(
-        { region: API_REGION },
-        addUpcoming,
-        setTmdbErrorMsg
-      );
-    }
-
-    if (isEmpty(movie.nowPlaying)) {
-      theMovieDb.movies.getNowPlaying(
-        { region: API_REGION },
-        addNowPlaying,
-        setTmdbErrorMsg
-      );
-    }
+    getMoviesByCategoryInfo(
+      movies,
+      addUpcoming,
+      addNowPlaying,
+      setTmdbErrorMsg
+    );
   }
 
   render() {
-    const { movie, tmdbResponse } = this.props;
+    const { movies, tmdbResponse } = this.props;
     const { nowPlaying, upcoming } = movieCategories;
     const { MOVIE } = mediaTypes;
 
@@ -41,7 +31,7 @@ class Home extends Component {
       <ListSection
         key={i}
         name={category}
-        content={movie[i] && movie[i].slice(0, 6)}
+        content={movies[i] && movies[i].slice(0, 6)}
         tmdbMsg={tmdbResponse.message}
         route={`/${MOVIE}/${kebabCase(category)}`}
       />
@@ -55,9 +45,9 @@ const actionCreators = {
   setTmdbErrorMsg,
 };
 
-const mapStateToProps = ({ movie, tmdbResponse }) => {
+const mapStateToProps = ({ movies, tmdbResponse }) => {
   return {
-    movie,
+    movies,
     tmdbResponse,
   };
 };

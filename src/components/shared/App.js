@@ -7,7 +7,7 @@ import {
   API_URL,
   IMAGE_URL,
   REQ_TIMEOUT,
-  themes
+  themes,
 } from "../../constants";
 import "../../assets/css/app.css";
 

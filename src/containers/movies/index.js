@@ -1,13 +1,11 @@
 import camelCase from "lodash/camelCase";
-import isEmpty from "lodash/isEmpty";
-import kebabCase from "lodash/kebabCase";
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import theMovieDb from "themoviedb-javascript-library";
 import ListSection from "../../components/shared/ListSection";
-import { API_REGION, movieCategories } from "../../constants";
+import { movieCategories } from "../../constants";
 import { addNowPlaying, addUpcoming } from "../../redux/action-creators/movie";
 import { setTmdbErrorMsg } from "../../redux/action-creators/tmdb";
+import { getMoviesByCategoryInfo } from "../../utils";
 
 class Movies extends Component {
   componentDidMount() {
@@ -15,35 +13,47 @@ class Movies extends Component {
       addUpcoming,
       addNowPlaying,
       setTmdbErrorMsg,
-      movie,
+      movies,
       match: {
         params: { category },
       },
     } = this.props;
-    const { nowPlaying, upcoming } = movieCategories;
 
-    if (isEmpty(movie)) {
-      switch (category) {
-        case kebabCase(upcoming):
-          theMovieDb.movies.getUpcoming(
-            { region: API_REGION },
-            addUpcoming,
-            setTmdbErrorMsg
-          );
+    getMoviesByCategoryInfo(
+      movies,
+      addUpcoming,
+      addNowPlaying,
+      setTmdbErrorMsg,
+      category
+    );
+  }
 
-        case kebabCase(nowPlaying):
-          theMovieDb.movies.getNowPlaying(
-            { region: API_REGION },
-            addNowPlaying,
-            setTmdbErrorMsg
-          );
-      }
+  componentDidUpdate(prevProps) {
+    const {
+      addUpcoming,
+      addNowPlaying,
+      setTmdbErrorMsg,
+      movies,
+      match: {
+        params: { category },
+      },
+    } = this.props;
+    const { category: prevCategory } = prevProps.match.params;
+
+    if (prevCategory !== category) {
+      getMoviesByCategoryInfo(
+        movies,
+        addUpcoming,
+        addNowPlaying,
+        setTmdbErrorMsg,
+        category
+      );
     }
   }
 
   render() {
     const {
-      movie,
+      movies,
       tmdbResponse,
       match: {
         params: { category },
@@ -53,7 +63,7 @@ class Movies extends Component {
     return (
       <ListSection
         name={movieCategories[`${camelCase(category)}`]}
-        content={movie[`${camelCase(category)}`]}
+        content={movies[`${camelCase(category)}`]}
         tmdbMsg={tmdbResponse.message}
       />
     );
@@ -66,9 +76,9 @@ const actionCreators = {
   setTmdbErrorMsg,
 };
 
-const mapStateToProps = ({ movie, tmdbResponse }) => {
+const mapStateToProps = ({ movies, tmdbResponse }) => {
   return {
-    movie,
+    movies,
     tmdbResponse,
   };
 };

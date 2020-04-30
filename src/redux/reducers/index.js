@@ -1,5 +1,6 @@
 import { combineReducers } from "redux";
-import movie from "./movie";
+import movies from "./movies";
 import tmdbResponse from "./tmdb";
+import adult from "./adult";
 
-export default combineReducers({ movie, tmdbResponse });
+export default combineReducers({ adult, movies, tmdbResponse });

@@ -1,7 +1,10 @@
 import theMovieDb from "themoviedb-javascript-library";
 import startCase from "lodash/startCase";
 import map from "lodash/map";
+import isEmpty from "lodash/isEmpty";
+import kebabCase from "lodash/kebabCase";
 import { scroller } from "react-scroll";
+import { API_REGION, movieCategories } from "../constants";
 
 // Function to initialize TMDB API
 export const TMDB = (apiKey, baseURL, imagesURL, requestTimeout) => {
@@ -12,7 +15,7 @@ export const TMDB = (apiKey, baseURL, imagesURL, requestTimeout) => {
 };
 
 // Calculate Item play time in Hh Mm format
-export const handleRunTime = time => {
+export const handleRunTime = (time) => {
   const hours = parseInt(time / 60);
   const minutes = time % 60;
   return `${hours}h ${minutes}m`;
@@ -26,10 +29,10 @@ export const splitURL = () => {
 };
 
 // Get list of torrents available for movie
-export const getMovieTorrents = movie => {
+export const getMovieTorrents = (movie) => {
   let torrentList = [];
-  map(movie, t => {
-    return map(t.torrents, tor => {
+  map(movie, (t) => {
+    return map(t.torrents, (tor) => {
       return torrentList.push(tor);
     });
   });
@@ -37,7 +40,7 @@ export const getMovieTorrents = movie => {
 };
 
 // Set Application Theme
-export const setAppTheme = theme => {
+export const setAppTheme = (theme) => {
   let themeRoot = document.getElementById("reactive-movies-base");
   // if (isMobileSafari) {
   //   themeRoot.classList.add(`wm-${theme}`);
@@ -45,16 +48,49 @@ export const setAppTheme = theme => {
   themeRoot.className = theme;
 };
 
-export const scrollToElement = elementName => {
+export const scrollToElement = (elementName) => {
   scroller.scrollTo(`${elementName}`, {
     duration: 300,
     delay: 0,
     smooth: "easeInOutQuart",
-    isDynamic: true
+    isDynamic: true,
   });
 };
 
-export const getParsedJsonResults = data => {
+export const getParsedJsonResults = (data) => {
   const { results } = JSON.parse(data);
   return results;
+};
+
+const getUpcomingMovies = (addUpcoming, setTmdbErrorMsg) =>
+  theMovieDb.movies.getUpcoming(
+    { region: API_REGION },
+    addUpcoming,
+    setTmdbErrorMsg
+  );
+
+const getNowPlaying = (addNowPlaying, setTmdbErrorMsg) =>
+  theMovieDb.movies.getNowPlaying(
+    { region: API_REGION },
+    addNowPlaying,
+    setTmdbErrorMsg
+  );
+
+export const getMoviesByCategoryInfo = (
+  movies,
+  addUpcoming,
+  addNowPlaying,
+  setTmdbErrorMsg,
+  category = null
+) => {
+  const { nowPlaying, upcoming } = movieCategories;
+
+  if (!category) {
+    isEmpty(movies.upcoming) && getUpcomingMovies(addUpcoming, setTmdbErrorMsg);
+    isEmpty(movies.nowPlaying) && getNowPlaying(addNowPlaying, setTmdbErrorMsg);
+  } else if (isEmpty(movies.upcoming) && category === kebabCase(upcoming)) {
+    getUpcomingMovies(addUpcoming, setTmdbErrorMsg);
+  } else if (isEmpty(movies.nowPlaying) && category === kebabCase(nowPlaying)) {
+    getNowPlaying(addNowPlaying, setTmdbErrorMsg);
+  }
 };

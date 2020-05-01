@@ -22,7 +22,9 @@ class SearchHome extends React.Component {
   }
 
   delayedCallback = debounce((value) => {
-    const { adult } = this.props;
+    const {
+      settings: { adult },
+    } = this.props;
     this.setState({
       loading: true,
     });
@@ -121,8 +123,8 @@ class SearchHome extends React.Component {
   }
 }
 
-const mapStateToProps = ({ adult }) => {
-  return { adult };
+const mapStateToProps = ({ settings }) => {
+  return { settings };
 };
 
 export default connect(mapStateToProps)(SearchHome);

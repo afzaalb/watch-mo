@@ -2,6 +2,7 @@ import React from "react";
 import { Calendar, User, Lightning, Link } from "react-bytesize-icons";
 import { IMDB_NAME_URL } from "../../constants";
 import imdbLogo from "../../assets/images/imdb.png";
+import { getTextByGender } from "../../utils/person";
 
 const PersonInfo = ({
   name,
@@ -11,7 +12,7 @@ const PersonInfo = ({
   bornOn,
   known,
   imdb,
-  home
+  home,
 }) => {
   return (
     <aside className="mh-100 d-flex flex-column flex-1-1-a">
@@ -27,7 +28,7 @@ const PersonInfo = ({
             height="14"
             strokeWidth="2"
           />
-          <span>{gender == 2 ? "Male" : "Female"}</span>
+          <span>{getTextByGender(gender)}</span>
         </li>
         <li
           title={`Known for ${known}`}

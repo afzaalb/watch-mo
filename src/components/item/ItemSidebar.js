@@ -14,7 +14,7 @@ const ItemSidebar = ({
   revenue,
   crew,
   imdb,
-  productionCompanies
+  productionCompanies,
 }) => (
   <div className="col-md-4 item-detail-meta pl-4">
     <Torrent movie={imdb} />

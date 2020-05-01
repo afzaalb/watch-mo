@@ -14,7 +14,7 @@ class ItemHome extends Component {
     this.state = {
       playing: false,
       itemDetails: {},
-      loading: true
+      loading: true,
     };
   }
 
@@ -30,36 +30,36 @@ class ItemHome extends Component {
     }
   }
 
-  getItemById = id => {
+  getItemById = (id) => {
     theMovieDb.movies.getById(
       {
         id: id,
         append_to_response:
-          "videos,casts,recommendations,images&include_image_language=en,null"
+          "videos,casts,recommendations,images&include_image_language=en,null",
       },
       this.successCB,
       this.errorCB
     );
   };
 
-  successCB = data => {
+  successCB = (data) => {
     const fetchedData = JSON.parse(data);
     this.setState({
       loading: false,
-      itemDetails: fetchedData
+      itemDetails: fetchedData,
     });
   };
 
-  errorCB = data => {
+  errorCB = (data) => {
     if (data) {
       this.setState({
         loading: false,
-        tmdbResponse: JSON.parse(data).status_message
+        tmdbResponse: JSON.parse(data).status_message,
       });
     } else {
       this.setState({
         loading: false,
-        itemDetails: {}
+        itemDetails: {},
       });
     }
   };
@@ -67,7 +67,7 @@ class ItemHome extends Component {
   handlePlayerState = () => {
     const { playing } = this.state;
     this.setState({
-      playing: !playing
+      playing: !playing,
     });
   };
 
@@ -91,7 +91,7 @@ class ItemHome extends Component {
       recommendations,
       videos,
       images,
-      production_companies
+      production_companies,
     } = itemDetails;
 
     if (!isEmpty(itemDetails)) {

@@ -21,7 +21,7 @@ const ItemDetails = ({
   cast,
   crew,
   backdrops,
-  productionCompanies
+  productionCompanies,
 }) => (
   <>
     <ItemMeta

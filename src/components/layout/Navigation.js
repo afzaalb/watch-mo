@@ -3,21 +3,14 @@ import NavLink from "react-router-dom/NavLink";
 import map from "lodash/map";
 import kebabCase from "lodash/kebabCase";
 import { movieCategories } from "../../constants";
-import { setAdultFilter } from "../../redux/action-creators/adult";
-import { connect } from "react-redux";
 
-const Navigation = ({ setAdultFilter }) => (
+const Navigation = () => (
   <nav className="navigation">
     <ul className="d-flex flex-column">
       <li className="logo">
         <NavLink to="/" title="WatchMo.com">
           WatchMo
         </NavLink>
-      </li>
-      <li>
-        <button onClick={() => setAdultFilter(true)}>
-          Toggle Adult Filter
-        </button>
       </li>
       <li>
         <NavLink to="/search" title="Find Here">
@@ -50,4 +43,4 @@ const Navigation = ({ setAdultFilter }) => (
   </nav>
 );
 
-export default connect(null, { setAdultFilter })(Navigation);
+export default Navigation;

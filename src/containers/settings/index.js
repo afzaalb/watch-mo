@@ -1,9 +1,19 @@
 import React, { Component } from "react";
+import { connect } from "react-redux";
 
 class Settings extends Component {
   render() {
-    return <div>Settings Page</div>;
+    return (
+      <section className="mb-4">
+        <h2>Settings</h2>
+        <span>Adult Filter</span>
+      </section>
+    );
   }
 }
 
-export default Settings;
+const mapStateToProps = ({ settings }) => {
+  return { settings };
+};
+
+export default connect(mapStateToProps)(Settings);

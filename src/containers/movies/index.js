@@ -3,7 +3,7 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import ListSection from "../../components/shared/ListSection";
 import { movieCategories } from "../../constants";
-import { addNowPlaying, addUpcoming } from "../../redux/action-creators/movie";
+import { addNowPlaying, addUpcoming } from "../../redux/action-creators/movies";
 import { setTmdbErrorMsg } from "../../redux/action-creators/tmdb";
 import { getMoviesByCategoryInfo } from "../../utils";
 

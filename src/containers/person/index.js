@@ -5,15 +5,16 @@ import ReactImageFallback from "react-image-fallback";
 import { IMAGE_URL, FALLBACK_IMAGE } from "../../constants";
 import NoDataFound from "../../components/shared/NoDataFound";
 import Loader from "../../components/shared/Loader";
-import PersonInfo from "../../components/person/PersonInfo";
 import GalleryModal from "../../components/shared/gallery-modal";
+import PersonInfo from "../../components/person/PersonInfo";
+import Filmography from "../../components/person/Filmography";
 
 class PeopleHome extends Component {
   constructor(props) {
     super(props);
     this.state = {
       personDetails: {},
-      loading: true
+      loading: true,
     };
   }
 
@@ -21,31 +22,31 @@ class PeopleHome extends Component {
     theMovieDb.people.getById(
       {
         id: this.props.match.params.id,
-        append_to_response: "images,credits"
+        append_to_response: "images,credits",
       },
       this.successCB,
       this.errorCB
     );
   }
 
-  successCB = data => {
+  successCB = (data) => {
     const fetchedData = JSON.parse(data);
     this.setState({
       loading: false,
-      personDetails: fetchedData
+      personDetails: fetchedData,
     });
   };
 
-  errorCB = data => {
+  errorCB = (data) => {
     if (data) {
       this.setState({
         loading: false,
-        tmdbResponse: JSON.parse(data).status_message
+        tmdbResponse: JSON.parse(data).status_message,
       });
     } else {
       this.setState({
         loading: false,
-        personDetails: {}
+        personDetails: {},
       });
     }
   };
@@ -62,12 +63,13 @@ class PeopleHome extends Component {
       known_for_department,
       imdb_id,
       homepage,
-      images
+      images,
+      credits,
     } = personDetails;
 
     return !isEmpty(personDetails) ? (
-      <section>
-        <div className="row mb-3">
+      <>
+        <section className="row mb-5">
           <div className="col-xs-12 col-sm-5 person-poster">
             <GalleryModal title={name} images={images.profiles}>
               <ReactImageFallback
@@ -90,11 +92,9 @@ class PeopleHome extends Component {
               home={homepage !== null && homepage}
             />
           </div>
-          {/* {allImages.length > 2 && (
-            <div className="col-xs-12 col-sm-12">Gallery was here</div>
-          )} */}
-        </div>
-      </section>
+        </section>
+        <Filmography credits={credits} />
+      </>
     ) : tmdbResponse ? (
       <NoDataFound alignCenter spaceTop message={tmdbResponse} />
     ) : loading ? (

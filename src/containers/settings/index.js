@@ -6,7 +6,10 @@ class Settings extends Component {
     return (
       <section className="mb-4">
         <h2>Settings</h2>
-        <span>Adult Filter</span>
+        <div class="row">
+          <div className="col-sm-3 text-right">Adult</div>
+          <div className="col-sm-9">On</div>
+        </div>
       </section>
     );
   }

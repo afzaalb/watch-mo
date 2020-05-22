@@ -3,11 +3,11 @@ import Navigation from "./Navigation";
 import { Element } from "react-scroll";
 
 const Layout = ({ children }) => (
-  <Element name="wrapper" className="wrapper">
-    <div className="container d-flex">
+  <Element name="wrapper" className="wrapper d-flex">
+    <aside className="sidebar d-flex">
       <Navigation />
-      <main className="flex-1-1-a">{children}</main>
-    </div>
+    </aside>
+    <main className="main mx-auto">{children}</main>
   </Element>
 );
 

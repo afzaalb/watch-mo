@@ -5,7 +5,7 @@ import kebabCase from "lodash/kebabCase";
 import { movieCategories } from "../../constants";
 
 const Navigation = () => (
-  <nav className="navigation">
+  <nav className="navigation ml-auto position-relative">
     <ul className="d-flex flex-column">
       <li className="logo">
         <NavLink to="/" title="WatchMo.com">

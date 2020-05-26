@@ -1,6 +1,11 @@
 @import "~bootstrap/dist/css/bootstrap.min.css";
 
 /* Generic Styles */
+html {
+  --space: 30px;
+  --radius: 24px;
+}
+
 ul {
   list-style: none;
   margin: 0;
@@ -116,7 +121,7 @@ strong,
   top: 70px;
   right: -68px;
   z-index: 1;
-  font-size: 24px;
+  font-size: var(--radius);
   font-weight: 700;
   transform: rotate(90deg);
 }
@@ -127,7 +132,7 @@ strong,
   height: 100%;
   font-size: 18px;
   font-weight: 500;
-  padding: 30px;
+  padding: var(--space);
   flex-shrink: 0;
 }
 
@@ -148,7 +153,7 @@ strong,
 main {
   width: 75%;
   max-width: 750px;
-  padding: 30px;
+  padding: var(--space);
 }
 
 nav a,
@@ -192,19 +197,15 @@ nav a:hover {
   height: 48px;
 }
 
-.search-results li {
-  margin-bottom: 30px;
-}
-
 .rounded-card {
   padding: 8px;
-  border: 1px solid var(--primary);
   border-radius: 8px;
+  background: var(--white);
+  margin-bottom: var(--space);
 }
 
 .rounded-card:hover {
-  border-color: var(--light);
-  background: var(--primary);
+  box-shadow: 0 2px 20px var(--light);
 }
 
 .rounded-card img {
@@ -215,7 +216,7 @@ nav a:hover {
 }
 
 .yt-player {
-  margin-bottom: 30px;
+  margin-bottom: var(--space);
 }
 
 .yt-player img {
@@ -227,7 +228,7 @@ nav a:hover {
 
 .over-shadow {
   background: var(--primary);
-  border-radius: 24px;
+  border-radius: var(--radius);
 }
 
 .over-shadow:after {
@@ -255,7 +256,7 @@ nav a:hover {
 }
 
 section h2 {
-  font-size: 24px;
+  font-size: var(--radius);
   line-height: 1.4;
 }
 
@@ -270,14 +271,14 @@ section p {
 .poster-shot {
   width: 144px;
   height: 144px;
-  border-radius: 24px;
-  margin-bottom: 30px;
+  border-radius: var(--radius);
+  margin-bottom: var(--space);
   box-shadow: 0 1px 1px 1px var(--light);
 }
 
 .meta {
   flex: 1;
-  margin-left: 30px;
+  margin-left: var(--space);
 }
 
 .meta small {
@@ -285,7 +286,7 @@ section p {
 }
 
 .pill {
-  border-radius: 24px;
+  border-radius: var(--radius);
   font-size: 12px;
   background: var(--primary);
   border: 1px solid var(--light);
@@ -298,7 +299,7 @@ section p {
 .imdb-status {
   border-top: 1px solid var(--light);
   border-bottom: 1px solid var(--light);
-  margin-bottom: 30px;
+  margin-bottom: var(--space);
 }
 
 .imdb-status img {
@@ -310,7 +311,7 @@ section p {
 }
 
 .recommendations {
-  margin-top: 30px;
+  margin-top: var(--space);
 }
 
 .movies-item .description {
@@ -324,7 +325,7 @@ section p {
 }
 
 .person-poster img {
-  border-radius: 24px;
+  border-radius: var(--radius);
   box-shadow: 0 1px 1px 1px var(--light);
 }
 
@@ -341,7 +342,7 @@ section p {
 }
 
 .gallery-preview {
-  border-radius: 24px;
+  border-radius: var(--radius);
   height: inherit;
 }
 .expand-preview {

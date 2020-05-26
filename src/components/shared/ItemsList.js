@@ -17,7 +17,7 @@ const ItemsList = ({ items, name, route }) => {
         )}
       </h2>
       <div className="row">
-        {map(items, m => (
+        {map(items, (m) => (
           <Slot
             key={m.id}
             id={m.id}

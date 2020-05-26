@@ -7,8 +7,8 @@ import { IMAGE_URL, FALLBACK_IMAGE } from "../../constants";
 import Rating from "../shared/Rating";
 
 const SearchItem = ({ route, name, image, release, rating, type }) => (
-  <li className="col-sm-12 col-md-6">
-    <Link to={route} className="d-flex rounded-card">
+  <li className="col-sm-12 col-md-6 d-flex flex-column">
+    <Link to={route} className="d-flex rounded-card h-100">
       <ReactImageFallback
         src={`${IMAGE_URL + "/w92" + image}`}
         fallbackImage={FALLBACK_IMAGE}

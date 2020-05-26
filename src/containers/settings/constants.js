@@ -1,1 +1,1 @@
-export const defaultSettings = { adult: false };
+export const defaultSettings = { adult: true };

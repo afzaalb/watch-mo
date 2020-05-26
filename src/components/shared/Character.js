@@ -5,8 +5,8 @@ import ReactImageFallback from "react-image-fallback";
 import { IMAGE_URL, FALLBACK_IMAGE } from "../../constants";
 
 const Character = ({ name, character, link, imgPath, release }) => (
-  <li className="col-sm-12 col-md-6 mb-3">
-    <Link to={link} className="d-flex rounded-card">
+  <li className="col-sm-12 col-md-6 d-flex flex-column">
+    <Link to={link} className="d-flex rounded-card h-100">
       <ReactImageFallback
         src={IMAGE_URL + imgPath}
         fallbackImage={FALLBACK_IMAGE}

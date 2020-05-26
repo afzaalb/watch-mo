@@ -5,11 +5,11 @@ import Rating from "../shared/Rating";
 import { IMAGE_URL, mediaTypes } from "../../constants";
 
 const Slot = ({ id, name, poster, rating, overview, release }) => (
-  <div className="movies-item col-sm-6 col-xs-12 mb-3">
+  <div className="movies-item col-sm-6 col-xs-12 d-flex flex-column">
     <Link
       title={`${name} (${rating})`}
       to={`/${mediaTypes.MOVIE}/${id}/${kebabCase(name)}`}
-      className="d-flex rounded-card"
+      className="d-flex rounded-card h-100"
     >
       {poster && (
         <img

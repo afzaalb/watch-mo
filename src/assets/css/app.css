@@ -56,15 +56,15 @@ a:focus {
   --layout: #ffe0d9;
 }
 
+/* Dark Mode for iOS/macOS */
+/* @media (prefers-color-scheme: dark) {} */
+
 .wrapper {
   min-height: 100vh;
   overflow-x: hidden;
   background: var(--layout);
   color: var(--secondary);
 }
-
-/* Dark Mode for iOS/macOS */
-/* @media (prefers-color-scheme: dark) {} */
 
 .wrapper > .container {
   min-height: 100%;
@@ -133,6 +133,7 @@ strong,
   font-size: 18px;
   font-weight: 500;
   padding: var(--space);
+  padding-left: 0;
   flex-shrink: 0;
 }
 
@@ -151,9 +152,9 @@ strong,
 }
 
 main {
-  width: 75%;
-  max-width: 750px;
+  max-width: 780px;
   padding: var(--space);
+  padding-right: 0;
 }
 
 nav a,

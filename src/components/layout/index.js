@@ -7,7 +7,7 @@ const Layout = ({ children }) => (
     <aside className="sidebar d-flex">
       <Navigation />
     </aside>
-    <main className="main mx-auto">{children}</main>
+    <main className="w-100 main mx-auto">{children}</main>
   </Element>
 );
 

@@ -2,7 +2,7 @@
 
 Simple React App using TMDB api for movies, tv shows and people.
 Torrents for movies are also supported in `v1.1.0` and above.
-Take a look at the [demo](http://react.admin-test.com).
+Have a look at the web app [here](https://watchmo.netlify.app/).
 
 ## Getting Started
 
@@ -22,7 +22,7 @@ Install node modules.
 npm install
 ```
 
-Set the api key you got from TMDB to `TMDB_KEY` in `.env` file. You can also modify your api configuration parameters in `src/constants`.
+Create a `.env` file in root directory and add `TMDB_KEY: KEY_YOU_GOT_FROM_TMDB`. You can also modify your api configuration parameters in `src/constants/index`.
 
 Start your application. This command will also watch for changes in your files.
 
@@ -42,5 +42,5 @@ For api options and methods details:
 ## Authors
 
 - **Muhammad Afzaal**
-  _ [Github](https://github.com/afzaalb)
-  _ [Twitter](https://twitter.com/afzaalopera?lang=en)
+  - [Github](https://github.com/afzaalb)
+  - [Twitter](https://twitter.com/afzaalopera?lang=en)

@@ -6,7 +6,6 @@ import Movies from "../containers/movies";
 import Item from "../containers/item";
 import Person from "../containers/person";
 import Search from "../containers/search/";
-import Collection from "../containers/collection";
 import Settings from "../containers/settings";
 import NoDataFound from "../components/shared/NoDataFound";
 
@@ -23,7 +22,6 @@ const MyRouter = () => (
 
     {/* Other Features */}
     <Route exact path="/search" component={Search} />
-    <Route exact path="/collection" component={Collection} />
     <Route exact path="/settings" component={Settings} />
     <Route
       path="*"

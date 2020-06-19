@@ -9,6 +9,15 @@ import { setTmdbErrorMsg } from "../../redux/action-creators/tmdb";
 import { getMoviesByCategoryInfo } from "../../utils";
 
 class Home extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      playing: false,
+      itemDetails: {},
+      loading: true,
+    };
+  }
+
   componentDidMount() {
     const { addUpcoming, addNowPlaying, setTmdbErrorMsg, movies } = this.props;
 
@@ -22,12 +31,9 @@ class Home extends Component {
 
   render() {
     const { movies, tmdbResponse } = this.props;
-    const { nowPlaying, upcoming } = movieCategories;
     const { MOVIE } = mediaTypes;
 
-    const homeMovieCategories = { nowPlaying, upcoming };
-
-    return map(homeMovieCategories, (category, i) => (
+    return map(movieCategories, (category, i) => (
       <ListSection
         key={i}
         name={category}

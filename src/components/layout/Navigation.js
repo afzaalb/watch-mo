@@ -2,7 +2,8 @@ import React from "react";
 import NavLink from "react-router-dom/NavLink";
 import map from "lodash/map";
 import kebabCase from "lodash/kebabCase";
-import { movieCategories } from "../../constants";
+import { movieCategories, GIT_REPO_URL } from "../../constants";
+import Github from "react-bytesize-icons/GitHub";
 
 const Navigation = () => (
   <nav className="navigation ml-auto position-relative">
@@ -30,14 +31,22 @@ const Navigation = () => (
         </ul>
       </li>
       <li>
-        <NavLink to="/tv-shows" title="Find Here">
+        <NavLink to="/tv-shows" title="See TV Shows">
           TV Shows
         </NavLink>
       </li>
       <li>
-        <NavLink to="/settings" title="Find Here">
-          Settings
-        </NavLink>
+        <small className="d-block mt-4 text-monospace">
+          <span className="text-muted">2020.</span>
+          <a href={GIT_REPO_URL} className="ml-2 align-baseline">
+            <Github width="18" className="align-middle" />
+            <img
+              className="ml-2"
+              width="48"
+              src="../../../src/assets/images/wmo-light.png"
+            />
+          </a>
+        </small>
       </li>
     </ul>
   </nav>

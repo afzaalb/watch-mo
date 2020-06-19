@@ -118,12 +118,11 @@ strong,
 
 .logo {
   position: absolute;
-  top: 70px;
-  right: -68px;
-  z-index: 1;
+  top: 38px;
+  right: -30px;
   font-size: var(--radius);
   font-weight: 700;
-  transform: rotate(90deg);
+  writing-mode: sideways-rl;
 }
 
 .navigation {
@@ -154,7 +153,6 @@ strong,
 main {
   max-width: 780px;
   padding: var(--space);
-  padding-right: 0;
 }
 
 nav a,

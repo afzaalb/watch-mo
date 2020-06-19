@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import map from "lodash/map";
 import kebabCase from "lodash/kebabCase";
 import Torrent from "../shared/Torrent";
-import { getCrewMembersByType } from "../../containers/item/utils";
+import { getCrewMembersByType } from "../../utils";
 import { crewTypes } from "../../constants";
 
 const ItemSidebar = ({

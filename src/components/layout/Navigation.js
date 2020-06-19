@@ -38,7 +38,11 @@ const Navigation = () => (
       <li>
         <small className="d-block mt-4 text-monospace">
           <span className="text-muted">2020.</span>
-          <a href={GIT_REPO_URL} className="ml-2 align-baseline">
+          <a
+            target="_blank"
+            href={GIT_REPO_URL}
+            className="ml-2 align-baseline"
+          >
             <Github width="18" className="align-middle" />
             <img
               className="ml-2"

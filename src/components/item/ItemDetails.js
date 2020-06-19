@@ -45,7 +45,9 @@ const ItemDetails = ({
     </ul>
 
     <section className="row item-details">
-      <CastMembers key={imdb} cast={cast} />
+      <div className="col-md-8 pr-4">
+        {cast && <CastMembers key={imdb} cast={cast} />}
+      </div>
       <ItemSidebar
         title={title}
         link={link}

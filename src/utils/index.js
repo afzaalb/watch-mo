@@ -1,10 +1,17 @@
 import theMovieDb from "themoviedb-javascript-library";
 import startCase from "lodash/startCase";
 import map from "lodash/map";
+import find from "lodash/find";
+import filter from "lodash/filter";
 import isEmpty from "lodash/isEmpty";
 import kebabCase from "lodash/kebabCase";
 import { scroller } from "react-scroll";
-import { API_REGION, movieCategories } from "../constants";
+import {
+  API_REGION,
+  movieCategories,
+  videoTypes,
+  mediaTypes,
+} from "../constants";
 
 // Function to initialize TMDB API
 export const TMDB = (apiKey, baseURL, imagesURL, requestTimeout) => {
@@ -93,4 +100,26 @@ export const getMoviesByCategoryInfo = (
   } else if (isEmpty(movies.nowPlaying) && category === kebabCase(nowPlaying)) {
     getNowPlaying(addNowPlaying, setTmdbErrorMsg);
   }
+};
+
+export const getItemTrailer = (videos) => {
+  let videoKey = videos[0].key;
+  const teaser = find(videos, (v) => v.type === videoTypes.TEASER);
+  const trailer = find(videos, (v) => v.type === videoTypes.TRAILER);
+
+  if (trailer) {
+    videoKey = trailer.key;
+  } else if (teaser) {
+    videoKey = teaser.key;
+  }
+
+  return videoKey;
+};
+
+export const getCrewMembersByType = (crew, crewType = null) =>
+  filter(crew, (c) => c.job === crewType);
+
+export const getRecommendationPath = (id, seasons, name) => {
+  const recBasePath = seasons ? mediaTypes.TV : mediaTypes.MOVIE;
+  return `/${recBasePath}/${id}/${kebabCase(name)}`;
 };

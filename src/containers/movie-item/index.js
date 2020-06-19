@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { getItemTrailer } from "./utils";
+import { getItemTrailer } from "../../utils";
 import theMovieDb from "themoviedb-javascript-library";
 import isEmpty from "lodash/isEmpty";
 import NoDataFound from "../../components/shared/NoDataFound";
@@ -8,7 +8,7 @@ import Player from "../../components/item/Player";
 import ItemDetails from "../../components/item/ItemDetails";
 import Recommendations from "../../components/item/Recommendations";
 
-class ItemHome extends Component {
+class MovieItem extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -23,7 +23,7 @@ class ItemHome extends Component {
     this.getItemById(id);
   }
 
-  componentDidUpdate(prevProps, prevState) {
+  componentDidUpdate(prevProps) {
     const { id } = this.props.match.params;
     if (id !== prevProps.match.params.id) {
       this.getItemById(id);
@@ -33,7 +33,7 @@ class ItemHome extends Component {
   getItemById = (id) => {
     theMovieDb.movies.getById(
       {
-        id: id,
+        id,
         append_to_response:
           "videos,casts,recommendations,images&include_image_language=en,null",
       },
@@ -143,4 +143,4 @@ class ItemHome extends Component {
   }
 }
 
-export default ItemHome;
+export default MovieItem;

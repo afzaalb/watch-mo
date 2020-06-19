@@ -15,7 +15,7 @@ const ItemMeta = ({
   genres,
   runtime,
   poster,
-  backdrops
+  backdrops,
 }) => (
   <section className="item-meta d-flex">
     <div className="poster-shot overflow-hidden">
@@ -68,7 +68,7 @@ const ItemMeta = ({
               strokeWidth="2"
             />
             <span className="genre-list">
-              {uniqBy(genres, "id").map(g => {
+              {uniqBy(genres, "id").map((g) => {
                 return (
                   <span data-separator=", " key={g.id}>
                     {g.name}

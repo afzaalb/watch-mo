@@ -15,32 +15,30 @@ const CastMembers = ({ cast }) => {
   };
 
   return (
-    <div className="col-md-8 pr-4">
-      {castToShow.length > 0 && (
-        <>
-          <h6>Cast</h6>
-          <ul className="row">
-            {map(castToShow, ({ name, id, profile_path, character }) => (
-              <Character
-                key={name + character + id}
-                name={name}
-                character={character}
-                link={`/person/${id}/${kebabCase(name)}`}
-                imgPath={`/w92${profile_path}`}
-              />
-            ))}
-          </ul>
-          {!showAllCastBtn && cast.length > 6 && (
-            <button
-              className="btn btn-block btn-light active"
-              onClick={() => viewFullCastHandler()}
-            >
-              View all cast
-            </button>
-          )}
-        </>
-      )}
-    </div>
+    castToShow.length > 0 && (
+      <>
+        <h6>Cast</h6>
+        <ul className="row">
+          {map(castToShow, ({ name, id, profile_path, character }) => (
+            <Character
+              key={name + character + id}
+              name={name}
+              character={character}
+              link={`/person/${id}/${kebabCase(name)}`}
+              imgPath={`/w92${profile_path}`}
+            />
+          ))}
+        </ul>
+        {!showAllCastBtn && cast.length > 6 && (
+          <button
+            className="btn btn-block btn-light active"
+            onClick={() => viewFullCastHandler()}
+          >
+            View all cast
+          </button>
+        )}
+      </>
+    )
   );
 };
 

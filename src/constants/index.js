@@ -14,6 +14,16 @@ export const FALLBACK_IMAGE = `data:image/svg+xml;utf8;base64,PD94bWwgdmVyc2lvbj
 export const GIT_REPO_URL = `https://github.com/afzaalb/watch-mo/`;
 
 // Object Constants
+export const youTubeConfig = {
+  playerVars: {
+    enablejsapi: 1,
+    showinfo: 0,
+    controls: 1,
+    autoplay: 1,
+    rel: 0,
+  },
+};
+
 export const mediaTypes = {
   TV: "tv",
   MOVIE: "movie",

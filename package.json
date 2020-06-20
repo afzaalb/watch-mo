@@ -11,7 +11,7 @@
     "url": "https://github.com/afzaalb/watch-mo.git"
   },
   "keywords": [
-    "react",
+    "reactjs",
     "movies",
     "tv shows",
     "people",
@@ -22,7 +22,7 @@
   },
   "license": "ISC",
   "description": "Movies,TV Series & People History. All in one place.",
-  "homepage": "https://github.com/afzaalb/watch-mo",
+  "homepage": "https://watchmo.netlify.app/",
   "private": true,
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",

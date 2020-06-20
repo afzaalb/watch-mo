@@ -21,6 +21,7 @@ const ItemDetails = ({
   cast,
   crew,
   backdrops,
+  seasons,
   productionCompanies,
 }) => (
   <>
@@ -55,6 +56,7 @@ const ItemDetails = ({
         revenue={revenue}
         crew={crew}
         imdb={imdb}
+        seasons={seasons}
         productionCompanies={productionCompanies}
       />
     </section>

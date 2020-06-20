@@ -4,12 +4,13 @@ import map from "lodash/map";
 import kebabCase from "lodash/kebabCase";
 import { movieCategories, GIT_REPO_URL } from "../../constants";
 import Github from "react-bytesize-icons/GitHub";
+import watchMoLogo from "../../assets/images/wmo-light.png";
 
 const Navigation = () => (
   <nav className="navigation ml-auto position-relative">
     <ul className="d-flex flex-column">
       <li className="logo">
-        <NavLink to="/" title="WatchMo.com">
+        <NavLink to="/" title="Browse">
           WatchMo
         </NavLink>
       </li>
@@ -47,7 +48,8 @@ const Navigation = () => (
             <img
               className="ml-2"
               width="48"
-              src="../../../src/assets/images/wmo-light.png"
+              src={watchMoLogo}
+              alt="Code Repository"
             />
           </a>
         </small>

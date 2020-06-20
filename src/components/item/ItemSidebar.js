@@ -14,10 +14,11 @@ const ItemSidebar = ({
   revenue,
   crew,
   imdb,
+  seasons,
   productionCompanies,
 }) => (
   <div className="col-md-4 item-detail-meta pl-4">
-    <Torrent movie={imdb} />
+    {!seasons && <Torrent movie={imdb} />}
     {link !== null && (
       <>
         <h6 className="mb-1">Homepage</h6>

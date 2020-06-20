@@ -9,6 +9,7 @@ import { SEARCH_DELAY } from "../../constants";
 import Filters from "../../components/search/Filters";
 import SearchResults from "../../components/search/SearchResults";
 import { connect } from "react-redux";
+import GA from "react-ga";
 
 class SearchHome extends React.Component {
   constructor(props) {
@@ -25,9 +26,19 @@ class SearchHome extends React.Component {
     const {
       settings: { adult },
     } = this.props;
-    this.setState({
-      loading: true,
-    });
+    this.setState(
+      {
+        loading: true,
+      },
+      () => {
+        GA.event({
+          category: "Finder",
+          action: "Search for query",
+          label: value,
+        });
+      }
+    );
+
     theMovieDb.search.getMulti(
       { query: value, include_adult: adult },
       this.successCB,

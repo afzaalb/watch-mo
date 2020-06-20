@@ -52,6 +52,7 @@ module.exports = {
     new CleanWebpackPlugin(["dist"]),
     new HtmlWebPackPlugin({
       template: "./src/index.html",
+      favicon: "./src/assets/images/icon.png",
     }),
     new webpack.DefinePlugin(envKeys),
   ],

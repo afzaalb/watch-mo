@@ -8,8 +8,11 @@ import {
   IMAGE_URL,
   REQ_TIMEOUT,
   themes,
+  GTAG_KEY,
 } from "../../constants";
 import "../../assets/css/app.css";
+import GoogleAnalytics from "react-ga";
+import withGaAnalytics from "../../utils/withGaAnalytics";
 
 class App extends Component {
   constructor(props) {
@@ -18,6 +21,7 @@ class App extends Component {
     // Initialize TMDB api & set default theme
     TMDB(API_KEY, API_URL, IMAGE_URL, REQ_TIMEOUT);
     setAppTheme(themes.LITE);
+    GoogleAnalytics.initialize(GTAG_KEY);
   }
 
   render() {
@@ -29,4 +33,4 @@ class App extends Component {
   }
 }
 
-export default App;
+export default withGaAnalytics(App);

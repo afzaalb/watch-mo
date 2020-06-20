@@ -5,6 +5,7 @@ import ExpandGallery from "./ExpandGallery";
 import PropTypes from "prop-types";
 import classNames from "classnames";
 import Close from "react-bytesize-icons/Close";
+import GA from "react-ga";
 
 class GalleryModal extends PureComponent {
   state = {
@@ -16,6 +17,13 @@ class GalleryModal extends PureComponent {
       return { isGalleryModalShown: !prevState.isGalleryModalShown };
     });
   };
+
+  componentDidUpdate() {
+    const { isGalleryModalShown } = this.state;
+    if (isGalleryModalShown === true) {
+      GA.modalview("view-gallery");
+    }
+  }
 
   render() {
     const { images, title, children } = this.props;

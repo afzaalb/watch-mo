@@ -2,9 +2,10 @@ import React from "react";
 import NavLink from "react-router-dom/NavLink";
 import map from "lodash/map";
 import kebabCase from "lodash/kebabCase";
-import { movieCategories, GIT_REPO_URL } from "../../constants";
+import { movieCategories } from "../../constants";
 import Github from "react-bytesize-icons/GitHub";
 import watchMoLogo from "../../assets/images/wmo-light.png";
+import { repoClickHandler } from "../../utils";
 
 const Navigation = () => (
   <nav className="navigation ml-auto position-relative">
@@ -39,10 +40,9 @@ const Navigation = () => (
       <li>
         <small className="d-block mt-4 text-monospace">
           <span className="text-muted">2020.</span>
-          <a
-            target="_blank"
-            href={GIT_REPO_URL}
-            className="ml-2 align-baseline"
+          <span
+            onClick={repoClickHandler}
+            className="c-hand ml-2 align-baseline"
           >
             <Github width="18" className="align-middle" />
             <img
@@ -51,7 +51,7 @@ const Navigation = () => (
               src={watchMoLogo}
               alt="Code Repository"
             />
-          </a>
+          </span>
         </small>
       </li>
     </ul>

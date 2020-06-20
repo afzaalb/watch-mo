@@ -8,10 +8,12 @@ import kebabCase from "lodash/kebabCase";
 import { scroller } from "react-scroll";
 import {
   API_REGION,
+  GIT_REPO_URL,
   movieCategories,
   videoTypes,
   mediaTypes,
 } from "../constants";
+import GA from "react-ga";
 
 // Function to initialize TMDB API
 export const TMDB = (apiKey, baseURL, imagesURL, requestTimeout) => {
@@ -122,4 +124,15 @@ export const getCrewMembersByType = (crew, crewType = null) =>
 export const getRecommendationPath = (id, seasons, name) => {
   const recBasePath = seasons ? mediaTypes.TV : mediaTypes.MOVIE;
   return `/${recBasePath}/${id}/${kebabCase(name)}`;
+};
+
+export const repoClickHandler = () => {
+  GA.event({
+    category: "Code",
+    action: "View repository code",
+  });
+
+  setTimeout(() => {
+    window.open(GIT_REPO_URL, "_blank");
+  }, 100);
 };

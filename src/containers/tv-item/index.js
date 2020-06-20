@@ -7,6 +7,7 @@ import Loader from "../../components/shared/Loader";
 import Player from "../../components/item/Player";
 import ItemDetails from "../../components/item/ItemDetails";
 import Recommendations from "../../components/item/Recommendations";
+import GA from "react-ga";
 
 class TvItem extends Component {
   constructor(props) {
@@ -79,9 +80,18 @@ class TvItem extends Component {
 
   handlePlayerState = () => {
     const { playing } = this.state;
-    this.setState({
-      playing: !playing,
-    });
+    this.setState(
+      {
+        playing: !playing,
+      },
+      () => {
+        this.state.playing &&
+          GA.event({
+            category: "Player",
+            action: "Play trailer for tv show",
+          });
+      }
+    );
   };
 
   render() {

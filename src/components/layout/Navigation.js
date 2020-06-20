@@ -6,6 +6,7 @@ import { movieCategories } from "../../constants";
 import Github from "react-bytesize-icons/GitHub";
 import watchMoLogo from "../../assets/images/wmo-light.png";
 import { repoClickHandler } from "../../utils";
+import Attribution from "./Attribution";
 
 const Navigation = () => (
   <nav className="navigation ml-auto position-relative">
@@ -53,6 +54,7 @@ const Navigation = () => (
             />
           </span>
         </small>
+        <Attribution />
       </li>
     </ul>
   </nav>

@@ -122,7 +122,7 @@ strong,
   right: -30px;
   font-size: var(--radius);
   font-weight: 700;
-  writing-mode: sideways-rl;
+  writing-mode: vertical-lr;
 }
 
 .navigation {

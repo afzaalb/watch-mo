@@ -7,15 +7,21 @@ import Github from "react-bytesize-icons/GitHub";
 import watchMoLogo from "../../assets/images/wmo-light.png";
 import { repoClickHandler } from "../../utils";
 import Attribution from "./Attribution";
+import { Spring } from "react-spring/renderprops";
+import { logoSpring } from "../../constants/spring-configs";
 
 const Navigation = () => (
   <nav className="navigation ml-auto position-relative">
     <ul className="d-flex flex-column">
-      <li className="logo">
-        <NavLink to="/" title="Browse">
-          WatchMo
-        </NavLink>
-      </li>
+      <Spring from={logoSpring.from} to={logoSpring.to}>
+        {(animatedSpring) => (
+          <li className="logo" style={animatedSpring}>
+            <NavLink to="/" title="Browse">
+              WatchMo
+            </NavLink>
+          </li>
+        )}
+      </Spring>
       <li>
         <NavLink to="/search" title="Find Here">
           Finder

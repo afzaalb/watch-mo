@@ -33,6 +33,7 @@ const ItemMeta = ({
         {title}
         <small> ({release.slice(0, 4)})</small>
       </h2>
+
       <ul className="d-flex flex-wrap">
         {rating && rating > 0 ? (
           <li

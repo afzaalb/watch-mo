@@ -19,7 +19,7 @@ const Attribution = () => (
     />
     <svg
       title="Bootstrap 4"
-      class="d-block"
+      className="d-block"
       width="24"
       height="24"
       viewBox="0 0 612 612"

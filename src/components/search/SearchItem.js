@@ -1,19 +1,18 @@
 import React from "react";
 import Link from "react-router-dom/Link";
 import deburr from "lodash/deburr";
-import ReactImageFallback from "react-image-fallback";
 import { showMediaTypeTag } from "../../containers/search/utils";
-import { IMAGE_URL, FALLBACK_IMAGE } from "../../constants";
+import CardImage from "../shared/CardImage";
+import { IMAGE_URL } from "../../constants";
 import Rating from "../shared/Rating";
 
-const SearchItem = ({ route, name, image, release, rating, type }) => (
+const SearchItem = ({ route, name, image, release, rating, type, styles }) => (
   <li className="col-sm-12 col-md-6 d-flex flex-column">
     <Link to={route} className="d-flex rounded-card h-100">
-      <ReactImageFallback
-        src={`${IMAGE_URL + "/w92" + image}`}
-        fallbackImage={FALLBACK_IMAGE}
+      <CardImage
         alt={name}
-        className="cover-fit"
+        src={`${IMAGE_URL + "/w92" + image}`}
+        styles={styles}
       />
       <span className="flex-1-1-a py-2 px-3">
         <span className="d-flex justify-content-between align-items-center mb-2">

@@ -3,22 +3,22 @@ import Link from "react-router-dom/Link";
 import kebabCase from "lodash/kebabCase";
 import Rating from "../shared/Rating";
 import { IMAGE_URL, mediaTypes } from "../../constants";
+import CardImage from "../shared/CardImage";
 
-const Slot = ({ id, name, poster, rating, overview, release }) => (
+const Slot = ({ id, name, poster, rating, overview, release, styles }) => (
   <div className="movies-item col-sm-6 col-xs-12 d-flex flex-column">
     <Link
       title={`${name} (${rating})`}
       to={`/${mediaTypes.MOVIE}/${id}/${kebabCase(name)}`}
       className="d-flex rounded-card h-100"
     >
-      {poster && (
-        <img
-          src={`${IMAGE_URL}/w154${poster}`}
-          className="h-100 cover-fit mx-auto"
-          alt={name}
-        />
-      )}
-      <div className="flex-1-1-a px-3">
+      <CardImage
+        alt={name}
+        src={`${IMAGE_URL}/w154${poster}`}
+        isPoster
+        styles={styles}
+      />
+      <div className="flex-1-1-a pl-3 px-2">
         <span className="bold">{name}</span>
         <div className="d-flex align-items-center small">
           {release && <p className="genre mb-0">{release}</p>}

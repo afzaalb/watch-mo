@@ -1,18 +1,13 @@
 import React from "react";
 import deburr from "lodash/deburr";
 import { Link } from "react-router-dom";
-import ReactImageFallback from "react-image-fallback";
-import { IMAGE_URL, FALLBACK_IMAGE } from "../../constants";
+import { IMAGE_URL } from "../../constants";
+import CardImage from "./CardImage";
 
 const Character = ({ name, character, link, imgPath, release }) => (
   <li className="col-sm-12 col-md-6 d-flex flex-column">
     <Link to={link} className="d-flex rounded-card h-100">
-      <ReactImageFallback
-        src={IMAGE_URL + imgPath}
-        fallbackImage={FALLBACK_IMAGE}
-        alt={name}
-        className="cover-fit"
-      />
+      <CardImage alt={name} src={IMAGE_URL + imgPath} />
       <span className="flex-1-1-a py-2 px-3">
         {character ? (
           <span>

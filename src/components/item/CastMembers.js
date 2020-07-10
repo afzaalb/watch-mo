@@ -1,18 +1,20 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import map from "lodash/map";
 import kebabCase from "lodash/kebabCase";
 import Character from "../shared/Character";
 
 const CastMembers = ({ cast }) => {
-  // Initially Showing 6 members only
-  const [castToShow, toggleFullCastShow] = useState(cast.slice(0, 6));
-  // Used Hooks for cast togle button and number of cast members to show
-  const [showAllCastBtn, toggleFullCastBtn] = useState(false);
+  let castToShow = cast.slice(0, 6);
+  const isFullCastBtnShown = cast.length >= 6;
+  const [showFullCastBtn, toggleFullCastBtn] = useState(isFullCastBtnShown);
 
-  const viewFullCastHandler = () => {
-    toggleFullCastBtn(true); // Hide View all cast button
-    toggleFullCastShow(cast);
-  };
+  if (!showFullCastBtn) {
+    castToShow = cast;
+  }
+
+  useEffect(() => {
+    toggleFullCastBtn(isFullCastBtnShown);
+  }, [cast]);
 
   return (
     castToShow.length > 0 && (
@@ -29,10 +31,10 @@ const CastMembers = ({ cast }) => {
             />
           ))}
         </ul>
-        {!showAllCastBtn && cast.length > 6 && (
+        {showFullCastBtn && (
           <button
             className="btn btn-block btn-light active"
-            onClick={() => viewFullCastHandler()}
+            onClick={() => toggleFullCastBtn(false)}
           >
             View all cast
           </button>

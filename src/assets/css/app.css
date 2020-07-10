@@ -207,11 +207,13 @@ nav a:hover {
   box-shadow: 0 2px 20px var(--light);
 }
 
-.rounded-card img {
+.rounded-card .img-wrapper {
+  background: var(--primary);
   width: 72px;
   height: 72px;
   border-radius: 8px;
   flex-shrink: 0;
+  font-size: 0;
 }
 
 .yt-player {

@@ -3,7 +3,12 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import ListSection from "../../components/shared/ListSection";
 import { movieCategories } from "../../constants";
-import { addNowPlaying, addUpcoming } from "../../redux/action-creators/movies";
+import {
+  addNowPlaying,
+  addUpcoming,
+  addPopular,
+  addTopRated,
+} from "../../redux/action-creators/movies";
 import { setTmdbErrorMsg } from "../../redux/action-creators/tmdb";
 import { getMoviesByCategoryInfo } from "../../utils";
 
@@ -12,6 +17,8 @@ class Movies extends Component {
     const {
       addUpcoming,
       addNowPlaying,
+      addPopular,
+      addTopRated,
       setTmdbErrorMsg,
       movies,
       match: {
@@ -19,19 +26,23 @@ class Movies extends Component {
       },
     } = this.props;
 
-    getMoviesByCategoryInfo(
+    getMoviesByCategoryInfo({
       movies,
       addUpcoming,
       addNowPlaying,
+      addPopular,
+      addTopRated,
       setTmdbErrorMsg,
-      category
-    );
+      category,
+    });
   }
 
   componentDidUpdate(prevProps) {
     const {
       addUpcoming,
       addNowPlaying,
+      addPopular,
+      addTopRated,
       setTmdbErrorMsg,
       movies,
       match: {
@@ -41,13 +52,15 @@ class Movies extends Component {
     const { category: prevCategory } = prevProps.match.params;
 
     if (prevCategory !== category) {
-      getMoviesByCategoryInfo(
+      getMoviesByCategoryInfo({
         movies,
         addUpcoming,
         addNowPlaying,
+        addPopular,
+        addTopRated,
         setTmdbErrorMsg,
-        category
-      );
+        category,
+      });
     }
   }
 
@@ -73,6 +86,8 @@ class Movies extends Component {
 const actionCreators = {
   addNowPlaying,
   addUpcoming,
+  addPopular,
+  addTopRated,
   setTmdbErrorMsg,
 };
 

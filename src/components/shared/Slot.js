@@ -18,19 +18,15 @@ const Slot = ({ id, name, poster, rating, overview, release, styles }) => (
         isPoster
         styles={styles}
       />
-      <div className="flex-1-1-a pl-3 px-2">
+      <div className="media-meta pl-3 px-2">
         <span className="bold">{name}</span>
         <div className="d-flex align-items-center small">
           {release && <p className="genre mb-0">{release}</p>}
           {rating && rating > 0 ? <Rating rated={rating} /> : null}
         </div>
-        <div className="meta-movie">
-          {overview && (
-            <p className="description overflow-hidden my-1 pr-2 position-relative">
-              {overview}
-            </p>
-          )}
-        </div>
+        {overview && (
+          <p className="overflow-hidden description mt-1 mb-0">{overview}</p>
+        )}
       </div>
     </Link>
   </div>

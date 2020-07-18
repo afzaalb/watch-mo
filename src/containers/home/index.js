@@ -4,7 +4,12 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import ListSection from "../../components/shared/ListSection";
 import { mediaTypes, movieCategories } from "../../constants";
-import { addNowPlaying, addUpcoming } from "../../redux/action-creators/movies";
+import {
+  addNowPlaying,
+  addUpcoming,
+  addPopular,
+  addTopRated,
+} from "../../redux/action-creators/movies";
 import { setTmdbErrorMsg } from "../../redux/action-creators/tmdb";
 import { getMoviesByCategoryInfo } from "../../utils";
 
@@ -19,14 +24,23 @@ class Home extends Component {
   }
 
   componentDidMount() {
-    const { addUpcoming, addNowPlaying, setTmdbErrorMsg, movies } = this.props;
+    const {
+      addUpcoming,
+      addNowPlaying,
+      addPopular,
+      addTopRated,
+      setTmdbErrorMsg,
+      movies,
+    } = this.props;
 
-    getMoviesByCategoryInfo(
+    getMoviesByCategoryInfo({
       movies,
       addUpcoming,
       addNowPlaying,
-      setTmdbErrorMsg
-    );
+      addPopular,
+      addTopRated,
+      setTmdbErrorMsg,
+    });
   }
 
   render() {
@@ -48,6 +62,8 @@ class Home extends Component {
 const actionCreators = {
   addNowPlaying,
   addUpcoming,
+  addPopular,
+  addTopRated,
   setTmdbErrorMsg,
 };
 

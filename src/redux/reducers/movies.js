@@ -1,4 +1,9 @@
-import { ADD_NOW_PLAYING, ADD_UPCOMING } from "../action-types";
+import {
+  ADD_NOW_PLAYING,
+  ADD_UPCOMING,
+  ADD_POPULAR,
+  ADD_TOP_RATED,
+} from "../action-types";
 
 export default (state = {}, action = {}) => {
   const { type, payload } = action;
@@ -7,6 +12,10 @@ export default (state = {}, action = {}) => {
       return { ...state, nowPlaying: payload };
     case ADD_UPCOMING:
       return { ...state, upcoming: payload };
+    case ADD_POPULAR:
+      return { ...state, popular: payload };
+    case ADD_TOP_RATED:
+      return { ...state, topRated: payload };
 
     default:
       return { ...state };

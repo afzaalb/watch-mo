@@ -315,14 +315,16 @@ section p {
   margin-top: var(--space);
 }
 
-.movies-item .description {
-  max-height: 50px;
+.media-meta {
+  min-width: 0;
+  flex: 1;
 }
-.movies-item .description:after {
-  content: "...";
-  position: absolute;
-  top: 25px;
-  right: 0;
+
+.movies-item .description {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  max-height: 52px;
 }
 
 .person-poster img {

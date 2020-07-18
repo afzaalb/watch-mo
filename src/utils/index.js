@@ -85,22 +85,48 @@ const getNowPlaying = (addNowPlaying, setTmdbErrorMsg) =>
     setTmdbErrorMsg
   );
 
-export const getMoviesByCategoryInfo = (
+const getPopular = (addPopular, setTmdbErrorMsg) =>
+  theMovieDb.movies.getPopular(
+    { region: API_REGION },
+    addPopular,
+    setTmdbErrorMsg
+  );
+
+const getTopRated = (addTopRated, setTmdbErrorMsg) =>
+  theMovieDb.movies.getTopRated(
+    { region: API_REGION },
+    addTopRated,
+    setTmdbErrorMsg
+  );
+
+export const getMoviesByCategoryInfo = ({
   movies,
   addUpcoming,
   addNowPlaying,
+  addPopular,
+  addTopRated,
   setTmdbErrorMsg,
-  category = null
-) => {
-  const { nowPlaying, upcoming } = movieCategories;
+  category = null,
+}) => {
+  const { nowPlaying, upcoming, popular, topRated } = movieCategories;
+  const noUpcoming = isEmpty(movies.upcoming);
+  const noNowPlaying = isEmpty(movies.nowPlaying);
+  const noPopular = isEmpty(movies.popular);
+  const noTopRated = isEmpty(movies.topRated);
 
   if (!category) {
-    isEmpty(movies.upcoming) && getUpcomingMovies(addUpcoming, setTmdbErrorMsg);
-    isEmpty(movies.nowPlaying) && getNowPlaying(addNowPlaying, setTmdbErrorMsg);
-  } else if (isEmpty(movies.upcoming) && category === kebabCase(upcoming)) {
+    noUpcoming && getUpcomingMovies(addUpcoming, setTmdbErrorMsg);
+    noNowPlaying && getNowPlaying(addNowPlaying, setTmdbErrorMsg);
+    noPopular && getPopular(addPopular, setTmdbErrorMsg);
+    noTopRated && getTopRated(addTopRated, setTmdbErrorMsg);
+  } else if (noUpcoming && category === kebabCase(upcoming)) {
     getUpcomingMovies(addUpcoming, setTmdbErrorMsg);
-  } else if (isEmpty(movies.nowPlaying) && category === kebabCase(nowPlaying)) {
+  } else if (noNowPlaying && category === kebabCase(nowPlaying)) {
     getNowPlaying(addNowPlaying, setTmdbErrorMsg);
+  } else if (noPopular && category === kebabCase(popular)) {
+    getPopular(addPopular, setTmdbErrorMsg);
+  } else if (noTopRated && category === kebabCase(topRated)) {
+    getTopRated(addTopRated, setTmdbErrorMsg);
   }
 };
 

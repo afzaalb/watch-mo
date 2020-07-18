@@ -66,6 +66,6 @@ export const crewTypes = {
 export const movieCategories = {
   nowPlaying: "Now Playing",
   upcoming: "Upcoming",
-  // popular: "Popular",
-  // topRated: "Top Rated"
+  popular: "Popular",
+  topRated: "Top Rated",
 };

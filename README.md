@@ -12,7 +12,7 @@ These instructions will get you a copy of the project up and running on your loc
 
 To get started with this project, you need to get an api key from TMDB. Get it [here](https://www.themoviedb.org/settings/api).
 
-### Installing
+### Installation
 
 Get a copy of the project by clicking Clone or Download button.
 
@@ -32,6 +32,22 @@ npm start
 
 For api options and methods details:
 [Documentation](https://developers.themoviedb.org/3/getting-started/introduction)
+
+### Production Ready
+
+To get the production ready build.
+
+```
+npm run production
+```
+
+This will create the production ready assets in `dist` in your root directory.
+
+After this step its your choice to serve it as you may like.
+
+One of the most common approaches it to use a node server.
+Simply run `node server.js` command in the project root and it'll start serving your production build.
+Other approaches could be using [pm2](https://pm2.keymetrics.io/) which is a node process manager or using [Verce](https://vercel.com/) or [Netlify](https://www.netlify.com/).
 
 ## Built With
 

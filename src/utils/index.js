@@ -12,6 +12,7 @@ import {
   movieCategories,
   videoTypes,
   mediaTypes,
+  tvCategories,
 } from "../constants";
 import GA from "react-ga";
 
@@ -127,6 +128,61 @@ export const getMoviesByCategoryInfo = ({
     getPopular(addPopular, setTmdbErrorMsg);
   } else if (noTopRated && category === kebabCase(topRated)) {
     getTopRated(addTopRated, setTmdbErrorMsg);
+  }
+};
+
+const getAiringTodayTvShows = (addUpcoming, setTmdbErrorMsg) =>
+  theMovieDb.tv.getAiringToday(
+    { region: API_REGION },
+    addUpcoming,
+    setTmdbErrorMsg
+  );
+
+const getOnAirTvShows = (addNowPlaying, setTmdbErrorMsg) =>
+  theMovieDb.tv.getOnTheAir(
+    { region: API_REGION },
+    addNowPlaying,
+    setTmdbErrorMsg
+  );
+
+const getPopularTvShows = (addPopular, setTmdbErrorMsg) =>
+  theMovieDb.tv.getPopular({ region: API_REGION }, addPopular, setTmdbErrorMsg);
+
+const getTopRatedTvShows = (addTopRated, setTmdbErrorMsg) =>
+  theMovieDb.tv.getTopRated(
+    { region: API_REGION },
+    addTopRated,
+    setTmdbErrorMsg
+  );
+
+export const getTvShowsByCategoryInfo = ({
+  tvShows,
+  addAiringToday,
+  addOnAir,
+  addPopular,
+  addTopRated,
+  setTmdbErrorMsg,
+  category = null,
+}) => {
+  const { airingToday, onAir, popular, topRated } = tvCategories;
+  const noAiringToday = isEmpty(tvShows.airingToday);
+  const noOnAir = isEmpty(tvShows.onAir);
+  const noPopular = isEmpty(tvShows.popular);
+  const noTopRated = isEmpty(tvShows.topRated);
+
+  if (!category) {
+    noAiringToday && getAiringTodayTvShows(addAiringToday, setTmdbErrorMsg);
+    noOnAir && getOnAirTvShows(addOnAir, setTmdbErrorMsg);
+    noPopular && getPopularTvShows(addPopular, setTmdbErrorMsg);
+    noTopRated && getTopRatedTvShows(addTopRated, setTmdbErrorMsg);
+  } else if (noAiringToday && category === kebabCase(airingToday)) {
+    getAiringTodayTvShows(addAiringToday, setTmdbErrorMsg);
+  } else if (noOnAir && category === kebabCase(onAir)) {
+    getOnAirTvShows(addOnAir, setTmdbErrorMsg);
+  } else if (noPopular && category === kebabCase(popular)) {
+    getPopularTvShows(addPopular, setTmdbErrorMsg);
+  } else if (noTopRated && category === kebabCase(topRated)) {
+    getTopRatedTvShows(addTopRated, setTmdbErrorMsg);
   }
 };
 

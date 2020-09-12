@@ -4,9 +4,9 @@ import Loader from "./Loader";
 import NoDataFound from "./NoDataFound";
 import ItemsList from "./ItemsList";
 
-const ListSection = ({ name, content, tmdbMsg, route }) =>
+const ListSection = ({ name, content, tmdbMsg, route, isTvList }) =>
   !isEmpty(content) ? (
-    <ItemsList items={content} name={name} route={route} />
+    <ItemsList isTvList items={content} name={name} route={route} />
   ) : tmdbMsg ? (
     <NoDataFound alignCenter spaceTop message={tmdbMsg} />
   ) : (

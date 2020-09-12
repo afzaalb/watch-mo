@@ -5,3 +5,7 @@ export const ADD_TOP_RATED = "ADD_TOP_RATED";
 export const RESET_HOME = "RESET_HOME";
 export const SET_TMDB_ERROR = "SET_TMDB_ERROR";
 export const SET_ADULT_FILTER = "SET_ADULT_FILTER";
+export const ADD_AIRING_TODAY = "ADD_AIRING_TODAY";
+export const ADD_ON_AIR = "ADD_ON_AIR";
+export const ADD_POPULAR_TV = "ADD_POPULAR_TV";
+export const ADD_TOP_RATED_TV = "ADD_TOP_RATED_TV";

@@ -69,3 +69,10 @@ export const movieCategories = {
   popular: "Popular",
   topRated: "Top Rated",
 };
+
+export const tvCategories = {
+  airingToday: "Airing Today",
+  onAir: "On Air",
+  popular: "Popular",
+  topRated: "Top Rated",
+};

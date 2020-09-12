@@ -6,7 +6,7 @@ import { scrollToElement } from "../../utils";
 import { Trail } from "react-spring/renderprops";
 import { playerSpring } from "../../constants/spring-configs";
 
-const ItemsList = ({ items, name, route }) => (
+const ItemsList = ({ items, name, route, isTvList }) => (
   <section className="mb-3">
     <h2 className="d-flex justify-content-between align-items-center view-all-head">
       <span className="bold">{name}</span>
@@ -27,10 +27,11 @@ const ItemsList = ({ items, name, route }) => (
           <Slot
             key={m.id}
             id={m.id}
-            name={m.title}
+            isTvList={isTvList}
+            name={isTvList ? m.name : m.title}
             overview={m.overview}
             poster={m.poster_path}
-            release={m.release_date}
+            release={isTvList ? m.first_air_date : m.release_date}
             rating={m.vote_average}
             styles={styles}
           />

@@ -2,7 +2,7 @@ import React from "react";
 import NavLink from "react-router-dom/NavLink";
 import map from "lodash/map";
 import kebabCase from "lodash/kebabCase";
-import { movieCategories } from "../../constants";
+import { movieCategories, tvCategories } from "../../constants";
 import Github from "react-bytesize-icons/GitHub";
 import watchMoLogo from "../../assets/images/wmo-light.png";
 import { repoClickHandler } from "../../utils";
@@ -40,9 +40,19 @@ const Navigation = () => (
         </ul>
       </li>
       <li>
-        <NavLink to="/tv-shows" title="See TV Shows">
+        <span>TV Shows</span>
+        <ul className="droplist my-2 d-flex flex-wrap align-items-center">
+          {map(tvCategories, (c, i) => (
+            <li key={i} className="mr-1">
+              <NavLink className="p-1" to={`/tv/${kebabCase(c)}`}>
+                {c}
+              </NavLink>
+            </li>
+          ))}
+        </ul>
+        {/* <NavLink to="/tv-shows" title="See TV Shows">
           TV Shows
-        </NavLink>
+        </NavLink> */}
       </li>
       <li>
         <small className="d-block mt-4 text-monospace">

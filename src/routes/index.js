@@ -4,6 +4,7 @@ import Switch from "react-router-dom/Switch";
 import Home from "../containers/home";
 import Movies from "../containers/movies";
 import MovieItem from "../containers/movie-item";
+import TvShows from "../containers/tv-shows";
 import TvItem from "../containers/tv-item";
 import Person from "../containers/person";
 import Search from "../containers/search/";
@@ -22,6 +23,7 @@ const MyRouter = () => (
     <Route exact path="/person/:id/:name" component={Person} />
 
     {/* TV Routes */}
+    <Route exact path="/tv/:category" component={TvShows} />
     <Route exact path="/tv/:id/:name" component={TvItem} />
 
     {/* Other Features */}

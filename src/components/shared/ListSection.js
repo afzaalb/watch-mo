@@ -6,7 +6,7 @@ import ItemsList from "./ItemsList";
 
 const ListSection = ({ name, content, tmdbMsg, route, isTvList }) =>
   !isEmpty(content) ? (
-    <ItemsList isTvList items={content} name={name} route={route} />
+    <ItemsList isTvList={isTvList} items={content} name={name} route={route} />
   ) : tmdbMsg ? (
     <NoDataFound alignCenter spaceTop message={tmdbMsg} />
   ) : (

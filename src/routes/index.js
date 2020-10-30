@@ -1,17 +1,16 @@
-import React, { Suspense, lazy } from "react";
+import React, { Suspense } from "react";
 import Route from "react-router-dom/Route";
 import Switch from "react-router-dom/Switch";
 import Loader from "../components/shared/Loader";
-import NoDataFound from "../components/shared/NoDataFound";
 import Home from "../containers/home";
-
-const Movies = lazy(() => import("../containers/movies"));
-const MovieItem = lazy(() => import("../containers/movie-item"));
-const TvShows = lazy(() => import("../containers/tv-shows"));
-const TvItem = lazy(() => import("../containers/tv-item"));
-const Person = lazy(() => import("../containers/person"));
-const Search = lazy(() => import("../containers/search"));
-const Settings = lazy(() => import("../containers/settings"));
+import Movies from "../containers/movies";
+import MovieItem from "../containers/movie-item";
+import TvShows from "../containers/tv-shows";
+import TvItem from "../containers/tv-item";
+import Person from "../containers/person";
+import Search from "../containers/search";
+import Settings from "../containers/settings";
+import NoDataFound from "../components/shared/NoDataFound";
 
 const renderComponent = (WrappedComponent) => (props) => (
   <WrappedComponent {...props} />

@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { Component, lazy } from "react";
 import { getItemTrailer } from "../../utils";
 import theMovieDb from "themoviedb-javascript-library";
 import isEmpty from "lodash/isEmpty";
@@ -6,8 +6,11 @@ import NoDataFound from "../../components/shared/NoDataFound";
 import Loader from "../../components/shared/Loader";
 import Player from "../../components/item/Player";
 import ItemDetails from "../../components/item/ItemDetails";
-import Recommendations from "../../components/item/Recommendations";
 import GA from "react-ga";
+
+const Recommendations = lazy(() =>
+  import("../../components/item/Recommendations")
+);
 
 class MovieItem extends Component {
   constructor(props) {

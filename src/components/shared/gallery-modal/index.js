@@ -1,11 +1,12 @@
-import React, { PureComponent } from "react";
+import React, { PureComponent, lazy } from "react";
 import Modal from "react-bootstrap/Modal";
-import GalleryCarousel from "./GalleryCarousel";
 import ExpandGallery from "./ExpandGallery";
 import PropTypes from "prop-types";
 import classNames from "classnames";
 import Close from "react-bytesize-icons/Close";
 import GA from "react-ga";
+
+const GalleryCarousel = lazy(() => import("./GalleryCarousel"));
 
 class GalleryModal extends PureComponent {
   state = {

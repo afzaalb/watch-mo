@@ -22,6 +22,7 @@ const Recommendations = ({ recommendations, seasons }) => (
             >
               <CardImage
                 alt={recTitle}
+                baseWidth={204}
                 src={`${IMAGE_URL + "/w300" + backdrop_path}`}
                 wrapperClass="w-100 h-100 mb-1"
               />

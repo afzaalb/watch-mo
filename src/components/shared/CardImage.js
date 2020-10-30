@@ -3,7 +3,15 @@ import Img from "react-cool-img";
 import classNames from "classnames";
 import { FALLBACK_IMAGE } from "../../constants";
 
-const CardImage = ({ src, alt, styles, imgClass, isPoster, wrapperClass }) => {
+const CardImage = ({
+  baseWidth,
+  src,
+  alt,
+  styles,
+  imgClass,
+  isPoster,
+  wrapperClass,
+}) => {
   const [isImgLoaded, setImageAsLoaded] = useState(false);
 
   return (
@@ -15,6 +23,7 @@ const CardImage = ({ src, alt, styles, imgClass, isPoster, wrapperClass }) => {
       <Img
         style={isImgLoaded ? styles : {}}
         src={src}
+        width={baseWidth || 72}
         className={classNames("w-100 h-100 cover-fit", imgClass)}
         onLoad={() => setImageAsLoaded(true)}
         error={FALLBACK_IMAGE}

@@ -54,5 +54,6 @@ module.exports = {
       template: "./src/index.html",
       favicon: "./src/assets/images/icon.png",
     }),
+    new webpack.DefinePlugin(envKeys),
   ],
 };

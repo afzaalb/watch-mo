@@ -60,7 +60,9 @@
     "redux": "^4.0.1",
     "redux-devtools-extension": "^2.13.8",
     "redux-thunk": "^2.3.0",
-    "themoviedb-javascript-library": "^3.0.3"
+    "themoviedb-javascript-library": "^3.0.3",
+    "webpack": "^4.28.3",
+    "webpack-cli": "^3.2.0"
   },
   "devDependencies": {
     "@babel/core": "^7.6.0",
@@ -73,8 +75,6 @@
     "react-hot-loader": "^4.12.13",
     "style-loader": "^0.18.2",
     "url-loader": "^1.0.1",
-    "webpack": "^4.28.3",
-    "webpack-cli": "^3.2.0",
     "webpack-dev-server": "^3.1.14"
   }
 }

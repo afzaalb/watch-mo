@@ -5,6 +5,7 @@ import { FALLBACK_IMAGE } from "../../constants";
 
 const CardImage = ({
   baseWidth,
+  baseHeight,
   src,
   alt,
   styles,
@@ -24,6 +25,7 @@ const CardImage = ({
         style={isImgLoaded ? styles : {}}
         src={src}
         width={baseWidth || 72}
+        height={baseHeight || 72}
         className={classNames("w-100 h-100 cover-fit", imgClass)}
         onLoad={() => setImageAsLoaded(true)}
         error={FALLBACK_IMAGE}

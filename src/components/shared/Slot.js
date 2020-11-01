@@ -24,6 +24,7 @@ const Slot = ({
       className="d-flex rounded-card h-100"
     >
       <CardImage
+        baseHeight={108}
         alt={name}
         src={`${IMAGE_URL}/w154${poster}`}
         isPoster

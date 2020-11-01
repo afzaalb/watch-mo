@@ -125,15 +125,23 @@ strong,
   writing-mode: vertical-lr;
 }
 
+.hamburger {
+  display: none;
+}
+
 .navigation {
   width: 240px;
   min-height: 100vh;
   height: 100%;
-  font-size: 18px;
+  font-size: 16px;
   font-weight: 500;
   padding: var(--space);
   padding-left: 0;
   flex-shrink: 0;
+}
+
+.navigation > ul {
+  flex-direction: column;
 }
 
 .navigation li:not(.logo) a {
@@ -224,6 +232,7 @@ nav a:hover {
   top: 0;
   left: 0;
   right: 0;
+  width: 100%;
   z-index: 1;
 }
 
@@ -438,3 +447,69 @@ section p {
   right: 0;
 }
 /* Gallery Preview UI Ends */
+
+/* Medi Queries */
+@media (max-width: 1120px) {
+  .logo {
+    position: relative;
+    top: unset;
+    right: unset;
+    font-size: 16px;
+    writing-mode: unset;
+  }
+
+  .hamburger {
+    display: block;
+  }
+
+  main {
+    max-width: 100%;
+    margin-top: 48px;
+  }
+
+  .sidebar {
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+  }
+
+  .navigation {
+    padding: 0;
+    width: 100%;
+    min-height: unset;
+  }
+
+  .navigation > ul {
+    flex-direction: row;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    padding: 0 var(--radius);
+  }
+  .navigation > ul > li {
+    padding: 0 calc(var(--radius) / 2);
+    line-height: 48px;
+    flex: 0 0 auto;
+  }
+  .navigation > ul > li svg {
+    width: 14px;
+    height: 14px;
+  }
+  .navigation li:not(.logo) {
+    font-size: 13px;
+  }
+  .navigation li:not(.logo) a {
+    padding: 0;
+    margin-bottom: 0;
+  }
+
+  .droplist {
+    display: none !important;
+  }
+
+  section h2 {
+    font-size: calc(var(--radius) / 1.3);
+  }
+}

@@ -8,6 +8,7 @@ import MovieItem from "../containers/movie-item";
 import TvShows from "../containers/tv-shows";
 import TvItem from "../containers/tv-item";
 import SeasonItem from "../containers/season-item";
+import EpisodeItem from "../containers/episode-item";
 import Person from "../containers/person";
 import Search from "../containers/search";
 import Settings from "../containers/settings";
@@ -39,6 +40,11 @@ const MyRouter = () => (
         exact
         path="/tv/:id/:name/seasons/:number"
         render={renderComponent(SeasonItem)}
+      />
+      <Route
+        exact
+        path="/tv/:id/:name/seasons/:number/episodes/:episode"
+        render={renderComponent(EpisodeItem)}
       />
 
       {/* Other Features */}

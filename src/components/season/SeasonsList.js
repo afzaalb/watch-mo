@@ -32,7 +32,7 @@ const SeasonsList = ({ showName, tvId, seasons }) =>
                   <div className="flex-1-1-a py-2 px-3">
                     <h6 className="d-flex align-items-center">
                       <span className="mr-2">{name}</span>
-                      <span className="pill px-3 py-1 mr-2 d-flex align-items-center">
+                      <span className="ml-auto pill px-3 py-1 mr-2 d-flex align-items-center">
                         <Calendar
                           className="align-top mr-2"
                           width="14"
@@ -42,7 +42,7 @@ const SeasonsList = ({ showName, tvId, seasons }) =>
                         <span>Aired {air_date}</span>
                       </span>
                     </h6>
-                    <p>{overview}</p>
+                    <p className="m-0">{overview}</p>
                   </div>
                 </div>
               </Link>

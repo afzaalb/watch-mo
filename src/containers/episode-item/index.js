@@ -6,10 +6,9 @@ import NoDataFound from "../../components/shared/NoDataFound";
 import Loader from "../../components/shared/Loader";
 import Player from "../../components/item/Player";
 import ItemDetails from "../../components/item/ItemDetails";
-import EpisodesList from "../../components/season/EpisodesList";
 import GA from "react-ga";
 
-class SeasonItem extends Component {
+class EpisodeItem extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -20,30 +19,32 @@ class SeasonItem extends Component {
   }
 
   componentDidMount() {
-    const { id, number } = this.props.match.params;
-    this.getItemById(id, number);
+    const { id, number, episode } = this.props.match.params;
+    this.getItemById(id, number, episode);
   }
 
   componentDidUpdate(prevProps) {
-    const { id, number } = this.props.match.params;
+    const { id, number, episode } = this.props.match.params;
     if (id !== prevProps.match.params.id) {
-      this.getItemById(id, number);
+      this.getItemById(id, number, episode);
     }
   }
 
-  getItemById = (id, season_number) => {
-    theMovieDb.tvSeasons.getById(
+  getItemById = (id, season_number, episode_number) => {
+    theMovieDb.tvEpisodes.getById(
       {
         id,
         season_number,
-        append_to_response: "videos,images",
+        episode_number,
+        append_to_response:
+          "videos,recommendations,images&include_image_language=en,null",
       },
-      (data) => this.successCB(data, id, season_number),
+      (data) => this.successCB(data, id, season_number, episode_number),
       this.errorCB
     );
   };
 
-  successCB = (data, id, season_number) => {
+  successCB = (data, id, season_number, episode_number) => {
     const fetchedData = JSON.parse(data);
     this.setState(
       {
@@ -52,7 +53,7 @@ class SeasonItem extends Component {
       },
       () => {
         theMovieDb.tv.getCredits(
-          { id, season_number },
+          { id, season_number, episode_number },
           this.creditsSuccessCB,
           this.errorCB
         );
@@ -92,7 +93,7 @@ class SeasonItem extends Component {
         this.state.playing &&
           GA.event({
             category: "Player",
-            action: "Play trailer for tv season",
+            action: "Play trailer for tv episode",
           });
       }
     );
@@ -106,7 +107,7 @@ class SeasonItem extends Component {
       overview,
       vote_average,
       first_air_date,
-      poster_path,
+      still_path,
       backdrop_path,
       genres,
       homepage,
@@ -116,12 +117,11 @@ class SeasonItem extends Component {
       imdb_id,
       videos,
       images,
-      episodes,
       production_companies,
     } = itemDetails;
 
     if (!isEmpty(itemDetails)) {
-      var { backdrops, posters } = images;
+      var { stills } = images;
       var { results } = videos;
     }
 
@@ -134,7 +134,7 @@ class SeasonItem extends Component {
         {results.length > 0 && (
           <Player
             videoId={getItemTrailer(results)}
-            poster={backdrop_path ? backdrop_path : poster_path}
+            poster={backdrop_path ? backdrop_path : still_path}
             title={name}
             playing={playing}
             handlePlayerState={this.handlePlayerState}
@@ -142,30 +142,23 @@ class SeasonItem extends Component {
         )}
         <ItemDetails
           id={this.props.match.params.id}
-          title={`${this.props.match.params.name} | ${name}`}
+          title={name}
           release={first_air_date}
           genres={genres}
           runtime={runtime}
           overview={overview}
           rating={vote_average}
-          poster={poster_path}
+          poster={still_path}
           status={status}
           link={homepage}
           budget={budget}
           revenue={revenue}
           imdb={imdb_id}
-          backdrops={posters || backdrops}
+          backdrops={stills}
           cast={cast}
           crew={crew}
           productionCompanies={production_companies}
-        >
-          <EpisodesList
-            showName={this.props.match.params.name}
-            tvId={this.props.match.params.id}
-            seasonNumber={this.props.match.params.number}
-            episodes={episodes}
-          />
-        </ItemDetails>
+        />
       </>
     ) : tmdbResponse ? (
       <NoDataFound alignCenter spaceTop message={tmdbResponse} />
@@ -175,4 +168,4 @@ class SeasonItem extends Component {
   }
 }
 
-export default SeasonItem;
+export default EpisodeItem;

@@ -8,10 +8,6 @@ import Player from "../../components/item/Player";
 import ItemDetails from "../../components/item/ItemDetails";
 import GA from "react-ga";
 
-const Recommendations = lazy(() =>
-  import("../../components/item/Recommendations")
-);
-
 class SeasonItem extends Component {
   constructor(props) {
     super(props);
@@ -95,7 +91,7 @@ class SeasonItem extends Component {
         this.state.playing &&
           GA.event({
             category: "Player",
-            action: "Play trailer for tv show",
+            action: "Play trailer for tv season",
           });
       }
     );

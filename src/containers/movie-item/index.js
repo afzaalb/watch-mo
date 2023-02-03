@@ -125,6 +125,7 @@ class MovieItem extends Component {
           />
         )}
         <ItemDetails
+          id={this.props.match.params.id}
           title={title}
           release={release_date}
           genres={genres}

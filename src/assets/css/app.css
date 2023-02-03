@@ -309,7 +309,6 @@ section p {
 .imdb-status {
   border-top: 1px solid var(--light);
   border-bottom: 1px solid var(--light);
-  margin-bottom: var(--space);
 }
 
 .imdb-status img {

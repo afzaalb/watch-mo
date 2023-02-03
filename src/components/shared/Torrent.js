@@ -9,22 +9,22 @@ class Torrent extends Component {
     super(props);
     this.state = {
       show: false,
-      torrentList: []
+      torrentList: [],
     };
   }
 
   componentDidMount() {
     axios
       .get(GET_TORRENT_URL + this.props.movie)
-      .then(response => {
+      .then((response) => {
         if (response.data.data.movies) {
           this.setState({
             torrentList: getMovieTorrents(response.data.data.movies),
-            show: true
+            show: true,
           });
         }
       })
-      .catch(error => {
+      .catch((error) => {
         console.log(error);
       });
   }
@@ -41,7 +41,6 @@ class Torrent extends Component {
               <a
                 href={url}
                 key={hash}
-                href={url}
                 title={`Seeds: ${seeds} | Peers: ${peers}`}
                 className="btn btn-light active mr-1 mb-2"
               >

@@ -23,6 +23,7 @@ const ItemDetails = ({
   backdrops,
   seasons,
   productionCompanies,
+  children,
 }) => (
   <>
     <ItemMeta
@@ -35,18 +36,27 @@ const ItemDetails = ({
       poster={poster}
       backdrops={backdrops}
     />
-    <ul className="d-flex flex-wrap imdb-status py-2 align-items-center justify-content-between">
-      <li className="bold">{status}</li>
-      <li>
-        <small className="mr-2">View on</small>
-        <a target="_blank" href={IMDB_TITLE + imdb} title="View on IMDb">
-          <img src={imdbLogo} className="img-fluid w-100" alt="View on IMDb" />
-        </a>
-      </li>
-    </ul>
+    {children}
+    {imdb && (
+      <ul className="d-flex flex-wrap imdb-status py-2 align-items-center justify-content-between">
+        <li className="bold">{status}</li>
+        <li>
+          <small className="mr-2">View on</small>
+          <a target="_blank" href={IMDB_TITLE + imdb} title="View on IMDb">
+            <img
+              src={imdbLogo}
+              className="img-fluid w-100"
+              alt="View on IMDb"
+            />
+          </a>
+        </li>
+      </ul>
+    )}
 
     <section className="row item-details">
-      <div className="col-md-8 pr-4">{cast && <CastMembers cast={cast} />}</div>
+      <div className="col-md-8 pr-4 mt-4">
+        {cast && <CastMembers cast={cast} />}
+      </div>
       <ItemSidebar
         title={title}
         link={link}

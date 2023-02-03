@@ -6,14 +6,13 @@ import NoDataFound from "../../components/shared/NoDataFound";
 import Loader from "../../components/shared/Loader";
 import Player from "../../components/item/Player";
 import ItemDetails from "../../components/item/ItemDetails";
-import SeasonsList from "../../components/season/SeasonsList";
 import GA from "react-ga";
 
 const Recommendations = lazy(() =>
   import("../../components/item/Recommendations")
 );
 
-class TvItem extends Component {
+class SeasonItem extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -24,30 +23,30 @@ class TvItem extends Component {
   }
 
   componentDidMount() {
-    const { id } = this.props.match.params;
-    this.getItemById(id);
+    const { id, number } = this.props.match.params;
+    this.getItemById(id, number);
   }
 
   componentDidUpdate(prevProps) {
-    const { id } = this.props.match.params;
+    const { id, number } = this.props.match.params;
     if (id !== prevProps.match.params.id) {
-      this.getItemById(id);
+      this.getItemById(id, number);
     }
   }
 
-  getItemById = (id) => {
-    theMovieDb.tv.getById(
+  getItemById = (id, season_number) => {
+    theMovieDb.tvSeasons.getById(
       {
         id,
-        append_to_response:
-          "videos,recommendations,images&include_image_language=en,null",
+        season_number,
+        append_to_response: "videos,images",
       },
-      (data) => this.successCB(data, id),
+      (data) => this.successCB(data, id, season_number),
       this.errorCB
     );
   };
 
-  successCB = (data, id) => {
+  successCB = (data, id, season_number) => {
     const fetchedData = JSON.parse(data);
     this.setState(
       {
@@ -55,7 +54,11 @@ class TvItem extends Component {
         itemDetails: fetchedData,
       },
       () => {
-        theMovieDb.tv.getCredits({ id }, this.creditsSuccessCB, this.errorCB);
+        theMovieDb.tv.getCredits(
+          { id, season_number },
+          this.creditsSuccessCB,
+          this.errorCB
+        );
       }
     );
   };
@@ -114,7 +117,6 @@ class TvItem extends Component {
       revenue,
       runtime,
       imdb_id,
-      recommendations,
       videos,
       images,
       seasons,
@@ -143,7 +145,7 @@ class TvItem extends Component {
         )}
         <ItemDetails
           id={this.props.match.params.id}
-          title={name}
+          title={`${this.props.match.params.name} | ${name}`}
           release={first_air_date}
           genres={genres}
           runtime={runtime}
@@ -160,19 +162,7 @@ class TvItem extends Component {
           cast={cast}
           crew={crew}
           productionCompanies={production_companies}
-        >
-          <SeasonsList
-            showName={name}
-            seasons={seasons}
-            tvId={this.props.match.params.id}
-          />
-        </ItemDetails>
-        {recommendations && recommendations.results.length > 0 && (
-          <Recommendations
-            seasons={seasons}
-            recommendations={recommendations.results.slice(0, 3)}
-          />
-        )}
+        />
       </>
     ) : tmdbResponse ? (
       <NoDataFound alignCenter spaceTop message={tmdbResponse} />
@@ -182,4 +172,4 @@ class TvItem extends Component {
   }
 }
 
-export default TvItem;
+export default SeasonItem;

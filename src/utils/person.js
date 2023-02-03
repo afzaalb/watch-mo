@@ -10,6 +10,6 @@ export const getTextByGender = (sex) => {
       return "Male";
 
     default:
-      return "Female";
+      return "-";
   }
 };

@@ -17,7 +17,7 @@ const ItemSidebar = ({
   seasons,
   productionCompanies,
 }) => (
-  <div className="col-md-4 item-detail-meta pl-4">
+  <div className="col-md-4 item-detail-meta pl-4 mt-4">
     {!seasons && <Torrent movie={imdb} />}
     {link !== null && (
       <>
@@ -102,7 +102,7 @@ const ItemSidebar = ({
       </>
     )}
 
-    {productionCompanies.length > 0 && (
+    {productionCompanies && productionCompanies.length > 0 && (
       <>
         <h6 className="mb-1">
           {pluralize("Production Company", productionCompanies.length)}

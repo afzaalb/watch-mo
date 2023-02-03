@@ -9,8 +9,6 @@ const envKeys = Object.keys(env).reduce((prev, next) => {
   return prev;
 }, {});
 
-console.log(envKeys);
-
 module.exports = {
   entry: "./src/main.js",
   output: {

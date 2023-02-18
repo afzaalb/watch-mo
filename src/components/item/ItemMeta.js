@@ -17,17 +17,6 @@ const ItemMeta = ({
   poster,
   backdrops,
 }) => {
-  console.log(
-    "POOTA",
-    overview,
-    rating,
-    title,
-    release,
-    genres,
-    runtime,
-    poster,
-    backdrops
-  );
   return (
     <section className="item-meta d-flex">
       <div className="poster-shot overflow-hidden">

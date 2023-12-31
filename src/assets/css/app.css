@@ -42,18 +42,26 @@ a:focus {
 }
 
 /* Themes */
-.modal-open,
 .wm-lite {
   --primary: #ecf0f6;
   --secondary: #11102c;
   --light: #cccccc;
   --layout: #f4f5f6;
+  background: #f4f5f6;
 }
-.wm-girly {
+.wm-dark {
+  --primary: #1a1a1a;
+  --secondary: #e5e5e5;
+  --light: #cccccc;
+  --layout: #303030;
+  background: #1a1a1a;
+}
+.wm-tea-pink {
   --primary: #ffe0d9;
   --secondary: #222222;
-  --light: #cccccc;
-  --layout: #ffe0d9;
+  --light: #e5c9c3;
+  --layout: #fff8f7;
+  background: #ffe0d9;
 }
 
 /* Dark Mode for iOS/macOS */
@@ -168,6 +176,12 @@ nav a.active,
 nav a:active,
 nav a:hover {
   color: inherit;
+}
+
+.btn-light:not(:disabled):not(.disabled).active,
+.btn-light:not(:disabled):not(.disabled):active {
+  background: var(--primary);
+  border-color: var(--light);
 }
 
 .form-control {
@@ -447,7 +461,38 @@ section p {
 }
 /* Gallery Preview UI Ends */
 
-/* Medi Queries */
+/* Settings */
+.content-settings {
+  border-radius: calc(var(--radius) / 4);
+  padding: calc(var(--radius) / 2);
+  margin-bottom: var(--radius);
+}
+.content-settings.neutral {
+  outline: 2px solid var(--light);
+}
+.content-settings h4 {
+  font-size: calc(var(--radius) / 1.4);
+  margin-bottom: 4px;
+}
+.content-settings.safe {
+  outline: 2px solid #589b8c;
+  background: #ddebe8;
+  color: #11102c;
+}
+.content-settings.mature {
+  outline: 2px solid #cc0000;
+  background: #ffcccc;
+}
+.theme-box {
+  border-radius: calc(var(--radius) / 2);
+  margin-top: var(--radius);
+  outline: 2px solid var(--light);
+  font-size: calc(var(--radius) / 1.4);
+  font-weight: 500;
+  letter-spacing: calc(var(--radius) / 8);
+}
+
+/* Media Queries */
 @media (max-width: 1120px) {
   .logo {
     position: relative;

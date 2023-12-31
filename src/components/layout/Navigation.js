@@ -6,6 +6,7 @@ import { movieCategories, tvCategories } from "../../constants";
 import Search from "react-bytesize-icons/Search";
 import Video from "react-bytesize-icons/Video";
 import Portfolio from "react-bytesize-icons/Portfolio";
+import Settings from "react-bytesize-icons/Settings";
 import Camera from "react-bytesize-icons/Camera";
 import AttributionModal from "./AttributionModal";
 import { Spring } from "react-spring/renderprops";
@@ -72,6 +73,20 @@ const Navigation = () => {
               </li>
             ))}
           </ul>
+        </li>
+        <li>
+          <NavLink
+            to="/settings"
+            title="Settings"
+            className="d-flex align-items-center"
+          >
+            <Settings
+              strokeWidth="3"
+              width="18"
+              className="align-middle mr-2"
+            />
+            <span>Settings</span>
+          </NavLink>
         </li>
         <li
           onClick={toggleAttribution}

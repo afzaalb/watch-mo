@@ -5,7 +5,7 @@ import Route from "react-router-dom/Route";
 import App from "./components/shared/App";
 import { Provider } from "react-redux";
 import initializeStore from "./redux/store";
-import { defaultSettings } from "./containers/settings/constants";
+import { defaultSettings } from "./constants";
 
 ReactDOM.render(
   <Router>

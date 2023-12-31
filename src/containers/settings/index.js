@@ -1,22 +1,20 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
+import ThemeSetting from "../../components/settings/ThemeSetting";
+import MaturitySetting from "../../components/settings/MaturitySetting";
 
 class Settings extends Component {
   render() {
     return (
       <section className="mb-4">
         <h2>Settings</h2>
-        <div class="row">
-          <div className="col-sm-3 text-right">Adult</div>
-          <div className="col-sm-9">On</div>
-        </div>
+        <MaturitySetting isMature={this.props.settings.adult} />
+        <ThemeSetting />
       </section>
     );
   }
 }
 
-const mapStateToProps = ({ settings }) => {
-  return { settings };
-};
+const mapStateToProps = ({ settings }) => ({ settings });
 
 export default connect(mapStateToProps)(Settings);

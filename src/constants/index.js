@@ -39,8 +39,8 @@ export const filterTypes = {
 
 export const themes = {
   LITE: "wm-lite",
-  DARK: "wm-dark",
-  GIRLY: "wm-girly",
+  // DARK: "wm-dark",
+  TEA_PINK: "wm-tea-pink",
 };
 
 // Image Sizes are just for reference but are not being used anywhere
@@ -76,3 +76,5 @@ export const tvCategories = {
   popular: "Popular",
   topRated: "Top Rated",
 };
+
+export const defaultSettings = { adult: false };

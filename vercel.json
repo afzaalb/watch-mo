@@ -1,0 +1,19 @@
+{
+    "installCommand": "npm install",
+    "buildCommand": "npm run production",
+    "outputDirectory": "dist",
+    "cleanUrls": true,
+    "trailingSlash": false,
+
+    "redirects": [
+        {
+            "source": "/(.*)",
+            "destination": "/",
+            "statusCode": 200
+        }
+    ],
+
+    "github": {
+        "deploymentEnabled": false
+    }
+}

@@ -4,10 +4,10 @@ const webpack = require("webpack");
 const CleanWebpackPlugin = require("clean-webpack-plugin");
 const HtmlWebPackPlugin = require("html-webpack-plugin");
 
-// const envKeys = Object.keys(env).reduce((prev, next) => {
-//     prev[`process.env.${next}`] = JSON.stringify(env[next]);
-//     return prev;
-// }, {});
+const envKeys = Object.keys(env).reduce((prev, next) => {
+    prev[`process.env.${next}`] = JSON.stringify(env[next]);
+    return prev;
+}, {});
 
 module.exports = {
     entry: "./src/main.js",
@@ -54,6 +54,6 @@ module.exports = {
             template: "./src/index.html",
             favicon: "./src/assets/images/icon.png",
         }),
-        // new webpack.DefinePlugin(envKeys),
+        new webpack.DefinePlugin(envKeys),
     ],
 };

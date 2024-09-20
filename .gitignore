@@ -6,3 +6,5 @@ netlify.toml
 
 # Local Netlify folder
 .netlify
+.vercel
+.env*.local
